@@ -7,7 +7,7 @@ Write-Host "[1/3] Staging all updated portfolio files..." -ForegroundColor Yello
 git add .
 
 Write-Host "[2/3] Committing changes..." -ForegroundColor Yellow
-git commit -m "feat: digital twin city telemetry, wire convergence tabs, universal mobile compatibility, and huly cyber defense"
+git commit -m "feat: complete first-person Christopher Nolan narrator transformation across entire portfolio"
 
 Write-Host "[3/3] Pushing to GitHub (h3zus-m.github.io)..." -ForegroundColor Yellow
 Write-Host "Note: If prompted, authenticate via the browser pop-up." -ForegroundColor DarkGray
