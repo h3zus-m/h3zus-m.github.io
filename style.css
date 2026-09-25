@@ -2221,7 +2221,7 @@ img { display: block; max-width: 100%; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 58%;
   filter: contrast(1.05) brightness(0.98);
 }
 .profile-vignette-overlay {
@@ -3338,7 +3338,7 @@ em, .editorial-serif {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center 58%;
   filter: contrast(1.05) saturate(1.08);
 }
 
@@ -3524,7 +3524,19 @@ html, body {
   touch-action: pan-y;
 }
 
-/* Minimum 44px tap targets for mobile usability (Apple & Material Guidelines) */
+/* ==========================================================================
+   UNIVERSAL DEVICE & SMARTPHONE COMPATIBILITY (iOS, Android, Tablets, Laptops)
+   ========================================================================== */
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: pan-y;
+}
+
+/* Base tablet and smartphone responsiveness (<= 768px) */
 @media (max-width: 768px) {
   button, 
   .btn-primary, 
@@ -3539,100 +3551,370 @@ html, body {
     min-height: 44px;
   }
 
+  /* Navigation Bar Alignment */
+  .floating-nav-wrapper {
+    width: calc(100% - 20px) !important;
+    left: 10px !important;
+    transform: none !important;
+    top: 10px !important;
+    max-width: 100% !important;
+  }
+  .floating-nav {
+    padding: 6px 12px !important;
+    gap: 8px !important;
+    justify-content: space-between !important;
+  }
+  .brand-text-col .brand-role-micro {
+    display: none !important;
+  }
+  .brand-text-col .brand-name {
+    font-size: 14px !important;
+  }
+  .brand-crest-wrapper,
+  .brand-crest-svg {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  .btn-nav-primary {
+    padding: 7px 12px !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.04em !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+  .btn-nav-primary svg {
+    width: 11px !important;
+    height: 11px !important;
+    margin-left: 4px !important;
+  }
+
+  /* Cyber Integrity Shield Mobile Positioning */
+  .cyber-toast {
+    width: calc(100vw - 24px) !important;
+    max-width: 100% !important;
+    left: 12px !important;
+    right: 12px !important;
+    transform: none !important;
+    top: 64px !important;
+    padding: 10px 14px !important;
+    box-sizing: border-box !important;
+  }
+  .cyber-toast.show {
+    transform: translateY(0) !important;
+  }
+
+  /* Lighting & Text Contrast Shields */
+  .huly-lava-bg {
+    opacity: 0.55 !important;
+  }
+  .lava-overlay-mask {
+    background: radial-gradient(circle at 50% 25%, rgba(6, 9, 16, 0.45) 0%, rgba(6, 9, 16, 0.88) 75%) !important;
+  }
+
+  /* Hero Layout & Typography */
   .hero-layout {
-    gap: 36px;
-    padding-top: 10px;
+    gap: 28px !important;
+    padding: 70px 16px 40px !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
   .hero-headline {
-    font-size: clamp(2rem, 7.5vw, 3.2rem);
-    line-height: 1.15;
+    font-size: clamp(1.85rem, 7vw, 2.4rem) !important;
+    line-height: 1.18 !important;
+    letter-spacing: -0.02em !important;
+    word-break: break-word !important;
   }
 
-  .stage-frame {
-    width: 100%;
-    max-width: 100%;
+  .hero-lead {
+    font-size: 0.95rem !important;
+    line-height: 1.55 !important;
   }
 
-  .twin-viewport {
-    height: clamp(360px, 85vw, 440px);
-  }
-
-  .convergence-layout {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .convergence-display {
-    padding: 24px 18px;
-  }
-
-  .display-headline {
-    font-size: 20px;
-  }
-
-  .display-stats-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-
-  .deep-dive-card {
-    padding: 22px 18px;
-  }
-
-  .os-step-details {
-    padding: 20px 16px;
-  }
-
-  .floating-nav {
-    padding: 8px 14px;
-    gap: 10px;
-  }
-
-  .terminal-content {
-    font-size: 11px;
-    padding: 14px;
-  }
-}
-
-/* Small screen phones (iPhone SE, Galaxy A, etc. <= 420px) */
-@media (max-width: 420px) {
   .hero-bento-strip {
-    grid-template-columns: 1fr;
-    gap: 10px;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
   }
 
+  .bento-metric-card {
+    padding: 12px 10px !important;
+  }
+  .bento-metric-card .metric-val {
+    font-size: 1.5rem !important;
+  }
+  .bento-metric-card .metric-name {
+    font-size: 0.72rem !important;
+  }
+  .bento-metric-card .metric-desc {
+    font-size: 0.68rem !important;
+  }
+
+  /* Hero Actions Stack */
   .hero-actions {
-    flex-direction: column;
-    width: 100%;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin-top: 18px !important;
+    margin-bottom: 24px !important;
   }
-
   .hero-actions .btn-primary,
   .hero-actions .btn-secondary,
   .hero-actions .btn-ghost {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Hero Stage Frame & Portrait Visibility */
+  .stage-frame {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .twin-viewport {
+    height: clamp(380px, 92vw, 460px) !important;
+    border-radius: 12px !important;
+  }
+
+  .hero-profile-full-img {
+    object-position: center 58% !important;
+  }
+
+  /* Mode Switcher 2x2 Grid (Eliminates horizontal truncation) */
+  .twin-mode-selector {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 6px !important;
+    padding: 8px 10px !important;
+    overflow-x: visible !important;
+  }
+  .twin-mode-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    font-size: 11px !important;
+    padding: 8px 6px !important;
+    min-height: 40px !important;
+    flex-shrink: 1 !important;
+  }
+  .twin-mode-btn svg {
+    width: 13px !important;
+    height: 13px !important;
+  }
+
+  /* HUD Overlays & Cinema Letterbox */
+  .cinema-bar {
+    padding: 6px 10px !important;
+  }
+  .cinema-tag,
+  .cinema-tag-right {
+    font-size: 8px !important;
+    letter-spacing: 0.06em !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  .hud-orbit-overlay {
+    padding: 6px 8px !important;
+    gap: 6px !important;
+  }
+  .hud-tag {
+    padding: 4px 7px !important;
+    font-size: 8px !important;
+    max-width: 48% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+  .hud-tag .tag-value {
+    font-size: 8px !important;
+  }
+  .twin-telemetry-hud {
+    padding: 6px 10px !important;
+  }
+  .hud-hub-name {
+    font-size: 9.5px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: block !important;
+  }
+  .hud-hub-metric {
+    font-size: 8px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: block !important;
+  }
+  .stage-signal-row {
+    padding: 8px 10px !important;
+    gap: 4px 6px !important;
+    justify-content: center !important;
+  }
+  .signal-pill {
+    font-size: 8.5px !important;
+    padding: 3px 7px !important;
+  }
+
+  /* Section Containers & Margins */
+  .section-container {
+    padding: 40px 16px !important;
+  }
+
+  /* Chapter 02: Convergence Grid */
+  .convergence-layout {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .convergence-display {
+    padding: 20px 16px !important;
+  }
+  .display-headline {
+    font-size: 19px !important;
+  }
+  .display-desc {
+    font-size: 13.5px !important;
+    line-height: 1.55 !important;
+  }
+  .display-stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* Chapter 03: Track Record */
+  .experience-bento-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .exp-bento-card {
+    padding: 20px 16px !important;
+  }
+  .card-heading {
+    font-size: 16px !important;
+    line-height: 1.35 !important;
+  }
+  .company-research-summary {
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+  }
+  .metric-pill-row {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+  .metric-pill {
+    flex: 1 1 calc(50% - 6px) !important;
+  }
+
+  /* Chapter 04: Operations & Flow Visuals */
+  .deep-dive-card {
+    padding: 20px 16px !important;
+  }
+  .dd-title {
+    font-size: 18px !important;
+  }
+  .pipeline-flow-diagram {
+    overflow-x: auto !important;
+    padding-bottom: 8px !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .flow-step-node {
+    min-width: 85px !important;
+    padding: 8px 6px !important;
+  }
+  .visual-split-box {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Chapter 05: Method Pipeline */
+  .pipeline-nodes-track {
+    overflow-x: auto !important;
+    padding-bottom: 8px !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .os-interactive-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  .os-stepper-nav {
+    display: flex !important;
+    overflow-x: auto !important;
+    padding-bottom: 6px !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .os-step-btn {
+    flex-shrink: 0 !important;
+  }
+  .os-card-body {
+    padding: 18px 14px !important;
+  }
+  .os-diagram-container {
+    height: 180px !important;
+  }
+
+  /* Chapter 06: Drive Bento */
+  .bento-sports-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  .sport-bento-card.cinema-card {
+    grid-column: span 1 !important;
+  }
+
+  /* Chapter 07: Dispatch Gate & Form Inputs */
+  .dossier-box {
+    padding: 20px 16px !important;
+  }
+  .form-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .form-btn-group {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .form-btn-group .btn-primary,
+  .form-btn-group .btn-secondary,
+  .form-btn-group .btn-ghost {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  /* iOS Safari Auto-Zoom Fix: inputs >= 16px prevent unexpected browser zoom */
+  .input-block input,
+  .input-block select,
+  .input-block textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Compact Smartphones (iPhone SE, iPhone mini <= 420px) */
+@media (max-width: 420px) {
+  .hero-bento-strip {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
   }
 
   .display-stats-grid {
-    grid-template-columns: 1fr;
-    gap: 8px;
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
   }
 
   .twin-city-selector {
-    gap: 4px;
-    padding: 3px 4px;
+    gap: 4px !important;
+    padding: 3px 4px !important;
   }
 
   .twin-city-btn {
-    font-size: 8.5px;
-    padding: 4px 6px;
+    font-size: 8.5px !important;
+    padding: 4px 6px !important;
   }
 
   .edu-card {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 16px;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 16px !important;
   }
 }

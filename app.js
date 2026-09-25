@@ -1918,8 +1918,10 @@ function initCyberDefenseShield() {
     }, 2800);
   }
 
-  // 1. Intercept Right-Click (Context Menu)
+  // 1. Intercept Right-Click (Context Menu, Desktop Only)
   window.addEventListener("contextmenu", (e) => {
+    // Never trigger defense shield on mobile touch/tap-and-hold
+    if ("ontouchstart" in window || navigator.maxTouchPoints > 0) return;
     e.preventDefault();
     triggerShield("SOURCE INSPECTION RESTRICTED // ISO-27001 PROTOCOL");
     console.warn("[SECURITY] Context menu inspection blocked by Cyber Defense Directive.");
@@ -1956,9 +1958,12 @@ function initCyberDefenseShield() {
     }
   });
 
-  // 3. DevTools Detection & Anti-Tamper Shield (Huly-Grade Defense)
+  // 3. DevTools Detection & Anti-Tamper Shield (Desktop Only)
+  const isMobileEnvironment = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || ("ontouchstart" in window && window.innerWidth < 900);
   let devToolsOpen = false;
   const checkDevTools = () => {
+    // Never run on mobile devices (iOS/Android browser toolbars alter outerHeight/innerHeight)
+    if (isMobileEnvironment) return;
     const widthThreshold = window.outerWidth - window.innerWidth > 160;
     const heightThreshold = window.outerHeight - window.innerHeight > 160;
     if ((widthThreshold || heightThreshold) && !devToolsOpen) {
@@ -1970,8 +1975,10 @@ function initCyberDefenseShield() {
       devToolsOpen = false;
     }
   };
-  window.addEventListener("resize", checkDevTools);
-  setInterval(checkDevTools, 1500);
+  if (!isMobileEnvironment) {
+    window.addEventListener("resize", checkDevTools);
+    setInterval(checkDevTools, 2000);
+  }
 
   // 4. Disable Asset Dragging (Prevents image scraping/extraction)
   document.querySelectorAll("img").forEach(img => {
