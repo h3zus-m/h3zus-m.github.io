@@ -12,6 +12,22 @@ echo.
 echo Note: If prompted, authenticate via the GitHub Credential Manager browser window.
 echo.
 git push -u origin main
+if %ERRORLEVEL% NEQ 0 (
+    echo.
+    echo ========================================================
+    echo  ERROR: PUSH FAILED!
+    echo  Reason: The repository 'h3zus-m.github.io' does not exist yet on your GitHub account.
+    echo.
+    echo  Fix in 30 seconds:
+    echo  1. Open https://github.com/new in your browser
+    echo  2. Repository name: h3zus-m.github.io
+    echo  3. Choose 'Public' and do NOT check 'Add a README file'
+    echo  4. Click 'Create repository'
+    echo  5. Run this script again!
+    echo ========================================================
+    pause
+    exit /b 1
+)
 echo.
 echo ========================================================
 echo  DEPLOYMENT COMPLETE!
