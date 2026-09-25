@@ -1,0 +1,14 @@
+.DS_Store
+Thumbs.db
+node_modules/
+.vscode/
+.idea/
+*.log
+*.tmp
+__pycache__/
+*.pyc
+*.py
+test_*.html
+tmp_*.html
+chat_prompts.txt
+
