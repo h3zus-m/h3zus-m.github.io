@@ -5,9 +5,9 @@ Specialization: Industrial Systems Architecture, Global Supply Chain Engineering
 
 ## Academic Grounding
 - University of Southern California (USC), Viterbi School of Engineering (Jan 2025 - Dec 2026)
-  M.S. Industrial and Systems Engineering | Los Angeles, CA
+  M.S. in Engineering Management & Graduate Certificate in Optimization and Supply Chain Management | Los Angeles, CA | Cumulative GPA: 3.73 / 4.00
 - Pandit Deendayal Energy University (PDEU) (Aug 2019 - May 2023)
-  B.Tech Industrial Engineering (Minor in Automobile Engineering) | Gandhinagar, Gujarat | GPA: 3.72/4.00
+  B.Tech in Mechanical Engineering | Gandhinagar, Gujarat | Final Cumulative CPI: 9.06 / 10.00 (First Class with Distinction)
 
 ## Industry Experience
 - Generac Power Systems (USC Center for Global Supply Chain Management): SCM and ATS Optimization

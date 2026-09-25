@@ -311,8 +311,8 @@ function initDigitalTwin() {
 
   const modeDescriptions = {
     profile: {
-      name: "HARSH MISTRY // INDUSTRIAL SYSTEMS & OPERATIONS ARCHITECT",
-      metric: "California Coastline · USC Viterbi '26 · Real Operator Grounding · Zero Synthetic Avatars",
+      name: "HARSH MISTRY // OPERATIONS & INDUSTRIAL SYSTEMS ARCHITECT",
+      metric: "USC Viterbi '26 · M.S. Engineering Management (GPA 3.73) · Grad Cert in Optimization & SCM · PDEU B.Tech Mechanical (CGPA 9.06)",
       lblLeft: "OPERATOR:",
       valLeft: "Harsh Mistry (Real Grounding)",
       lblRight: "LOCATION:",
@@ -1991,8 +1991,8 @@ function initCyberDefenseShield() {
     "%c" +
     " [!] CYBER DEFENSE INTEGRITY SHIELD ACTIVE [!]\n" +
     " ========================================================\n" +
-    " HARSH MISTRY // INDUSTRIAL SYSTEMS & OPERATIONS ARCHITECT\n" +
-    " USC Viterbi School of Engineering '26\n" +
+    " HARSH MISTRY // OPERATIONS & INDUSTRIAL SYSTEMS ARCHITECT\n" +
+    " USC Viterbi School of Engineering '26 | M.S. Engineering Management\n" +
     " Defense Fabrication (L&T) * Supply Chain (Generac, Banco) * Autonomous AI\n" +
     " Security: ISO-27001 Protocol * Zero Vulnerabilities * Zero Half Measures\n" +
     " Contact: harshnil@usc.edu | hnmistry28@gmail.com\n" +
@@ -2005,11 +2005,11 @@ const convergenceData = {
   hardware: {
     badge: "DOMAINS // 01 PHYSICAL ENGINEERING",
     title: "Mechanical Precision & Heavy Fabrication",
-    desc: "I was trained as a mechanical engineer on the heavy fabrication shop floor. Long before I ever touched an optimization spreadsheet or an algorithm, I learned engineering with molten weld pools, ASME Section VIII pressure vessel codes, and heavy steel tolerances. I understand physical yield strengths, thermal distortion, and manufacturing bottlenecks before I touch a model.",
+    desc: "I was forged in mechanical engineering and heavy fabrication (B.Tech in Mechanical Engineering from PDEU, CGPA 9.06/10.00). Long before I ever touched an optimization spreadsheet or an algorithm, I learned engineering with molten weld pools, ASME Section VIII pressure vessel codes, and sub-millimeter steel tolerances. I understand physical yield strengths, thermal distortion, and manufacturing bottlenecks before I touch a model.",
     stats: [
-      { val: "ASME VIII", lbl: "Pressure Vessel Code" },
-      { val: "20%", lbl: "Weld Defect Lift" },
-      { val: "5S / Kaizen", lbl: "Shop Floor Method" }
+      { val: "9.06 / 10", lbl: "PDEU Mechanical CGPA" },
+      { val: "3.73 / 4.0", lbl: "USC Graduate GPA" },
+      { val: "ASME VIII", lbl: "Pressure Vessel Code" }
     ],
     tools: ["SolidWorks", "ANSYS FEA", "Robotic Welding", "Computer Vision", "ASME Section VIII", "GD&T", "CNC Machining"]
   },
