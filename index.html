@@ -232,6 +232,22 @@
 
                   <canvas id="digital-twin-canvas" style="display:none;"></canvas>
 
+                  <!-- Interactive City Focus Selector (Engaged in Global SCM Twin mode) -->
+                  <div class="twin-city-selector" id="twin-city-selector" style="display:none;" aria-label="Digital Twin City Hub Focus">
+                    <button type="button" class="twin-city-btn active" data-city="la" id="city-btn-la" title="Focus Los Angeles Hub (USC / Generac)">
+                      <span class="city-dot" style="background:#00d4ff;"></span>
+                      <span class="city-name">LOS ANGELES, CA</span>
+                    </button>
+                    <button type="button" class="twin-city-btn" data-city="hazira" id="city-btn-hazira" title="Focus Hazira Complex (L&T Defense)">
+                      <span class="city-dot" style="background:#ffb700;"></span>
+                      <span class="city-name">HAZIRA, INDIA</span>
+                    </button>
+                    <button type="button" class="twin-city-btn" data-city="gujarat" id="city-btn-gujarat" title="Focus Gujarat Industrial Hub (Banco / Vindeep)">
+                      <span class="city-dot" style="background:#00ff88;"></span>
+                      <span class="city-name">GUJARAT, INDIA</span>
+                    </button>
+                  </div>
+
                   <!-- Unified Top Telemetry Bar (Guaranteed Zero Overlap) -->
                   <div class="hud-orbit-overlay" id="twin-orbit-overlay">
                     <div class="hud-tag top-left" id="orbit-tag-left">

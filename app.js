@@ -363,6 +363,12 @@ function initDigitalTwin() {
       btn.classList.add("active");
       activeMode = btn.getAttribute("data-mode") || "profile";
       updateModeTelemetry(activeMode);
+      
+      const citySelector = document.getElementById("twin-city-selector");
+      if (citySelector) {
+        citySelector.style.display = (activeMode === "global") ? "flex" : "none";
+      }
+
       if (activeMode === "profile") {
         if (profileOverlay) profileOverlay.classList.add("active");
         canvas.style.display = "none";
@@ -377,14 +383,36 @@ function initDigitalTwin() {
   // Initial mode setup
   updateModeTelemetry(activeMode);
 
-  // 3D Globe Parameters
+  // 3D Globe Parameters & City Focus Targets
   let rotY = 0.8;
   let rotX = 0.35;
+  let targetRotY = null;
+  let targetRotX = null;
   let dragging = false;
   let lastX = 0, lastY = 0;
 
+  // Cross-Browser Safe Rounded Rect Helper
+  function drawRoundedRect(context, x, y, width, height, radius) {
+    if (typeof context.roundRect === "function") {
+      context.roundRect(x, y, width, height, radius);
+      return;
+    }
+    const r = Math.min(radius, width * 0.5, height * 0.5);
+    context.moveTo(x + r, y);
+    context.lineTo(x + width - r, y);
+    context.quadraticCurveTo(x + width, y, x + width, y + r);
+    context.lineTo(x + width, y + height - r);
+    context.quadraticCurveTo(x + width, y + height, x + width - r, y + height);
+    context.lineTo(x + r, y + height);
+    context.quadraticCurveTo(x, y + height, x, y + height - r);
+    context.lineTo(x, y + r);
+    context.quadraticCurveTo(x, y, x + r, y);
+  }
+
   canvas.addEventListener("mousedown", e => {
     dragging = true;
+    targetRotY = null;
+    targetRotX = null;
     lastX = e.clientX;
     lastY = e.clientY;
   });
@@ -399,10 +427,12 @@ function initDigitalTwin() {
     }
   });
 
-  // Touch support for mobile
+  // Touch support for mobile devices (iOS / Android)
   canvas.addEventListener("touchstart", e => {
     if (e.touches.length === 1) {
       dragging = true;
+      targetRotY = null;
+      targetRotX = null;
       lastX = e.touches[0].clientX;
       lastY = e.touches[0].clientY;
     }
@@ -418,39 +448,79 @@ function initDigitalTwin() {
     }
   }, { passive: true });
 
-  // Enterprise Hubs
+  // Enterprise Hubs with Direct City Identifiers & Focus Targets
   const enterpriseHubs = [
     {
+      id: "la",
+      city: "LOS ANGELES, CA",
       name: "Los Angeles Hub (USC & Generac)",
-      short: "LA HUB",
+      short: "LOS ANGELES",
       coords: "34.05° N, 118.24° W",
-      enterprise: "USC & Generac Operations",
+      enterprise: "USC & Generac Grid Operations",
       lat: 34.05,
       lon: -118.24,
-      metric: "$1.2M Sourcing · 45m to 8s ATS",
+      rotY: 1.15,
+      rotX: 0.35,
+      metric: "$1.2M Sourcing · 45m to 8s ATS Compactor",
       color: "#00d4ff"
     },
     {
+      id: "hazira",
+      city: "HAZIRA, INDIA",
       name: "Hazira Complex (L&T Defense)",
-      short: "L&T HAZIRA",
+      short: "HAZIRA",
       coords: "21.17° N, 72.83° E",
-      enterprise: "Submarine Hull Weld Cell",
+      enterprise: "L&T Heavy Defense Submarine Cell",
       lat: 21.17,
       lon: 72.83,
-      metric: "20% Defect Lift · Laser Seam",
+      rotY: -1.75,
+      rotX: 0.25,
+      metric: "20% Defect Reduction · Robotic Arc Seam",
       color: "#ffb700"
     },
     {
+      id: "gujarat",
+      city: "GUJARAT, INDIA",
       name: "Gujarat Industrial Hub (Banco & Vindeep)",
-      short: "GUJARAT HUB",
+      short: "GUJARAT",
       coords: "22.30° N, 73.18° E",
-      enterprise: "Banco Products & Vindeep",
+      enterprise: "Banco Products & Vindeep Precision",
       lat: 22.30,
       lon: 73.18,
-      metric: "ASME VIII · 12% Cost Reduction",
+      rotY: -1.78,
+      rotX: 0.28,
+      metric: "ASME VIII Code · 12% Cost Lift",
       color: "#00ff88"
     }
   ];
+
+  // City Focus Controller
+  function focusCity(cityId) {
+    const hub = enterpriseHubs.find(h => h.id === cityId);
+    if (!hub) return;
+    targetRotY = hub.rotY;
+    targetRotX = hub.rotX;
+
+    document.querySelectorAll(".twin-city-btn").forEach(b => {
+      b.classList.toggle("active", b.getAttribute("data-city") === cityId);
+    });
+
+    if (hudName) hudName.textContent = `${hub.city} // ${hub.enterprise.toUpperCase()}`;
+    if (hudMetric) hudMetric.textContent = `${hub.metric} · Telemetry Locked at ${hub.coords}`;
+    if (orbitLblLeft) orbitLblLeft.textContent = "CITY HUB:";
+    if (orbitValLeft) orbitValLeft.textContent = hub.city;
+    if (orbitLblRight) orbitLblRight.textContent = "COORDINATES:";
+    if (orbitValRight) orbitValRight.textContent = hub.coords;
+  }
+
+  // Wire City Focus Buttons in DOM
+  const cityBtns = document.querySelectorAll(".twin-city-btn");
+  cityBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const cityId = btn.getAttribute("data-city");
+      if (cityId) focusCity(cityId);
+    });
+  });
 
   // Continents Landmass Points (for a realistic Earth wireframe)
   const continentDots = [];
@@ -527,7 +597,20 @@ function initDigitalTwin() {
     if (activeMode === "global") {
       // 1. GLOBAL SCM TWIN
       const R = Math.min(w, h) * 0.32;
-      if (!dragging) rotY += 0.003;
+      
+      // Smooth City Rotational Interpolation or Continuous Drift
+      if (targetRotY !== null && targetRotX !== null) {
+        rotY += (targetRotY - rotY) * 0.08;
+        rotX += (targetRotX - rotX) * 0.08;
+        if (Math.abs(targetRotY - rotY) < 0.002 && Math.abs(targetRotX - rotX) < 0.002) {
+          rotY = targetRotY;
+          rotX = targetRotX;
+          targetRotY = null;
+          targetRotX = null;
+        }
+      } else if (!dragging) {
+        rotY += 0.003;
+      }
 
       // Radial background glow behind globe
       const grad = ctx.createRadialGradient(cx, cy, 30, cx, cy, R * 1.35);
@@ -618,87 +701,113 @@ function initDigitalTwin() {
       ctx.fill();
       ctx.shadowBlur = 0;
 
-      // Draw Enterprise Hubs
+      // Draw Enterprise Hubs & High-Contrast City Name Badges
       enterpriseHubs.forEach(h => {
         const pt = latLonTo3D(h.lat, h.lon, R);
         const rpt = rotate3D(pt, rotX, rotY);
         const px = cx + rpt.x;
         const py = cy - rpt.y;
 
-        const isFront = rpt.z > -15;
-        const alpha = isFront ? 1 : 0.22;
+        const isFront = rpt.z > -10;
+        const alpha = isFront ? 1 : 0.3;
 
         // Radar ring
         ctx.strokeStyle = h.color;
-        ctx.globalAlpha = alpha * 0.85;
-        ctx.lineWidth = 1.2;
+        ctx.globalAlpha = alpha * 0.9;
+        ctx.lineWidth = 1.4;
         ctx.beginPath();
-        const rRing = 5 + (Math.sin(pulse * 3 + h.lat) + 1) * 5;
+        const rRing = 6 + (Math.sin(pulse * 3 + h.lat) + 1) * 6;
         ctx.arc(px, py, rRing, 0, Math.PI * 2);
         ctx.stroke();
 
         // Tactical 4-corner reticle crosshairs around hub
         ctx.beginPath();
-        ctx.moveTo(px - 7, py); ctx.lineTo(px - 3, py);
-        ctx.moveTo(px + 3, py); ctx.lineTo(px + 7, py);
-        ctx.moveTo(px, py - 7); ctx.lineTo(px, py - 3);
-        ctx.moveTo(px, py + 3); ctx.lineTo(px, py + 7);
+        ctx.moveTo(px - 8, py); ctx.lineTo(px - 3, py);
+        ctx.moveTo(px + 3, py); ctx.lineTo(px + 8, py);
+        ctx.moveTo(px, py - 8); ctx.lineTo(px, py - 3);
+        ctx.moveTo(px, py + 3); ctx.lineTo(px, py + 8);
         ctx.stroke();
 
         // Core dot
         ctx.fillStyle = h.color;
         ctx.shadowColor = h.color;
-        ctx.shadowBlur = 10;
+        ctx.shadowBlur = 12;
         ctx.globalAlpha = alpha;
         ctx.beginPath();
-        ctx.arc(px, py, 4.5, 0, Math.PI * 2);
+        ctx.arc(px, py, 5, 0, Math.PI * 2);
         ctx.fill();
         ctx.shadowBlur = 0;
 
-        // Rich Tactical Telemetry Card with Glowing Leader Line
-        if (isFront) {
-          const labelW = 185;
-          const labelH = 46;
+        // 1. PERMANENT ON-GLOBE CITY NAME BADGE (Visible whenever facing front or side)
+        if (rpt.z > -28) {
+          ctx.font = '700 11px "JetBrains Mono", monospace';
+          const cityName = h.city;
+          const nameMetrics = ctx.measureText(cityName);
+          const badgeW = nameMetrics.width + 20;
+          const badgeH = 24;
+
           const toRight = px >= cx;
-          const lx = toRight ? Math.min(w - labelW - 12, px + 28) : Math.max(12, px - labelW - 28);
-          const ly = Math.max(48, Math.min(h - labelH - 58, py - 22));
+          const badgeX = toRight ? px + 16 : px - badgeW - 16;
+          const badgeY = py - 12;
 
-          // Leader line from hub dot to card anchor
-          ctx.strokeStyle = h.color;
-          ctx.lineWidth = 1;
-          ctx.globalAlpha = 0.7;
-          ctx.beginPath();
-          ctx.moveTo(px, py);
-          const anchorX = toRight ? lx : lx + labelW;
-          const anchorY = ly + labelH * 0.5;
-          ctx.lineTo(anchorX, anchorY);
-          ctx.stroke();
-
-          // Card Background & Border
-          ctx.globalAlpha = 0.94;
-          ctx.fillStyle = "rgba(6, 12, 24, 0.95)";
-          ctx.beginPath();
-          ctx.roundRect(lx, ly, labelW, labelH, 6);
-          ctx.fill();
+          // Connector line from reticle to badge
           ctx.strokeStyle = h.color;
           ctx.lineWidth = 1.2;
+          ctx.globalAlpha = isFront ? 0.95 : 0.45;
+          ctx.beginPath();
+          ctx.moveTo(toRight ? px + 6 : px - 6, py);
+          ctx.lineTo(toRight ? badgeX : badgeX + badgeW, badgeY + badgeH * 0.5);
           ctx.stroke();
 
-          // Hub Short Title & Coordinates
-          ctx.globalAlpha = 1;
-          ctx.font = '700 9.5px "JetBrains Mono", monospace';
-          ctx.fillStyle = "#ffffff";
-          ctx.fillText(`${h.short} // ${h.coords}`, lx + 8, ly + 14);
+          // High-contrast City Badge Background
+          ctx.fillStyle = "rgba(4, 9, 20, 0.94)";
+          ctx.beginPath();
+          drawRoundedRect(ctx, badgeX, badgeY, badgeW, badgeH, 5);
+          ctx.fill();
+          ctx.strokeStyle = h.color;
+          ctx.lineWidth = 1.4;
+          ctx.stroke();
 
-          // Enterprise Context
-          ctx.font = '600 8.5px "Manrope", sans-serif';
+          // Color Indicator Dot
           ctx.fillStyle = h.color;
-          ctx.fillText(h.enterprise, lx + 8, ly + 27);
+          ctx.beginPath();
+          ctx.arc(badgeX + 10, badgeY + 12, 3.5, 0, Math.PI * 2);
+          ctx.fill();
 
-          // Sourcing Telemetry
-          ctx.font = '500 8px "Manrope", sans-serif';
-          ctx.fillStyle = "#94a3b8";
-          ctx.fillText(h.metric, lx + 8, ly + 39);
+          // City Name in Crisp High-Contrast White
+          ctx.fillStyle = "#ffffff";
+          ctx.fillText(cityName, badgeX + 18, badgeY + 16);
+
+          // 2. EXPANDED TELEMETRY CARD (When clearly facing front)
+          if (isFront) {
+            const cardW = Math.min(220, w - 30);
+            const cardH = 48;
+            const cardX = toRight ? Math.min(w - cardW - 12, badgeX) : Math.max(12, badgeX + badgeW - cardW);
+            const cardY = badgeY + badgeH + 6;
+
+            ctx.fillStyle = "rgba(6, 12, 24, 0.94)";
+            ctx.beginPath();
+            drawRoundedRect(ctx, cardX, cardY, cardW, cardH, 6);
+            ctx.fill();
+            ctx.strokeStyle = "rgba(255, 255, 255, 0.16)";
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            // Facility
+            ctx.font = '600 9.5px "Manrope", sans-serif';
+            ctx.fillStyle = h.color;
+            ctx.fillText(h.enterprise, cardX + 8, cardY + 16);
+
+            // Telemetry
+            ctx.font = '500 8.5px "Manrope", sans-serif';
+            ctx.fillStyle = "#cbd5e1";
+            ctx.fillText(h.metric, cardX + 8, cardY + 30);
+
+            // Coords
+            ctx.font = '700 8px "JetBrains Mono", monospace';
+            ctx.fillStyle = "#64748b";
+            ctx.fillText(h.coords, cardX + 8, cardY + 42);
+          }
         }
         ctx.globalAlpha = 1;
       });
@@ -1847,7 +1956,30 @@ function initCyberDefenseShield() {
     }
   });
 
-  // 3. High-Engineering Console Security Banner
+  // 3. DevTools Detection & Anti-Tamper Shield (Huly-Grade Defense)
+  let devToolsOpen = false;
+  const checkDevTools = () => {
+    const widthThreshold = window.outerWidth - window.innerWidth > 160;
+    const heightThreshold = window.outerHeight - window.innerHeight > 160;
+    if ((widthThreshold || heightThreshold) && !devToolsOpen) {
+      devToolsOpen = true;
+      triggerShield("INSPECTION DETECTED // DEVTOOLS DEFENSE ENGAGED");
+      console.clear();
+      console.warn("[SECURITY] Inspection detected. Harsh Mistry defensive countermeasure active.");
+    } else if (!widthThreshold && !heightThreshold) {
+      devToolsOpen = false;
+    }
+  };
+  window.addEventListener("resize", checkDevTools);
+  setInterval(checkDevTools, 1500);
+
+  // 4. Disable Asset Dragging (Prevents image scraping/extraction)
+  document.querySelectorAll("img").forEach(img => {
+    img.setAttribute("draggable", "false");
+    img.addEventListener("dragstart", e => e.preventDefault());
+  });
+
+  // 5. High-Engineering Console Security Banner
   console.log(
     "%c" +
     " [!] CYBER DEFENSE INTEGRITY SHIELD ACTIVE [!]\n" +
@@ -1862,6 +1994,53 @@ function initCyberDefenseShield() {
   );
 }
 
+const convergenceData = {
+  hardware: {
+    badge: "DOMAINS // 01 PHYSICAL ENGINEERING",
+    title: "Mechanical Precision & Heavy Fabrication",
+    desc: "Trained as a mechanical engineer with hands-on shop-floor experience in heavy pressure vessels, heat exchanger assembly, and automated robotic welding. Understands physical constraints, raw materials, yield strengths, and manufacturing bottlenecks before touching a spreadsheet.",
+    stats: [
+      { val: "ASME VIII", lbl: "Pressure Vessel Code" },
+      { val: "20%", lbl: "Weld Defect Lift" },
+      { val: "5S / Kaizen", lbl: "Shop Floor Method" }
+    ],
+    tools: ["SolidWorks", "ANSYS FEA", "Robotic Welding", "Computer Vision", "ASME Section VIII", "GD&T", "CNC Machining"]
+  },
+  supplychain: {
+    badge: "DOMAINS // 02 SUPPLY CHAIN & LOGISTICS",
+    title: "Omnichannel Velocity & Inventory Orchestration",
+    desc: "Architect of resilient multi-echelon supply networks and high-throughput distribution centers. Deployed ABC velocity slotting, dynamic safety stock formulas, and supplier lead-time risk models across retail bookstore operations and clean energy manufacturing.",
+    stats: [
+      { val: "3.3 km", lbl: "Transit Saved / Shift" },
+      { val: ">98%", lbl: "Inventory Accuracy" },
+      { val: "15%", lbl: "Pick Cycle Reduction" }
+    ],
+    tools: ["Warehouse Slotting", "Safety Stock Modeling", "EOQ / ROP Analytics", "SAP / Oracle ERP", "Tableau SCM", "Kanban Buffers", "BOM Optimization"]
+  },
+  ai: {
+    badge: "DOMAINS // 03 AUTONOMOUS AI & DECISION SYSTEMS",
+    title: "Deterministic AI Systems & Autonomous Workflows",
+    desc: "Designing production AI agent workflows that bridge unstructured real-world complexity with deterministic operational execution. Creator of the 0.38pt AST layout compactor, MCP supplier intelligence crawlers, and multimodal defect vision pipelines.",
+    stats: [
+      { val: "0.38pt", lbl: "Deterministic AST Fit" },
+      { val: "45m -> 8s", lbl: "ATS Processing Speed" },
+      { val: "100%", lbl: "Deterministic Format" }
+    ],
+    tools: ["Claude 3.5 Sonnet", "Anthropic MCP", "Vector RAG", "Python / FastAPI", "OpenCV Vision", "AST Parsing", "Autonomous Agents"]
+  },
+  business: {
+    badge: "DOMAINS // 04 STRATEGIC SOURCING & BUSINESS",
+    title: "Should-Cost Modeling & Capital Allocation",
+    desc: "Combining engineering physics with bottom-up should-cost modeling to break supplier monopolies and protect operating margins. Reconstructed microinverter BOM economics from raw silicon to freight tariffs, unlocking direct margin expansion in high-inflation environments.",
+    stats: [
+      { val: "$1.2M", lbl: "Sourcing Capital Analyzed" },
+      { val: "12%", lbl: "Target Margin Expansion" },
+      { val: "3-Tier", lbl: "Supply Risk Mapping" }
+    ],
+    tools: ["Should-Cost Engineering", "BOM Teardowns", "Supplier Negotiation", "TCO Analysis", "Tariff Optimization", "NPV / DCF Modeling", "Contract SLA Audits"]
+  }
+};
+
 function initConvergenceTabs() {
   const tabs     = document.querySelectorAll('.pillar-tab');
   const badgeEl  = document.getElementById('display-badge');
@@ -1869,6 +2048,7 @@ function initConvergenceTabs() {
   const descEl   = document.getElementById('display-desc');
   const statsEl  = document.getElementById('display-stats');
   const toolsEl  = document.getElementById('display-tools');
+  const displayContainer = document.getElementById('convergence-display');
 
   if (!tabs.length || !badgeEl) return;
 
@@ -1881,20 +2061,33 @@ function initConvergenceTabs() {
       const data = convergenceData[key];
       if (!data) return;
 
-      badgeEl.textContent = data.badge;
-      titleEl.textContent = data.title;
-      descEl.textContent  = data.desc;
+      if (displayContainer) {
+        displayContainer.style.opacity = '0.35';
+        displayContainer.style.transform = 'translateY(3px)';
+        displayContainer.style.transition = 'opacity 0.15s ease, transform 0.15s ease';
+      }
 
-      statsEl.innerHTML = data.stats.map((s) => `
-        <div class="d-stat-box">
-          <span class="d-stat-val">${s.val}</span>
-          <span class="d-stat-lbl">${s.lbl}</span>
-        </div>
-      `).join('');
+      setTimeout(() => {
+        badgeEl.textContent = data.badge;
+        titleEl.textContent = data.title;
+        descEl.textContent  = data.desc;
 
-      toolsEl.innerHTML = data.tools.map((t) =>
-        `<span class="tech-pill">${t}</span>`
-      ).join('');
+        statsEl.innerHTML = data.stats.map((s) => `
+          <div class="d-stat-box">
+            <span class="d-stat-val">${s.val}</span>
+            <span class="d-stat-lbl">${s.lbl}</span>
+          </div>
+        `).join('');
+
+        toolsEl.innerHTML = data.tools.map((t) =>
+          `<span class="tech-pill">${t}</span>`
+        ).join('');
+
+        if (displayContainer) {
+          displayContainer.style.opacity = '1';
+          displayContainer.style.transform = 'translateY(0)';
+        }
+      }, 120);
     });
   });
 }
