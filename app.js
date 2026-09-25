@@ -129,8 +129,17 @@ function initCipherHeadline() {
 function initHulyLava() {
   const canvas = document.getElementById("huly-lava-canvas");
   if (!canvas) return;
-  const gl = canvas.getContext("webgl");
-  if (!gl) return;
+  const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+  if (!gl) {
+    // Graceful fallback for browsers with restricted WebGL (e.g. Brave strict shields, low-RAM Android)
+    canvas.style.display = "none";
+    return;
+  }
+
+  // Graceful WebGL context loss handling (prevents crash on mobile app switch)
+  canvas.addEventListener("webglcontextlost", function(e) {
+    e.preventDefault();
+  }, false);
 
   function resize() {
     canvas.width = window.innerWidth;
@@ -148,7 +157,11 @@ function initHulyLava() {
   `;
 
   const fsSource = `
-    precision highp float;
+    #ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
     uniform vec2 u_resolution;
     uniform float u_time;
     uniform vec2 u_mouse;
@@ -1440,9 +1453,12 @@ function initAtsCompactorGraph() {
   let animating = false;
 
   function resize() {
-    canvas.width = canvas.parentElement.clientWidth * window.devicePixelRatio;
-    canvas.height = 150 * window.devicePixelRatio;
-    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    const parentW = (canvas.parentElement && canvas.parentElement.clientWidth > 0) ? canvas.parentElement.clientWidth : 300;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.floor(parentW * dpr);
+    canvas.height = Math.floor(150 * dpr);
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.scale(dpr, dpr);
     drawGraph();
   }
   resize();
@@ -1561,9 +1577,12 @@ function initWarehouseSlottingVisual() {
   let isOptimized = true;
 
   function resize() {
-    canvas.width = canvas.parentElement.clientWidth * window.devicePixelRatio;
-    canvas.height = 240 * window.devicePixelRatio;
-    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    const parentW = (canvas.parentElement && canvas.parentElement.clientWidth > 0) ? canvas.parentElement.clientWidth : 300;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.floor(parentW * dpr);
+    canvas.height = Math.floor(240 * dpr);
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.scale(dpr, dpr);
   }
   resize();
   window.addEventListener("resize", resize);
@@ -1719,9 +1738,12 @@ function initWeldVisionVisual() {
   let anomalyTimer = 0;
 
   function resize() {
-    canvas.width = canvas.parentElement.clientWidth * window.devicePixelRatio;
-    canvas.height = 200 * window.devicePixelRatio;
-    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    const parentW = (canvas.parentElement && canvas.parentElement.clientWidth > 0) ? canvas.parentElement.clientWidth : 300;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.floor(parentW * dpr);
+    canvas.height = Math.floor(200 * dpr);
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.scale(dpr, dpr);
   }
   resize();
   window.addEventListener("resize", resize);
@@ -1959,7 +1981,7 @@ function initCyberDefenseShield() {
   });
 
   // 3. DevTools Detection & Anti-Tamper Shield (Desktop Only)
-  const isMobileEnvironment = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || ("ontouchstart" in window && window.innerWidth < 900);
+  const isMobileEnvironment = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|Tablet|Silk|Kindle/i.test(navigator.userAgent) || ("ontouchstart" in window && window.innerWidth < 1024) || (navigator.maxTouchPoints > 1 && window.innerWidth < 1024);
   let devToolsOpen = false;
   const checkDevTools = () => {
     // Never run on mobile devices (iOS/Android browser toolbars alter outerHeight/innerHeight)
