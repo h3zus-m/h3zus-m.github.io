@@ -1998,7 +1998,7 @@ const convergenceData = {
   hardware: {
     badge: "DOMAINS // 01 PHYSICAL ENGINEERING",
     title: "Mechanical Precision & Heavy Fabrication",
-    desc: "Trained as a mechanical engineer with hands-on shop-floor experience in heavy pressure vessels, heat exchanger assembly, and automated robotic welding. Understands physical constraints, raw materials, yield strengths, and manufacturing bottlenecks before touching a spreadsheet.",
+    desc: "I was trained as a mechanical engineer on the heavy fabrication shop floor. Long before I ever touched an optimization spreadsheet or an algorithm, I learned engineering with molten weld pools, ASME Section VIII pressure vessel codes, and heavy steel tolerances. I understand physical yield strengths, thermal distortion, and manufacturing bottlenecks before I touch a model.",
     stats: [
       { val: "ASME VIII", lbl: "Pressure Vessel Code" },
       { val: "20%", lbl: "Weld Defect Lift" },
@@ -2009,7 +2009,7 @@ const convergenceData = {
   supplychain: {
     badge: "DOMAINS // 02 SUPPLY CHAIN & LOGISTICS",
     title: "Omnichannel Velocity & Inventory Orchestration",
-    desc: "Architect of resilient multi-echelon supply networks and high-throughput distribution centers. Deployed ABC velocity slotting, dynamic safety stock formulas, and supplier lead-time risk models across retail bookstore operations and clean energy manufacturing.",
+    desc: "I architect resilient multi-echelon supply networks and high-throughput distribution facilities. I re-engineered fulfillment operations from the floor geometry to the dispatch dock, deploying ABC velocity slotting, dynamic safety stock formulas, and supplier risk models that eliminated kilometers of wasted transit every single shift.",
     stats: [
       { val: "3.3 km", lbl: "Transit Saved / Shift" },
       { val: ">98%", lbl: "Inventory Accuracy" },
@@ -2020,7 +2020,7 @@ const convergenceData = {
   ai: {
     badge: "DOMAINS // 03 AUTONOMOUS AI & DECISION SYSTEMS",
     title: "Deterministic AI Systems & Autonomous Workflows",
-    desc: "Designing production AI agent workflows that bridge unstructured real-world complexity with deterministic operational execution. Creator of the 0.38pt AST layout compactor, MCP supplier intelligence crawlers, and multimodal defect vision pipelines.",
+    desc: "I design production AI agents that bridge unstructured physical reality with deterministic mathematical execution. I built my proprietary 0.38pt AST geometric layout compactor, MCP multi-tier supplier intelligence crawlers, and real-time computer vision defect pipelines with zero tolerance for failure.",
     stats: [
       { val: "0.38pt", lbl: "Deterministic AST Fit" },
       { val: "45m -> 8s", lbl: "ATS Processing Speed" },
@@ -2031,7 +2031,7 @@ const convergenceData = {
   business: {
     badge: "DOMAINS // 04 STRATEGIC SOURCING & BUSINESS",
     title: "Should-Cost Modeling & Capital Allocation",
-    desc: "Combining engineering physics with bottom-up should-cost modeling to break supplier monopolies and protect operating margins. Reconstructed microinverter BOM economics from raw silicon to freight tariffs, unlocking direct margin expansion in high-inflation environments.",
+    desc: "I combine engineering physics with bottom-up should-cost modeling to break supplier monopolies and protect operating margins. At Generac, I dismantled microinverter BOM economics down to raw silicon, freight tariffs, and supplier yield rates, unlocking six-figure margin expansion in high-inflation environments.",
     stats: [
       { val: "$1.2M", lbl: "Sourcing Capital Analyzed" },
       { val: "12%", lbl: "Target Margin Expansion" },
@@ -2099,58 +2099,58 @@ const osStages = [
   {
     badge: 'PHASE 01 // PROBLEM DEFINITION',
     title: 'Embrace the Raw Ambiguity',
-    narrative: 'Real-world operations rarely arrive with a clean problem statement. Whether it\'s sudden lead-time inflation, component shortages, or warehouse congestion :  the first step is separating the core dilemma from the surrounding noise.',
-    checklist: 'What is the symptom vs the root cause? Who is impacted downstream? What assumptions are made without data?',
-    example: 'At Generac, RFQ price spikes on microinverter BOMs were blamed on market scarcity. Digging deeper revealed poorly specified should-cost assumptions.'
+    narrative: 'Real-world operations rarely arrive with a clean problem statement. When lead times inflate or components vanish, I refuse to accept superficial explanations. My first step is stripping away the emotional noise to isolate the underlying mathematical dilemma.',
+    checklist: 'What is the symptom versus the root cause? Who is impacted downstream? What unverified assumptions are clouding our judgment?',
+    example: 'At Generac, sudden RFQ price spikes on microinverter BOMs were blamed on market scarcity. I dug into the bottom-up cost breakdown and proved the quotes were distorted by unverified should-cost models.'
   },
   {
     badge: 'PHASE 02 // SYSTEM DECONSTRUCTION',
     title: 'Map the Full System Dynamics',
-    narrative: 'No component exists in isolation. Before intervening, trace the entire flow of material, capital, and data across upstream suppliers, internal production queues, and customer delivery handoffs.',
-    checklist: 'What are the inputs, processing stages, and outputs? Where are inventory buffers accumulating? What feedback loops govern cycle time?',
-    example: 'At the USC Distribution Center, mapping picker travel revealed 65% of daily walking transit was for just 15% of highest-demand SKUs.'
+    narrative: 'No component exists in isolation. Before I touch a single process, I map the full system dynamics: tracing material, capital, and latency across upstream suppliers, internal work queues, and final handoffs.',
+    checklist: 'Where are buffers accumulating? Which feedback loops govern cycle time? Where does information stall between physical operations and digital databases?',
+    example: 'Inside the USC distribution center, I mapped every picker\'s physical transit path. I discovered that 65% of daily walking transit was wasted retrieving just 15% of high-demand SKUs.'
   },
   {
     badge: 'PHASE 03 // CONSTRAINT IDENTIFICATION',
     title: 'Pinpoint the True Bottleneck',
-    narrative: 'Goldratt\'s Theory of Constraints: every system has exactly one primary bottleneck dictating throughput. Optimizing non-bottlenecks creates the illusion of progress without improving net output.',
-    checklist: 'Which station or supplier determines maximum flow rate? Is the constraint machine capacity, material availability, or information latency?',
-    example: 'At Larsen & Toubro, post-weld NDT inspection was the real bottleneck holding back robotic welding output by up to 3 days per cell.'
+    narrative: 'Goldratt\'s Law: every system has exactly one constraint that dictates total throughput. If you optimize anything other than the true bottleneck, you create the illusion of progress while net output remains flat. I find the bottleneck and break it.',
+    checklist: 'Which specific machine, station, or supplier caps our flow rate? Is the constraint physical capacity, material scarcity, or information latency?',
+    example: 'At Larsen & Toubro, post-weld NDT radiography was the hidden constraint halting robotic welding cells for up to 3 days. I bypassed it by engineering real-time optical pass-one inspection.'
   },
   {
     badge: 'PHASE 04 // DATA ANALYTICS',
     title: 'Ground Truth in Hard Metrics',
-    narrative: 'Intuition is a starting point :  decisions must be backed by empirical evidence. Gather timestamped operational telemetry, scrap percentages, lead-time distributions, and variance metrics.',
-    checklist: 'What is the statistical variance across shifts? Are errors clustered in specific categories? What is the standard deviation of supplier fulfillment?',
-    example: 'Analyzed thousands of weld joint scans to quantify defect frequencies (porosity vs undercut) before training optical CV models.'
+    narrative: 'Intuition is a hypothesis; only empirical telemetry is ground truth. I don\'t argue with opinions. I instrument the process, capture timestamped cycle telemetry, scrap percentages, and standard deviations.',
+    checklist: 'What is the statistical variance across shifts? Where are defects clustering geometrically? What is the standard deviation of vendor fulfillment?',
+    example: 'I analyzed thousands of weld joint profilometry scans, categorizing porosity versus undercut signatures before training our convolutional vision networks.'
   },
   {
     badge: 'PHASE 05 // SOLUTION DESIGN',
     title: 'Architect Deterministic Fixes',
-    narrative: 'Design solutions that eliminate the failure mode permanently :  not ones that rely on human willpower or temporary overtime. Combine physical layout restructuring with automated digital checks.',
-    checklist: 'Can the solution be automated? Is it fail-safe (Poka-Yoke)? How does the architecture handle edge cases or supplier disruptions?',
-    example: 'Designed the 0.38pt AST iterative compactor to deterministically guarantee 1-page document fit regardless of text length variation.'
+    narrative: 'I design solutions that eliminate the failure mode permanently. I do not build systems that depend on human willpower or temporary overtime. I engineer fail-safe physical layouts and deterministic algorithmic checks.',
+    checklist: 'Can the solution be automated? Is it fail-safe (Poka-Yoke)? How does the architecture respond when an edge-case disruption occurs?',
+    example: 'I engineered my 0.38pt AST iterative compactor to deterministically guarantee 1-page document fit regardless of text length variation.'
   },
   {
     badge: 'PHASE 06 // EXECUTION',
     title: 'Deploy Without Disruption',
-    narrative: 'A brilliant plan executed poorly fails every time. Roll out changes incrementally in staging environments or pilot production cells with clear rollback contingencies.',
-    checklist: 'Are operators aligned? Are rollback thresholds defined? Is live performance monitored during cutover?',
-    example: 'Piloted the optical vision model on a single 6-axis welding arm before standardizing across all heavy fabrication cells.'
+    narrative: 'A brilliant architecture executed poorly is worthless. When I deploy, I roll out changes incrementally in live staging environments or pilot production cells with fail-safe rollback thresholds.',
+    checklist: 'Are line operators aligned with the new SOP? Are rollback triggers automated? Am I monitoring live telemetry during the cutover?',
+    example: 'I piloted my optical vision model on a single 6-axis welding arm first, tuning arc filter thresholds under live heat before rolling it out across the defense bay.'
   },
   {
     badge: 'PHASE 07 // MEASUREMENT',
     title: 'Quantify Variance & Cost Lift',
-    narrative: 'Compare post-implementation telemetry directly against baseline historical controls. Look for unexpected secondary effects or downstream friction.',
-    checklist: 'Did net throughput increase? What happened to defect rates and unit costs? Did accuracy sustain through month-end cycle counts?',
-    example: 'Confirmed >98% inventory accuracy and verified 15% cycle-time reduction over consecutive quarters at the USC fulfillment facility.'
+    narrative: 'I hold my work accountable to hard numbers. I compare post-implementation telemetry directly against baseline historical controls, auditing for secondary friction or downstream consequences.',
+    checklist: 'Did net throughput accelerate? Did scrap rates drop? Did inventory accuracy sustain through month-end cycle counts?',
+    example: 'I verified >98% inventory accuracy and confirmed a 15% pick cycle time reduction sustained over consecutive quarters at the USC facility.'
   },
   {
     badge: 'PHASE 08 // KAIZEN :  CONTINUOUS IMPROVEMENT',
     title: 'Lock the Gains. Iterate.',
-    narrative: 'Operational excellence is not a one-time project :  it is a permanent continuous improvement loop. Document SOPs and retrain models as conditions shift.',
-    checklist: 'Have SOPs been updated? What triggers the next optimization cycle? Can this framework port to other business units?',
-    example: 'At Banco Products, institutionalized 5S visual controls to sustain 12% operational cost reductions year-over-year.'
+    narrative: 'Operational excellence is not a finished state; it is an unyielding loop. Once a gain is locked, I document the SOP, retrain the models, and identify the next emerging constraint.',
+    checklist: 'Have standard operating procedures been institutionalized? What trigger starts the next optimization cycle? How can this architecture scale to other business units?',
+    example: 'At Banco Products, I institutionalized visual 5S controls to sustain a 12% operational cost reduction year over year.'
   }
 ];
 
