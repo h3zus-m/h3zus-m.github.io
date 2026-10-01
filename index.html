@@ -3,69 +3,60 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Harsh Mistry | Operations & Industrial Systems Architect | USC Viterbi '26</title>
-  <meta name="description" content="Harsh Mistry: M.S. in Engineering Management & Graduate Certificate in Optimization and Supply Chain Management at USC Viterbi (GPA 3.73/4.00). B.Tech in Mechanical Engineering from PDEU (CGPA 9.06/10.00). Physical engineering, mathematical optimization, and autonomous decision systems." />
+  <title>Harsh Mistry | Supply Chain, Operations & Industrial Systems | USC Viterbi</title>
+  <meta name="description" content="Harsh Mistry: Supply Chain, Strategic Sourcing, and Operations Systems Builder. M.S. in Engineering Management at USC Viterbi (Dec 2026). B.Tech in Mechanical Engineering (PDEU). Available for Full-Time Roles January 2027." />
 
-  <!-- Enterprise Cyber Security & Resilience Headers (OWASP & CrowdStrike Aligned) -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https: data:; object-src 'none'; base-uri 'self'; form-action 'self';" />
-  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="X-Frame-Options" content="DENY" />
-  <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()" />
-
-  <!-- Cinematic Typography Stack -->
+  <!-- Preconnect to Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Crisp Geometric Monogram Favicon (Zero Emojis) -->
+  <!-- Geometric Monogram Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><polygon points=%2250,5 95,25 95,75 50,95 5,75 5,25%22 fill=%22none%22 stroke=%22%2300d4ff%22 stroke-width=%228%22/><text x=%2250%22 y=%2262%22 font-family=%22monospace%22 font-weight=%22900%22 font-size=%2240%22 fill=%22%2300d4ff%22 text-anchor=%22middle%22>HM</text></svg>">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- Subtle Analog Film Grain Overlay -->
+  <!-- Accessible Skip to Content Link -->
+  <a href="#hero" class="skip-to-content">Skip to content</a>
+
+  <!-- Analog Film Grain Overlay -->
   <div class="grain-overlay" aria-hidden="true"></div>
 
   <!-- Custom Crosshair Cursor -->
   <div id="cursor-dot" class="cursor-dot"></div>
   <div id="cursor-ring" class="cursor-ring"></div>
 
-  <!-- Cinematic Ambient Glows (scene-shifted per section via JS) -->
+  <!-- Ambient Glows -->
   <div class="ambient-glow glow-hero-tl" id="glow-1"></div>
   <div class="ambient-glow glow-hero-br" id="glow-2"></div>
   <div class="ambient-glow glow-accent" id="glow-3"></div>
 
-  <!-- HERO SECTION PARTICLE CANVAS -->
-  <canvas id="huly-lava-canvas" class="huly-lava-bg"></canvas>
+  <!-- Background Canvas (Huly Laser Rift) -->
+  <canvas id="huly-lava-canvas" class="huly-lava-bg" aria-hidden="true"></canvas>
   <div class="lava-overlay-mask" aria-hidden="true"></div>
 
   <!-- ====================================================================
-       NAV,  Floating Glass Bar
+       NAVIGATION : Floating Glass Bar
        ==================================================================== -->
   <header class="floating-nav-wrapper">
-    <nav class="floating-nav glass-panel" aria-label="Main Navigation">
-      <a href="#hero" class="nav-brand" title="Harsh Mistry // Systems Architect">
+    <nav class="floating-nav glass-panel" aria-label="Primary Navigation">
+      <a href="#hero" class="nav-brand" title="Harsh Mistry // Systems Builder">
         <div class="brand-crest-wrapper">
-          <svg class="brand-crest-svg" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="brand-crest-svg" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <defs>
               <filter id="crest-glow" x="-20%" y="-20%" width="140%" height="140%">
                 <feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#00d4ff" flood-opacity="0.6"/>
               </filter>
             </defs>
-            <!-- Hexagonal Chassis Outer Frame -->
             <polygon points="22,2 41,12.5 41,33.5 22,44 3,33.5 3,12.5" stroke="#00d4ff" stroke-width="1.8" fill="rgba(6, 12, 24, 0.95)" filter="url(#crest-glow)" />
-            <!-- Inner Concentric Datum Ring -->
             <circle cx="22" cy="22" r="14" stroke="rgba(0, 212, 255, 0.35)" stroke-width="1" stroke-dasharray="3 3" />
-            <!-- Industrial Crosshair Caliper Lines -->
             <line x1="22" y1="4" x2="22" y2="9" stroke="#00d4ff" stroke-width="1.5" />
             <line x1="22" y1="35" x2="22" y2="40" stroke="#00d4ff" stroke-width="1.5" />
             <line x1="4" y1="22" x2="9" y2="22" stroke="#00d4ff" stroke-width="1.5" />
             <line x1="35" y1="22" x2="40" y2="22" stroke="#00d4ff" stroke-width="1.5" />
-            <!-- Geometric Milled Titanium Monogram 'HM' -->
             <path d="M12 14 V30 M12 22 H20 M20 14 V30" stroke="#ffffff" stroke-width="2.2" stroke-linecap="square" />
             <path d="M24 30 V14 L28 23 L32 14 V30" stroke="#00d4ff" stroke-width="2.2" stroke-linecap="square" stroke-linejoin="miter" />
-            <!-- Precision Vertices Pins -->
             <circle cx="22" cy="2" r="1.5" fill="#00ff88" />
             <circle cx="41" cy="12.5" r="1.5" fill="#00d4ff" />
             <circle cx="41" cy="33.5" r="1.5" fill="#00d4ff" />
@@ -76,308 +67,360 @@
         </div>
         <div class="brand-text-col">
           <span class="brand-name">Harsh Mistry</span>
-          <span class="brand-role-micro">SYSTEMS ARCHITECT // USC</span>
+          <span class="brand-role-micro">SCM & OPERATIONS // USC '26</span>
         </div>
       </a>
 
       <div class="nav-links">
-        <a href="#hero"        class="nav-item active" data-nav="hero">Field</a>
-        <a href="#convergence" class="nav-item" data-nav="convergence">Game</a>
-        <a href="#experience"  class="nav-item" data-nav="experience">Track Record</a>
-        <a href="#projects"    class="nav-item" data-nav="projects">Operations</a>
-        <a href="#os"          class="nav-item" data-nav="os">Method</a>
-        <a href="#drive"       class="nav-item" data-nav="drive">Drive</a>
+        <a href="#hero" class="nav-item active" data-nav="hero">Overview</a>
+        <a href="#convergence" class="nav-item" data-nav="convergence">Systems</a>
+        <a href="#work-explorer" class="nav-item" data-nav="work-explorer">Role Filter</a>
+        <a href="#experience" class="nav-item" data-nav="experience">Track Record</a>
+        <a href="#projects" class="nav-item" data-nav="projects">Case Studies</a>
+        <a href="#os" class="nav-item" data-nav="os">Operating System</a>
+        <a href="#drive" class="nav-item" data-nav="drive">Philosophy</a>
       </div>
 
       <div class="nav-actions">
-        <a href="#dossier" class="btn-nav-primary">
-          <span>Request Dossier</span>
-          <svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>
+        <!-- Direct High-Friction-Free Resume Download Link -->
+        <a href="assets/Harsh_Mistry_Resume.pdf" class="btn-nav-resume" download="Harsh_Mistry_Resume.pdf" target="_blank" rel="noopener noreferrer" title="Direct PDF Resume Download">
+          <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+          <span>Resume</span>
+        </a>
+        <a href="#contact" class="btn-nav-primary">
+          <span>Contact</span>
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>
         </a>
       </div>
     </nav>
   </header>
 
-  <!-- Tactical Cyber Defense Integrity Shield Toast -->
-  <div id="cyber-defense-toast" class="cyber-toast" aria-live="polite">
-    <div class="cyber-toast-header">
-      <div class="cyber-toast-dot"></div>
-      <span class="cyber-toast-badge">CYBER INTEGRITY SHIELD // ACTIVE</span>
-    </div>
-    <div class="cyber-toast-msg" id="cyber-toast-msg">SOURCE INSPECTION RESTRICTED // ISO-27001 PROTOCOL</div>
-    <div class="cyber-toast-sub">Direct code inspection is restricted. My portfolio architecture is cryptographically secured.</div>
-  </div>
-
-  <main class="page-container">
+  <main class="page-container" id="main-content">
 
     <!-- ====================================================================
-         CHAPTER 01,  OPENING SCENE
-         Atmosphere: Protagonist enters the frame. Dark alley. Quiet authority.
-         Reference: The Wire,  Omar walks. Everyone clears the path.
+         CHAPTER 01 : HERO SECTION (OVERVIEW)
+         Theme: Physical Systems × Operational Systems × Analytical Systems
          ==================================================================== -->
     <section id="hero" class="section hero-section scene-wire">
-      <!-- Section atmospheric canvas -->
-      <canvas id="wire-canvas" class="scene-canvas"></canvas>
+      <canvas id="wire-canvas" class="scene-canvas" aria-hidden="true"></canvas>
+
+      <!-- Integrated System Telemetry Strip (Sits safely below floating navbar) -->
+      <div class="hero-telemetry-banner" aria-label="System Telemetry">
+        <div class="telemetry-pill-group">
+          <div class="telemetry-node">
+            <span class="status-pulse-green"></span>
+            <span class="telemetry-txt">SYSTEM STATUS: <strong>ONLINE</strong></span>
+          </div>
+          <span class="telemetry-sep">/</span>
+          <div class="telemetry-node">
+            <span class="telemetry-txt">BUILD: <strong>VERIFIED</strong></span>
+          </div>
+          <span class="telemetry-sep">/</span>
+          <div class="telemetry-node">
+            <span class="telemetry-txt">LOCATION: <strong>LOS ANGELES, CA</strong></span>
+          </div>
+          <span class="telemetry-sep">/</span>
+          <div class="telemetry-node">
+            <span class="telemetry-txt">USC VITERBI <strong>M.S. '26</strong></span>
+          </div>
+          <span class="telemetry-sep">/</span>
+          <div class="telemetry-node highlight-node">
+            <span class="telemetry-txt">AVAILABLE FULL-TIME: <strong>JANUARY 2027</strong></span>
+          </div>
+        </div>
+      </div>
 
       <div class="hero-layout">
 
-        <!-- LEFT: Protagonist Statement -->
+        <!-- LEFT: Protagonist & Professional Clarity -->
         <div class="hero-copy">
-          <!-- Real Human Operator Badge (Harsh Mistry in Green Jacket) -->
+
+          <!-- Real Operator Identity Badge -->
           <div class="hero-operator-badge glass-panel">
             <div class="operator-avatar-wrapper">
-              <img src="./assets/visuals/harsh_green_jacket_portrait.jpg" alt="Harsh Mistry in California Coast Green Jacket" class="operator-avatar-img" />
-              <span class="operator-status-beacon" title="Live in Los Angeles, CA"></span>
+              <img src="./assets/visuals/harsh_green_jacket_portrait.jpg" alt="Harsh Mistry portrait" class="operator-avatar-img" />
+              <span class="operator-status-beacon" title="Based in Los Angeles, CA"></span>
             </div>
             <div class="operator-info">
               <div class="operator-name-row">
                 <span class="operator-name">Harsh Mistry</span>
-                <span class="operator-verified-badge" title="Verified Systems & Operations Engineer">✓</span>
+                <span class="operator-verified-badge" title="Verified Systems &amp; Operations Builder">✓</span>
               </div>
-              <span class="operator-role">M.S. Engineering Management // USC Viterbi '26</span>
+              <span class="operator-role">M.S. Engineering Management · USC Viterbi '26</span>
             </div>
           </div>
 
-          <div class="cinematic-quote-callout">
-            <span class="cinema-icon"><svg class="signal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="M7 4v16M17 4v16M2 12h20"/></svg></span>
-            <span class="cinema-series-tag">THE WIRE // OMAR'S CODE</span>
-            <span class="quote-cinema">"A man has got to have a code. In broken supply chains and volatile markets, that code is immutable data and mathematical rigor."</span>
-          </div>
-
-          <!-- HERO HEADLINE -->
+          <!-- Hero Headline (Central Personality Statement) -->
           <h1 class="hero-headline">
-            I engineer <span class="headline-serif">the physical and the algorithmic.</span> <br>
-            <span class="headline-light">Where global supply chains obey the laws of physics.</span>
+            I engineer <span class="headline-serif">the physical and the algorithmic.</span>
           </h1>
 
-          <p class="hero-lead" id="hero-sub">
-            I do not just analyze operations; I engineer them. From heavy submarine defense fabrication in India to million-dollar clean energy sourcing in California, I build the bridge between physical machines, global logistics, and autonomous decision systems.
-          </p>
-
-          <!-- Metric Strip -->
-          <div class="hero-bento-strip">
-            <div class="bento-metric-card spotlight-card">
-              <span class="metric-val">$1.2M</span>
-              <span class="metric-name">Sourcing Sized</span>
-              <span class="metric-desc">Generac Clean Energy</span>
+          <!-- Professional Clarity Anchor (The 5-Second Recruiter Answer) -->
+          <div class="hero-professional-focus glass-panel">
+            <div class="focus-domain-tag">SUPPLY CHAIN · OPERATIONS · INDUSTRIAL SYSTEMS</div>
+            <p class="hero-lead">
+              Mechanical engineer turned supply-chain systems builder, combining manufacturing, sourcing, optimization, and AI to improve cost, quality, flow, and resilience.
+            </p>
+            <div class="hero-meta-summary">
+              <span class="hero-pill-meta"><strong style="color:#00d4ff;">USC Viterbi</strong> Engineering Management</span>
+              <span class="hero-pill-meta">Graduating <strong>December 2026</strong></span>
+              <span class="hero-pill-meta meta-available">Available Full-Time <strong>January 2027</strong></span>
             </div>
-            <div class="bento-metric-card spotlight-card">
-              <span class="metric-val">&gt;98%</span>
-              <span class="metric-name">Inventory Accuracy</span>
-              <span class="metric-desc">USC Distribution Hub</span>
-            </div>
-            <div class="bento-metric-card spotlight-card">
-              <span class="metric-val">20%</span>
-              <span class="metric-name">Defect Lift</span>
-              <span class="metric-desc">L&T Defense Robotics</span>
-            </div>
-            <div class="bento-metric-card spotlight-card">
-              <span class="metric-val">0.38pt</span>
-              <span class="metric-name">AI Precision</span>
-              <span class="metric-desc">Autonomous ATS Engine</span>
+            <div class="hero-target-roles">
+              <span class="target-label">Target Roles:</span>
+              <span class="target-list">Supply Chain · Strategic Sourcing · NPI Operations · Supplier Industrialization · Technical / Operations Program Management</span>
             </div>
           </div>
 
-          <!-- CTA Buttons -->
+          <!-- Primary & Immediate CTAs (Always visible above the fold) -->
           <div class="hero-actions">
-            <a href="#convergence" class="btn-primary">
-              <span>Enter the World</span>
+            <a href="assets/Harsh_Mistry_Resume.pdf" download="Harsh_Mistry_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-primary btn-resume-download" title="Instant PDF Resume Download">
+              <svg viewBox="0 0 16 16" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+              <span>Download Resume</span>
+            </a>
+            <a href="#experience" class="btn-secondary">
+              <span>View Experience</span>
               <span class="btn-arrow">→</span>
             </a>
-            <a href="#dossier" class="btn-secondary">
-              <span>Request Confidential Dossier</span>
+            <a href="#work-explorer" class="btn-ghost">
+              <span>Filter by Role</span>
             </a>
-            <a href="https://www.linkedin.com/in/harshmistry8111/" target="_blank" rel="noopener noreferrer" class="btn-ghost">
-              <span>LinkedIn</span>
-              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-left:4px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+            <a href="https://www.linkedin.com/in/harshmistry8111/" target="_blank" rel="noopener noreferrer" class="btn-ghost icon-only" title="LinkedIn Profile">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="mailto:harshnil@usc.edu" class="btn-ghost icon-only" title="Email Harsh">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
             </a>
           </div>
+
+          <!-- Secondary Dossier & Cinema Principle Strip -->
+          <div class="hero-secondary-note">
+            <span class="note-prefix">Executive Review:</span> Need confidential technical details or NDA-compliant deep dives?
+            <a href="#contact" class="link-dossier-secondary">Request Confidential Dossier</a>
+          </div>
+
         </div>
 
-        <!-- RIGHT: Cinematic Persona Avatar -->
+        <!-- RIGHT: Interactive Visual Twin & Stage -->
         <div class="hero-stage">
           <div class="stage-frame glass-panel spotlight-card">
 
-            <!-- Cinematic Letterbox + HUD Frame -->
             <div class="stage-cinematic-frame">
               <div class="cinema-bar cinema-bar-top">
-                <span class="cinema-tag">MISTRY. H.N. // SYSTEMS ARCHITECT</span>
-                <span class="cinema-tag-right">USC-VITERBI // 2026</span>
+                <span class="cinema-tag">MISTRY. H.N. // SYSTEMS BUILDER</span>
+                <span class="cinema-tag-right">USC VITERBI // 2026</span>
               </div>
 
-              <!-- Persona Image Viewport -->
-                              <!-- Interactive Twin Mode Switcher -->
-                <div class="twin-mode-selector">
-                  <button type="button" class="twin-mode-btn active" data-mode="profile" title="Harsh Mistry // Live Photo & Operator Persona">
-                    <svg class="tech-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Harsh (Live)</span>
+              <!-- Interactive Digital Twin Mode Switcher -->
+              <div class="twin-mode-selector" role="tablist" aria-label="Digital Twin Display Mode">
+                <button type="button" class="twin-mode-btn active" data-mode="profile" role="tab" aria-selected="true" title="Harsh Mistry // Live Photo & Operator Persona">
+                  <svg class="tech-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  <span>Operator</span>
+                </button>
+                <button type="button" class="twin-mode-btn" data-mode="global" role="tab" aria-selected="false" title="Global SCM Trade Lanes & Multi-Tier Suppliers">
+                  <svg class="tech-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20M12 2a14.5 14.5 0 0 1 0 20M2 12h20"/></svg>
+                  <span>Global SCM Twin</span>
+                </button>
+                <button type="button" class="twin-mode-btn" data-mode="warehouse" role="tab" aria-selected="false" title="USC Bookstore DC Omnichannel Velocity Slotting">
+                  <svg class="tech-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 21h18M3 10h18M5 10v11M19 10v11M9 21v-6h6v6M4 10l8-6 8 6"/></svg>
+                  <span>Warehouse Hub</span>
+                </button>
+                <button type="button" class="twin-mode-btn" data-mode="robotics" role="tab" aria-selected="false" title="L&T Defense Robotic Weld Telemetry">
+                  <svg class="tech-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M3 12h6M15 12h6M12 3v6M12 15v6"/></svg>
+                  <span>Robotics AI</span>
+                </button>
+              </div>
+
+              <!-- Digital Twin Viewport -->
+              <div class="canvas-viewport twin-viewport" id="avatar-canvas-container">
+                <!-- Live Real Photo Viewport -->
+                <div id="profile-viewport" class="twin-panel-overlay active">
+                  <img src="./assets/visuals/harsh_green_jacket.jpg" alt="Harsh Mistry in California Coast Green Jacket" class="hero-profile-full-img" />
+                  <div class="profile-vignette-overlay"></div>
+                </div>
+
+                <canvas id="digital-twin-canvas" style="display:none;" aria-label="Interactive Systems Simulation Canvas"></canvas>
+
+                <!-- City Hub Focus Selector -->
+                <div class="twin-city-selector" id="twin-city-selector" style="display:none;" aria-label="Digital Twin City Hub Focus">
+                  <button type="button" class="twin-city-btn active" data-city="la" id="city-btn-la" title="Focus Los Angeles Hub (USC / Generac)">
+                    <span class="city-dot" style="background:#00d4ff;"></span>
+                    <span class="city-name">LOS ANGELES, CA</span>
                   </button>
-                  <button type="button" class="twin-mode-btn" data-mode="global" title="Global SCM Trade Lanes & Multi-Tier Suppliers">
-                    <svg class="tech-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20M12 2a14.5 14.5 0 0 1 0 20M2 12h20"/></svg><span>Global SCM Twin</span>
+                  <button type="button" class="twin-city-btn" data-city="hazira" id="city-btn-hazira" title="Focus Hazira Complex (L&T Defense)">
+                    <span class="city-dot" style="background:#ffb700;"></span>
+                    <span class="city-name">HAZIRA, INDIA</span>
                   </button>
-                  <button type="button" class="twin-mode-btn" data-mode="warehouse" title="USC Bookstore DC Omnichannel Velocity Slotting">
-                    <svg class="tech-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 10v11M19 10v11M9 21v-6h6v6M4 10l8-6 8 6"/></svg><span>Warehouse Hub</span>
-                  </button>
-                  <button type="button" class="twin-mode-btn" data-mode="robotics" title="L&T Defense Robotic Weld Telemetry">
-                    <svg class="tech-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M3 12h6M15 12h6M12 3v6M12 15v6"/></svg><span>Robotics AI</span>
+                  <button type="button" class="twin-city-btn" data-city="gujarat" id="city-btn-gujarat" title="Focus Gujarat Industrial Hub (Banco / Vindeep)">
+                    <span class="city-dot" style="background:#00ff88;"></span>
+                    <span class="city-name">GUJARAT, INDIA</span>
                   </button>
                 </div>
 
-                <!-- Digital Twin Viewport -->
-                <div class="canvas-viewport twin-viewport" id="avatar-canvas-container">
-                  <!-- Live Real Photo Viewport (Harsh in Green Jacket) -->
-                  <div id="profile-viewport" class="twin-panel-overlay active">
-                    <img src="./assets/visuals/harsh_green_jacket.jpg" alt="Harsh Mistry on the California Coast in Green Jacket" class="hero-profile-full-img" />
-                    <div class="profile-vignette-overlay"></div>
+                <!-- Telemetry HUD Overlay -->
+                <div class="hud-orbit-overlay" id="twin-orbit-overlay">
+                  <div class="hud-tag top-left" id="orbit-tag-left">
+                    <span class="tag-label" id="orbit-lbl-left">OPERATOR:</span>
+                    <span class="tag-value" id="orbit-val-left">Harsh Mistry</span>
                   </div>
-
-                  <canvas id="digital-twin-canvas" style="display:none;"></canvas>
-
-                  <!-- Interactive City Focus Selector (Engaged in Global SCM Twin mode) -->
-                  <div class="twin-city-selector" id="twin-city-selector" style="display:none;" aria-label="Digital Twin City Hub Focus">
-                    <button type="button" class="twin-city-btn active" data-city="la" id="city-btn-la" title="Focus Los Angeles Hub (USC / Generac)">
-                      <span class="city-dot" style="background:#00d4ff;"></span>
-                      <span class="city-name">LOS ANGELES, CA</span>
-                    </button>
-                    <button type="button" class="twin-city-btn" data-city="hazira" id="city-btn-hazira" title="Focus Hazira Complex (L&T Defense)">
-                      <span class="city-dot" style="background:#ffb700;"></span>
-                      <span class="city-name">HAZIRA, INDIA</span>
-                    </button>
-                    <button type="button" class="twin-city-btn" data-city="gujarat" id="city-btn-gujarat" title="Focus Gujarat Industrial Hub (Banco / Vindeep)">
-                      <span class="city-dot" style="background:#00ff88;"></span>
-                      <span class="city-name">GUJARAT, INDIA</span>
-                    </button>
+                  <div class="hud-tag top-right" id="orbit-tag-right">
+                    <span class="tag-label" id="orbit-lbl-right">LOCATION:</span>
+                    <span class="tag-value tag-blink" id="orbit-val-right">Los Angeles · 34.02° N, 118.28° W</span>
                   </div>
-
-                  <!-- Unified Top Telemetry Bar (Guaranteed Zero Overlap) -->
-                  <div class="hud-orbit-overlay" id="twin-orbit-overlay">
-                    <div class="hud-tag top-left" id="orbit-tag-left">
-                      <span class="tag-label" id="orbit-lbl-left">OPERATOR:</span>
-                      <span class="tag-value" id="orbit-val-left">Harsh Mistry (Real Grounding)</span>
-                    </div>
-                    <div class="hud-tag top-right" id="orbit-tag-right">
-                      <span class="tag-label" id="orbit-lbl-right">LOCATION:</span>
-                      <span class="tag-value tag-blink" id="orbit-val-right">California Coast · 34.02° N, 118.49° W</span>
-                    </div>
-                  </div>
-
-                  <!-- Interactive Node Callout HUD (No Text Truncation) -->
-                  <div class="twin-telemetry-hud" id="twin-hud-card">
-                    <div class="hud-pulse-dot"></div>
-                    <div class="hud-telemetry-body">
-                      <span class="hud-hub-name" id="twin-hub-name">HARSH MISTRY // OPERATIONS &amp; INDUSTRIAL SYSTEMS ARCHITECT</span>
-                      <span class="hud-hub-metric" id="twin-hub-metric">USC Viterbi '26 · M.S. Engineering Management (GPA 3.73) · Grad Cert in Optimization &amp; SCM · PDEU B.Tech Mechanical (CGPA 9.06)</span>
-                    </div>
-                  </div>
-
-                  <!-- Holographic scan line effect -->
-                  <div class="avatar-scanline-overlay" aria-hidden="true"></div>
                 </div>
+
+                <div class="twin-telemetry-hud" id="twin-hud-card">
+                  <div class="hud-pulse-dot"></div>
+                  <div class="hud-telemetry-body">
+                    <span class="hud-hub-name" id="twin-hub-name">PHYSICAL × OPERATIONAL × ANALYTICAL SYSTEMS</span>
+                    <span class="hud-hub-metric" id="twin-hub-metric">USC M.S. Engineering Management (GPA 3.73) · PDEU B.Tech Mechanical (CGPA 9.06/10) · Available Jan 2027</span>
+                  </div>
+                </div>
+
+                <div class="avatar-scanline-overlay" aria-hidden="true"></div>
+              </div>
 
               <div class="cinema-bar cinema-bar-bottom">
-                <span class="cinema-tag">LOS ANGELES, CA // FULL-TIME 2027</span>
-                <span class="cinema-tag-right">GENERAC · USC · L&T · BANCO</span>
+                <span class="cinema-tag">LOS ANGELES, CA // AVAILABLE JAN 2027</span>
+                <span class="cinema-tag-right">GENERAC · USC · L&T · BANCO · VINDEEP</span>
               </div>
             </div>
 
-            <!-- Persona Signal Tags -->
+            <!-- Authentic Influences / Cognitive Vectors -->
             <div class="stage-signal-row">
-              <span class="signal-pill"><svg class="signal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> F1 Strategy</span>
-              <span class="signal-pill"><svg class="signal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m14 2 8 8-12 12-8-8Z"/></svg> Cricket</span>
-              <span class="signal-pill"><svg class="signal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg> Golf</span>
-              <span class="signal-pill"><svg class="signal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="7 2 17 2 22 7 22 17 17 22 7 22 2 17 2 7"/></svg> MMA</span>
-              <span class="signal-pill"><svg class="signal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="M7 4v16M17 4v16M2 12h20"/></svg> Cinema</span>
+              <span class="signal-pill" title="Dynamic Replenishment & Telemetry Under Pressure"><svg class="signal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> F1 Strategy</span>
+              <span class="signal-pill" title="Kinetic Chain Alignment in End-to-End Chains"><svg class="signal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m14 2 8 8-12 12-8-8Z"/></svg> Cricket</span>
+              <span class="signal-pill" title="Process Repeatability & Sub-Degree Tolerances"><svg class="signal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg> Golf</span>
+              <span class="signal-pill" title="Composure & Situational Awareness Under Duress"><svg class="signal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="7 2 17 2 22 7 22 17 17 22 7 22 2 17 2 7"/></svg> MMA</span>
+              <span class="signal-pill" title="Complex Structural Storytelling"><svg class="signal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="M7 4v16M17 4v16M2 12h20"/></svg> Cinema</span>
             </div>
 
           </div>
         </div>
 
       </div>
+
+      <!-- Opening Evidence Strip: Enterprise Grounding & High-Signal Metrics -->
+      <div class="evidence-strip-container">
+        <div class="evidence-strip-inner glass-panel">
+          <div class="evidence-col-companies">
+            <span class="evidence-label">ENTERPRISE TRACK RECORD &amp; ACADEMICS</span>
+            <div class="evidence-logos-row">
+              <span class="evidence-logo-item" title="USC Viterbi School of Engineering">USC Viterbi</span>
+              <span class="evidence-bullet">•</span>
+              <span class="evidence-logo-item" title="Generac Clean Energy (PWRmicro)">Generac Clean Energy</span>
+              <span class="evidence-bullet">•</span>
+              <span class="evidence-logo-item" title="Larsen & Toubro Heavy Engineering">Larsen &amp; Toubro</span>
+              <span class="evidence-bullet">•</span>
+              <span class="evidence-logo-item" title="Banco Products (India) Ltd">Banco Products</span>
+              <span class="evidence-bullet">•</span>
+              <span class="evidence-logo-item" title="Vindeep Expo Engineers">Vindeep Expo</span>
+              <span class="evidence-bullet">•</span>
+              <span class="evidence-logo-item" title="Pandit Deendayal Energy University">PDEU</span>
+            </div>
+          </div>
+          <div class="evidence-col-metrics">
+            <div class="evidence-metric-box">
+              <span class="em-num">$1.2M</span>
+              <span class="em-desc">Sourcing Sized (Generac)</span>
+            </div>
+            <div class="evidence-metric-box">
+              <span class="em-num">&gt;98%</span>
+              <span class="em-desc">Inventory Accuracy (USC DC)</span>
+            </div>
+            <div class="evidence-metric-box">
+              <span class="em-num">+20%</span>
+              <span class="em-desc">Defect Speed Lift (L&amp;T)</span>
+            </div>
+            <div class="evidence-metric-box">
+              <span class="em-num">1,000+</span>
+              <span class="em-desc">Active SKUs Managed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </section>
 
 
     <!-- ====================================================================
-         CHAPTER 02,  THE GAME (Who Am I?)
-         Atmosphere: Stringer Bell at the chessboard. Systems thinking.
-         Reference: The Wire,  "A man's got to have a code."
+         CHAPTER 02 : THE SYSTEMS CONVERGENCE
+         Theme: The Wire / Low-Rises Courtyard — "See the entire board"
          ==================================================================== -->
     <section id="convergence" class="section work-section scene-chess">
-      <canvas id="chess-canvas" class="scene-canvas"></canvas>
+      <canvas id="chess-canvas" class="scene-canvas" aria-hidden="true"></canvas>
 
       <div class="section-container">
 
         <div class="section-header">
-          <div class="cinematic-section-hero-banner">
-            <img src="./assets/visuals/wire_chessboard.jpg" alt="The Wire Low-Rises Courtyard Orange Couch Strategy" class="cinematic-hero-img" />
-            <div class="cinematic-banner-tag">CINEMA REFERENCE: THE WIRE // LOW-RISES COURTYARD // "THE KING STAYS THE KING"</div>
-          </div>
           <div class="premise-tag">
             <span class="premise-idx">02</span>
             <span class="premise-dot">•</span>
-            <span class="premise-name">THE WIRE // LOW-RISES COURTYARD</span>
+            <span class="premise-name">SYSTEMS CONVERGENCE</span>
             <span class="premise-dot">•</span>
-            <span class="premise-sub">The Systems Intersection</span>
-          </div>
-          <div class="cinematic-quote-callout">
-            <span class="cinema-icon"><svg class="signal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></span>
-            <span class="cinema-series-tag">THE WIRE // STRINGER BELL</span>
-            <span class="quote-cinema">"The king stays the king. We don't just move inventory; we engineer the entire board."</span>
+            <span class="premise-sub">Physical × Operational × Analytical</span>
           </div>
           <h2 class="section-title">
-            Most players learn one position.<br>
-            <span class="gradient-cyan">I run the entire board.</span>
+            Physical laws dictate the flow.<br>
+            <span class="gradient-cyan">Data governs the decision.</span>
           </h2>
           <p class="section-summary">
-            Hardware. Logistics. AI. Business. Most treat them as separate silos. I treat them as a single continuum of physics, code, and capital. When you master how they converge, you do not react to disruptions; you engineer the board.
+            Hardware, logistics, mathematical optimization, and AI are too often treated as separate kingdoms. In real operations, they form an unbroken chain: physical mechanics constrain cycle times, supply chain networks distribute variance, optimization models allocate capital, and AI accelerates data synthesis. When you understand how all four converge, you do not panic when disruptions hit—you design systems that remain stable despite variance.
           </p>
+          <div class="cinematic-quote-callout">
+            <span class="cinema-icon"><svg class="signal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></span>
+            <span class="cinema-series-tag">THE WIRE // THE CHESSBOARD</span>
+            <span class="quote-cinema">"Most people learn one position. I learned to see the entire board."</span>
+          </div>
         </div>
 
         <!-- 4-Pillar Interactive Grid -->
         <div class="convergence-layout">
 
-          <div class="convergence-tabs">
-            <button class="pillar-tab active" data-pillar="hardware">
-              <div class="pillar-icon"><svg class="pillar-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+          <div class="convergence-tabs" role="tablist" aria-label="System Domain Pillars">
+            <button class="pillar-tab active" data-pillar="hardware" role="tab" aria-selected="true">
+              <div class="pillar-icon"><svg class="pillar-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
               <div class="pillar-info">
                 <span class="pillar-title">Physical Engineering</span>
-                <span class="pillar-sub">B.Tech Mechanical (CGPA 9.06/10), ASME codes, robotic welds</span>
+                <span class="pillar-sub">B.Tech Mechanical (CGPA 9.06/10), ASME codes, tolerances, weld mechanics</span>
               </div>
-              <span class="pillar-arrow">-></span>
+              <span class="pillar-arrow">→</span>
             </button>
 
-            <button class="pillar-tab" data-pillar="supplychain">
-              <div class="pillar-icon"><svg class="pillar-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+            <button class="pillar-tab" data-pillar="supplychain" role="tab" aria-selected="false">
+              <div class="pillar-icon"><svg class="pillar-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
               <div class="pillar-info">
-                <span class="pillar-title">Supply Chain & Logistics</span>
-                <span class="pillar-sub">Warehouse slotting, inventory velocity, RFQ audits</span>
+                <span class="pillar-title">Supply Chain &amp; Logistics</span>
+                <span class="pillar-sub">Warehouse slotting, cycle counts, BOM reconciliation, RFQ analysis</span>
               </div>
-              <span class="pillar-arrow">-></span>
+              <span class="pillar-arrow">→</span>
             </button>
 
-            <button class="pillar-tab" data-pillar="ai">
-              <div class="pillar-icon"><svg class="pillar-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div>
+            <button class="pillar-tab" data-pillar="business" role="tab" aria-selected="false">
+              <div class="pillar-icon"><svg class="pillar-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
               <div class="pillar-info">
-                <span class="pillar-title">Autonomous AI & Decision Systems</span>
-                <span class="pillar-sub">Claude 3.5, MCP, Vector RAG, AST compactor</span>
+                <span class="pillar-title">Optimization &amp; Modeling</span>
+                <span class="pillar-sub">Linear programming, Excel Solver, R/Python forecasting, safety stock</span>
               </div>
-              <span class="pillar-arrow">-></span>
+              <span class="pillar-arrow">→</span>
             </button>
 
-            <button class="pillar-tab" data-pillar="business">
-              <div class="pillar-icon"><svg class="pillar-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+            <button class="pillar-tab" data-pillar="ai" role="tab" aria-selected="false">
+              <div class="pillar-icon"><svg class="pillar-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div>
               <div class="pillar-info">
-                <span class="pillar-title">Strategic Sourcing & Business</span>
-                <span class="pillar-sub">Should-cost modeling, PLM control, margin expansion</span>
+                <span class="pillar-title">AI-Enabled Operations</span>
+                <span class="pillar-sub">Supplier document RAG, MCP tool queries, computer vision, automated triage</span>
               </div>
-              <span class="pillar-arrow">-></span>
+              <span class="pillar-arrow">→</span>
             </button>
           </div>
 
-          <!-- Dynamic Detail Panel -->
+          <!-- Dynamic Detail Display Panel -->
           <div class="convergence-display glass-panel spotlight-card" id="convergence-display">
             <div class="display-badge" id="display-badge">DOMAINS // 01 PHYSICAL ENGINEERING</div>
-            <h3 class="display-headline" id="display-title">Mechanical Precision & Heavy Fabrication</h3>
+            <h3 class="display-headline" id="display-title">Mechanical Precision &amp; Heavy Fabrication</h3>
             <p class="display-desc" id="display-desc">
-              I was forged in mechanical engineering and heavy fabrication (B.Tech in Mechanical Engineering from PDEU, CGPA 9.06/10.00). Long before I ever touched an optimization spreadsheet or an algorithm, I learned engineering with molten weld pools, ASME Section VIII pressure vessel codes, and sub-millimeter steel tolerances. I understand physical yield strengths, thermal distortion, and manufacturing bottlenecks before I touch a model.
+              My engineering foundation was forged in mechanical design and heavy manufacturing (B.Tech in Mechanical Engineering from PDEU, CGPA 9.06/10.00). Before working with optimization models, I worked on shop floors with molten weld pools, ASME Section VIII pressure vessel codes, and sub-millimeter tolerances. Understanding physical yield strengths, thermal distortion, and machine kinematics provides a grounded reality check for every operational plan.
             </p>
 
             <div class="display-stats-grid" id="display-stats">
@@ -397,10 +440,11 @@
 
             <div class="display-tools-row" id="display-tools">
               <span class="tech-pill">SolidWorks</span>
-              <span class="tech-pill">ANSYS FEA</span>
+              <span class="tech-pill">GD&amp;T</span>
               <span class="tech-pill">Robotic Welding</span>
-              <span class="tech-pill">Computer Vision</span>
+              <span class="tech-pill">Manufacturing Quality</span>
               <span class="tech-pill">ASME Section VIII</span>
+              <span class="tech-pill">Material Kinematics</span>
             </div>
           </div>
 
@@ -411,202 +455,517 @@
 
 
     <!-- ====================================================================
-         CHAPTER 03,  TRACK RECORD
-         Atmosphere: Heisenberg's lab. Precise. Methodical. Results undeniable.
-         Reference: Breaking Bad,  "Say my name."
+         ROLE NAVIGATION FILTER SYSTEM
+         "EXPLORE MY WORK BY PROBLEM TYPE"
+         Surfaces relevant dimensions of the same underlying work without duplication
+         ==================================================================== -->
+    <section id="work-explorer" class="section explorer-section">
+      <div class="section-container">
+
+        <div class="explorer-header glass-panel">
+          <div class="explorer-badge-row">
+            <span class="explorer-kicker">INTERACTIVE ROLE FILTER</span>
+            <span class="explorer-count-badge" id="filter-count-badge">Showing 5 Experiences &middot; 5 Case Studies</span>
+          </div>
+          <h2 class="explorer-title">Explore My Work by Problem Type</h2>
+          <p class="explorer-desc">
+            Select a target discipline below to reorganize the portfolio evidence and highlight the exact dimensions—cost models, NPI readiness, quality tools, or automation—most relevant to your team's mandate.
+          </p>
+
+          <!-- Problem Type Filter Tabs -->
+          <div class="role-filter-track" role="tablist" aria-label="Explore Work by Problem Type">
+            <button type="button" class="role-filter-btn active" data-role="all" role="tab" aria-selected="true">
+              <span class="filter-dot"></span>
+              <span class="filter-label">All Systems</span>
+            </button>
+            <button type="button" class="role-filter-btn" data-role="sourcing" role="tab" aria-selected="false">
+              <span class="filter-dot dot-cyan"></span>
+              <span class="filter-label">Supply Chain &amp; Sourcing</span>
+            </button>
+            <button type="button" class="role-filter-btn" data-role="npi" role="tab" aria-selected="false">
+              <span class="filter-dot dot-amber"></span>
+              <span class="filter-label">NPI &amp; Operations</span>
+            </button>
+            <button type="button" class="role-filter-btn" data-role="quality" role="tab" aria-selected="false">
+              <span class="filter-dot dot-emerald"></span>
+              <span class="filter-label">Supplier &amp; Quality</span>
+            </button>
+            <button type="button" class="role-filter-btn" data-role="pm" role="tab" aria-selected="false">
+              <span class="filter-dot dot-violet"></span>
+              <span class="filter-label">Program Management</span>
+            </button>
+            <button type="button" class="role-filter-btn" data-role="ai" role="tab" aria-selected="false">
+              <span class="filter-dot dot-matrix"></span>
+              <span class="filter-label">AI &amp; Automation</span>
+            </button>
+          </div>
+
+          <!-- Dynamic Role Lens Guidance Banner -->
+          <div class="role-lens-banner" id="role-lens-banner">
+            <span class="lens-indicator">ACTIVE LENS:</span>
+            <span class="lens-text" id="role-lens-text">Displaying comprehensive operational history across manufacturing, global sourcing, distribution, and automation systems.</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ====================================================================
+         CHAPTER 03 : TRACK RECORD (VERIFIED EXPERIENCE)
+         Theme: Walter White Laboratory / Rigorous Empirical Execution
          ==================================================================== -->
     <section id="experience" class="section work-section scene-lab">
-      <canvas id="lab-canvas" class="scene-canvas"></canvas>
+      <canvas id="lab-canvas" class="scene-canvas" aria-hidden="true"></canvas>
 
       <div class="section-container">
 
         <div class="section-header">
-          <div class="cinematic-section-hero-banner">
-            <img src="./assets/visuals/bb_superlab.jpg" alt="Breaking Bad Walter White Warehouse Empire" class="cinematic-hero-img" />
-            <div class="cinematic-banner-tag">CINEMA REFERENCE: BREAKING BAD // HEISENBERG PROTOCOL // "I AM THE ONE WHO KNOCKS"</div>
-          </div>
           <div class="premise-tag">
             <span class="premise-idx">03</span>
             <span class="premise-dot">•</span>
-            <span class="premise-name">BREAKING BAD // 99.1% PURITY STANDARD</span>
+            <span class="premise-name">TRACK RECORD</span>
             <span class="premise-dot">•</span>
-            <span class="premise-sub">Heisenberg Execution // Real Companies</span>
-          </div>
-          <div class="cinematic-quote-callout">
-            <span class="cinema-icon"><svg class="tech-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M3 12h6M15 12h6M12 3v6M12 15v6"/></svg></span>
-            <span class="cinema-series-tag">BREAKING BAD // HEISENBERG PROTOCOL</span>
-            <span class="quote-cinema">"No half measures. Every metric verified with industrial precision and zero tolerance for defect."</span>
+            <span class="premise-sub">Real Enterprises · Concrete Constraints · Verified Scope</span>
           </div>
           <h2 class="section-title">
-            Real enterprises. Real constraints.<br>
+            Real enterprises. Concrete constraints.<br>
             <span class="gradient-emerald">Quantified <em>outcomes</em>.</span>
           </h2>
           <p class="section-summary">
-            From million-dollar clean energy sourcing in California to heavy submarine defense robotics in India, I step into chaotic operational environments and leave them mathematically governed. In mission-critical systems, talk is noise. Only verified physics and empirical numbers survive.
+            Every entry below maintains strict fidelity between official job title, functional scope, my individual contributions, and team context. Click <strong>"Inspect Methodology &amp; Evidence"</strong> on any card to interrogate baselines, data sources, calculations, and operational trade-offs.
           </p>
+          <div class="cinematic-quote-callout">
+            <span class="cinema-icon"><svg class="tech-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M3 12h6M15 12h6M12 3v6M12 15v6"/></svg></span>
+            <span class="cinema-series-tag">OPERATING PRINCIPLE // INDUSTRIAL RIGOR</span>
+            <span class="quote-cinema">"In industrial and supply systems, credibility is not claimed. It is measured against baseline data and earned in production."</span>
+          </div>
         </div>
 
-        <div class="experience-bento-grid">
+        <div class="experience-bento-grid" id="experience-grid">
 
           <!-- Card 1: Generac Clean Energy -->
-          <div class="exp-bento-card glass-panel spotlight-card highlight-card">
+          <article class="exp-bento-card glass-panel spotlight-card highlight-card" data-roles="sourcing npi pm ai">
             <div class="card-company-header">
               <div class="company-logo-badge">
-                <img src="./assets/logos/generac_logo.png" alt="Generac Clean Energy Corporate Logo" class="company-logo-img" />
+                <img src="./assets/logos/generac_logo.png" alt="Generac Clean Energy Logo" class="company-logo-img" />
               </div>
-              <span class="company-scope-badge">SANTA MONICA & S. PORTLAND // SCM</span>
+              <div class="company-meta-col">
+                <span class="org-name">GENERAC CLEAN ENERGY</span>
+                <span class="org-division">Clean Energy Division // PWRmicro Microinverter Program</span>
+              </div>
+              <span class="company-scope-badge">SANTA MONICA, CA</span>
             </div>
-            <div class="card-meta">
-              <span class="org-name">GENERAC CLEAN ENERGY (PWRmicro / PIKA)</span>
-              <span class="org-role">Strategic Sourcing & Global Supply Management</span>
+
+            <!-- Standardized Role Calibration: Company, Official Title, Functional Scope -->
+            <div class="card-title-standard">
+              <div class="official-title-row">
+                <span class="title-label">OFFICIAL TITLE:</span>
+                <span class="official-title">Supply Chain Intern</span>
+                <span class="tenure-badge">June 2026 – August 2026</span>
+              </div>
+              <div class="functional-scope-row">
+                <span class="scope-label">FUNCTIONAL SCOPE:</span>
+                <span class="functional-scope-text">Strategic Sourcing · BOM Reconciliation · Sourcing Decision Workflows · Arena PLM Change Control</span>
+              </div>
             </div>
-            <h3 class="card-heading">Supply Chain Optimization, Supplier Dual-Sourcing & Arena PLM BOM Control</h3>
-            <p class="company-research-summary">
-              I engineered global should-cost models and multi-tier supplier architectures across North America and Asia for next-generation clean energy microinverters. I sized $1.2M in annualized cost savings, took direct ownership of Engineering Change Orders (ECOs) in Arena PLM, and built predictive supplier scorecards to safeguard critical components before market shortages could strike.
-            </p>
+
+            <div class="card-contribution-breakdown">
+              <div class="contrib-block">
+                <strong class="contrib-label">MY INDIVIDUAL CONTRIBUTION:</strong>
+                <ul class="contrib-bullets">
+                  <li>Analyzed engineering BOMs, annual demand forecasts, supplier quotations, and cost targets across <strong>20+ priority PWRmicro components</strong>; sized a <strong>$1.2M annualized sourcing opportunity</strong>.</li>
+                  <li>Architected a centralized component decision workflow, establishing standardized data fields, required documentation, and exception flags across multi-tier suppliers.</li>
+                  <li>Automated BOM, quotation, and specification reconciliation using <strong>Advanced Excel and PowerShell</strong>, cutting manual triage time for component exceptions.</li>
+                  <li>Maintained traceable component, quotation, and reliability change records through <strong>Arena PLM</strong>, SharePoint, and consolidated repositories.</li>
+                </ul>
+              </div>
+              <div class="team-context-block">
+                <strong class="team-label">TEAM CONTEXT:</strong>
+                <span class="team-text">Collaborated cross-functionally with senior strategic sourcing managers, electrical and mechanical design engineers, reliability specialists, and international component suppliers.</span>
+              </div>
+            </div>
+
             <div class="metric-pill-row">
               <div class="metric-pill highlight">
                 <span class="p-val">$1.2M</span>
-                <span class="p-lbl">Sourcing Sized</span>
+                <span class="p-lbl">Annualized Sourcing Sized</span>
               </div>
               <div class="metric-pill">
                 <span class="p-val">20+</span>
-                <span class="p-lbl">Global Suppliers Audited</span>
+                <span class="p-lbl">Priority Components Evaluated</span>
               </div>
               <div class="metric-pill">
                 <span class="p-val">Arena PLM</span>
-                <span class="p-lbl">BOM & ECO Control</span>
+                <span class="p-lbl">ECO &amp; BOM Change Control</span>
               </div>
             </div>
-          </div>
 
-          <!-- Card 2: USC Distribution Center -->
-          <div class="exp-bento-card glass-panel spotlight-card">
+            <!-- Progressive Disclosure: Inspect Evidence & Methodology -->
+            <div class="evidence-accordion">
+              <button type="button" class="btn-toggle-evidence" aria-expanded="false">
+                <span class="toggle-icon">+</span>
+                <span class="toggle-text">Inspect Methodology &amp; Evidence</span>
+              </button>
+              <div class="evidence-drawer-content" hidden>
+                <div class="evidence-grid-details">
+                  <div class="ev-item">
+                    <span class="ev-k">BASELINE:</span>
+                    <span class="ev-v">Fragmented vendor quotes and engineering BOMs stored across disconnected email threads and disparate spreadsheets, lacking standardized volume-tier price breaks.</span>
+                  </div>
+                  <div class="ev-item">
+                    <span class="ev-k">METHOD:</span>
+                    <span class="ev-v">Bottom-up cost modeling, annual volume tiering (10k, 50k, 100k units), and automated PowerShell/Excel reconciliation to flag pricing deltas.</span>
+                  </div>
+                  <div class="ev-item">
+                    <span class="ev-k">INPUT DATA:</span>
+                    <span class="ev-v">BOM assemblies for 20+ priority microinverter parts, historical supplier quote sheets, and forward-looking product demand schedules.</span>
+                  </div>
+                  <div class="ev-item">
+                    <span class="ev-k">INTERVENTION:</span>
+                    <span class="ev-v">Created standardized component evaluation templates, structured decision criteria for dual-sourcing, and established missing-document exception logs.</span>
+                  </div>
+                  <div class="ev-item">
+                    <span class="ev-k">RESULT:</span>
+                    <span class="ev-v">$1.2M in annualized cost opportunity identified and presented to strategic sourcing leadership for NPI commercial execution.</span>
+                  </div>
+                  <div class="ev-item">
+                    <span class="ev-k">LIMITATIONS:</span>
+                    <span class="ev-v">Identified opportunity, not realized P&amp;L savings. Commercial negotiations and final volume contracts occur during production ramp.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: USC Bookstore Distribution Center -->
+          <article class="exp-bento-card glass-panel spotlight-card" data-roles="sourcing npi quality pm">
             <div class="card-company-header">
               <div class="company-logo-badge usc-badge">
-                <img src="./assets/logos/usc_logo.svg" alt="University of Southern California Logo" class="company-logo-img" />
+                <img src="./assets/logos/usc_logo.svg" alt="USC Logo" class="company-logo-img" />
               </div>
-              <span class="company-scope-badge">LOS ANGELES, CA // DC OPERATIONS</span>
+              <div class="company-meta-col">
+                <span class="org-name">USC BOOKSTORE &amp; RETAIL DISTRIBUTION CENTER</span>
+                <span class="org-division">Omnichannel Fulfillment &amp; Logistics Hub</span>
+              </div>
+              <span class="company-scope-badge">LOS ANGELES, CA</span>
             </div>
-            <div class="card-meta">
-              <span class="org-name">USC BOOKSTORE & CAMPUS RETAIL DISTRIBUTION CENTER</span>
-              <span class="org-role">Operations & Supply Chain Management Specialist</span>
+
+            <div class="card-title-standard">
+              <div class="official-title-row">
+                <span class="title-label">OFFICIAL TITLE:</span>
+                <span class="official-title">Supply Chain Operations Assistant</span>
+                <span class="tenure-badge">June 2025 – August 2025</span>
+              </div>
+              <div class="functional-scope-row">
+                <span class="scope-label">FUNCTIONAL SCOPE:</span>
+                <span class="functional-scope-text">Distribution Center Operations · Warehouse Velocity Slotting · Cycle Counting · Inventory Accuracy</span>
+              </div>
             </div>
-            <h3 class="card-heading">Warehouse Velocity Slotting & Omnichannel Logistics Architecture</h3>
-            <p class="company-research-summary">
-              I dismantled and redesigned high-velocity warehouse racking layouts for an omnichannel distribution hub handling 1,000+ active SKUs. By structuring pick routes around Pareto ABC velocity classifications and staging high-frequency volume adjacent to dispatch gates, I cut picker travel times by 15% and drove inventory audit accuracy above 98%.
-            </p>
+
+            <div class="card-contribution-breakdown">
+              <div class="contrib-block">
+                <strong class="contrib-label">MY INDIVIDUAL CONTRIBUTION:</strong>
+                <ul class="contrib-bullets">
+                  <li>Managed end-to-end inventory flow and stock control for <strong>1,000+ active retail SKUs</strong>, utilizing ERP cycle counting and variance audits to sustain audit accuracy above <strong>98%</strong>.</li>
+                  <li>Built Excel-based reconciliation and exception-detection tools that cut restocking cycle time by <strong>15%</strong> and manual counting discrepancies by <strong>10%</strong>.</li>
+                  <li>Partnered with warehouse supervisors to redesign staging and picking layouts using <strong>process mapping and ABC slotting analysis</strong>, reducing picker travel congestion.</li>
+                  <li>Monitored inventory control KPIs and daily fulfillment queues to prevent stockouts across campus retail channels.</li>
+                </ul>
+              </div>
+              <div class="team-context-block">
+                <strong class="team-label">TEAM CONTEXT:</strong>
+                <span class="team-text">Worked alongside warehouse operations supervisors, inventory clerks, material handling personnel, and campus retail branch leads.</span>
+              </div>
+            </div>
+
             <div class="metric-pill-row">
               <div class="metric-pill highlight">
                 <span class="p-val">&gt;98%</span>
-                <span class="p-lbl">Inventory Accuracy</span>
+                <span class="p-lbl">Inventory Audit Accuracy</span>
               </div>
               <div class="metric-pill">
-                <span class="p-val">15%</span>
-                <span class="p-lbl">Picker Travel Cut</span>
+                <span class="p-val">-15%</span>
+                <span class="p-lbl">Restocking Cycle Time</span>
               </div>
               <div class="metric-pill">
                 <span class="p-val">1,000+</span>
                 <span class="p-lbl">Active Retail SKUs</span>
               </div>
             </div>
-          </div>
+
+            <div class="evidence-accordion">
+              <button type="button" class="btn-toggle-evidence" aria-expanded="false">
+                <span class="toggle-icon">+</span>
+                <span class="toggle-text">Inspect Methodology &amp; Evidence</span>
+              </button>
+              <div class="evidence-drawer-content" hidden>
+                <div class="evidence-grid-details">
+                  <div class="ev-item">
+                    <span class="ev-k">BASELINE:</span>
+                    <span class="ev-v">High-frequency items dispersed across far storage bays; average representative picker travel was ~8.4 km per shift.</span>
+                  </div>
+                  <div class="ev-item">
+                    <span class="ev-k">METHOD:</span>
+                    <span class="ev-v">Pareto ABC classification (top 20% velocity SKUs placed nearest dispatch gates) and order-frequency clustering.</span>
+                  </div>
+                  <div class="ev-item">
+                    <span class="ev-k">INPUT DATA:</span>
+                    <span class="ev-v">6 months of ERP SKU order volume, pick-frequency logs, and physical bay distance matrices.</span>
+                  </div>
+                  <div class="ev-item">
+                    <span class="ev-k">RESULT:</span>
+                    <span class="ev-v">Representative route travel modeled down from 8.4 km to 7.1 km (15.5% reduction), with restocking cycle times down 15%.</span>
+                  </div>
+                  <div class="ev-item">
+                    <span class="ev-k">LIMITATIONS:</span>
+                    <span class="ev-v">Slotting reallocations completed in phases to avoid halting active student store operations.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
 
           <!-- Card 3: Larsen & Toubro Heavy Engineering -->
-          <div class="exp-bento-card glass-panel spotlight-card">
+          <article class="exp-bento-card glass-panel spotlight-card" data-roles="npi quality pm ai">
             <div class="card-company-header">
               <div class="company-logo-badge lt-badge">
-                <img src="./assets/logos/lt_logo.svg" alt="Larsen & Toubro Heavy Engineering Logo" class="company-logo-img" />
+                <img src="./assets/logos/lt_logo.svg" alt="L&T Logo" class="company-logo-img" />
               </div>
-              <span class="company-scope-badge">SURAT / HAZIRA COMPLEX // ROBOTICS</span>
+              <div class="company-meta-col">
+                <span class="org-name">LARSEN &amp; TOUBRO HEAVY ENGINEERING</span>
+                <span class="org-division">Hazira Manufacturing Complex // Advanced Automation Workstreams</span>
+              </div>
+              <span class="company-scope-badge">SURAT, GUJARAT, INDIA</span>
             </div>
-            <div class="card-meta">
-              <span class="org-name">LARSEN & TOUBRO HEAVY ENGINEERING</span>
-              <span class="org-role">Robotics & Vision Automation Engineer</span>
+
+            <div class="card-title-standard">
+              <div class="official-title-row">
+                <span class="title-label">OFFICIAL TITLE:</span>
+                <span class="official-title">Project Management Intern</span>
+                <span class="tenure-badge">December 2022 – May 2023</span>
+              </div>
+              <div class="functional-scope-row">
+                <span class="scope-label">FUNCTIONAL SCOPE:</span>
+                <span class="functional-scope-text">Robotics Workstream Coordination · Quality Monitoring · Supplier Evaluation · Cost-Benefit Modeling</span>
+              </div>
             </div>
-            <h3 class="card-heading">Real-Time Optical Defect Detection for Critical Defense Fabrication</h3>
-            <p class="company-research-summary">
-              I deployed real-time computer vision seam tracking and defect classification onto 6-axis robotic welding cells fabricating high-precision defense and nuclear equipment. I replaced post-weld manual teardowns with synchronous molten weld pool optical analysis, intercepting anomalies on pass one to achieve a 20% lift in detection speed and cut scrap costs by 10%.
-            </p>
+
+            <div class="card-contribution-breakdown">
+              <div class="contrib-block">
+                <strong class="contrib-label">MY INDIVIDUAL CONTRIBUTION:</strong>
+                <ul class="contrib-bullets">
+                  <li>Coordinated cross-functional mechanical, electrical, and Python automation workstreams using <strong>Agile project management</strong>; delivered a portable robotic welding monitoring prototype that boosted defect detection speed and process reliability by <strong>20%</strong>.</li>
+                  <li>Developed Excel-based supplier evaluation, cost-benefit, and sensitivity analyses that supported vendor feasibility decisions and reduced projected implementation costs by <strong>10%</strong>.</li>
+                  <li>Evaluated optical sensors, camera housings, and edge-compute hardware alternatives through structured technical scorecards.</li>
+                </ul>
+              </div>
+              <div class="team-context-block">
+                <strong class="team-label">TEAM CONTEXT:</strong>
+                <span class="team-text">Collaborated with welding automation engineers, shop floor fabrication superintendents, electrical controls specialists, and component suppliers.</span>
+              </div>
+            </div>
+
             <div class="metric-pill-row">
               <div class="metric-pill highlight">
-                <span class="p-val">20%</span>
-                <span class="p-lbl">Defect Detection Lift</span>
+                <span class="p-val">+20%</span>
+                <span class="p-lbl">Defect Detection Speed</span>
               </div>
               <div class="metric-pill">
                 <span class="p-val">10%</span>
-                <span class="p-lbl">Scrap Cost Cut</span>
+                <span class="p-lbl">Projected Cost Avoidance</span>
               </div>
               <div class="metric-pill">
-                <span class="p-val">&lt;12ms</span>
-                <span class="p-lbl">Vision Latency</span>
+                <span class="p-val">Agile PM</span>
+                <span class="p-lbl">Multi-Disciplinary Delivery</span>
               </div>
             </div>
-          </div>
+
+            <div class="evidence-accordion">
+              <button type="button" class="btn-toggle-evidence" aria-expanded="false">
+                <span class="toggle-icon">+</span>
+                <span class="toggle-text">Inspect Methodology &amp; Evidence</span>
+              </button>
+              <div class="evidence-drawer-content" hidden>
+                <div class="evidence-grid-details">
+                  <div class="ev-item">
+                    <span class="ev-k">BASELINE:</span>
+                    <span class="ev-v">Post-weld inspection via manual dye penetrant and ultrasonic testing, catching defects hours after solidification.</span>
+                  </div>
+                  <div class="ev-item">
+                    <span class="ev-k">METHOD:</span>
+                    <span class="ev-v">Synchronous optical monitoring of the weld pool and arc parameters, flagged via automated Python classification.</span>
+                  </div>
+                  <div class="ev-item">
+                    <span class="ev-k">RESULT:</span>
+                    <span class="ev-v">20% faster detection of surface porosity and tracking deviations on the test rig; supplier sensitivity model identified 10% projected savings on procurement hardware.</span>
+                  </div>
+                  <div class="ev-item">
+                    <span class="ev-k">LIMITATIONS:</span>
+                    <span class="ev-v">Validated on proof-of-concept test cells; full factory-wide production rollout scheduled for future cap-ex phases.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
 
           <!-- Card 4: Vindeep Expo Engineers -->
-          <div class="exp-bento-card glass-panel spotlight-card">
+          <article class="exp-bento-card glass-panel spotlight-card" data-roles="npi quality pm">
             <div class="card-company-header">
               <div class="company-logo-badge">
-                <img src="./assets/logos/vindeep_logo.png" alt="Vindeep Expo Engineers Logo" class="company-logo-img" />
+                <img src="./assets/logos/vindeep_logo.png" alt="Vindeep Logo" class="company-logo-img" />
               </div>
-              <span class="company-scope-badge">VAPI, GUJARAT // QUALITY ENGINEERING</span>
+              <div class="company-meta-col">
+                <span class="org-name">VINDEEP EXPO ENGINEERS</span>
+                <span class="org-division">Statutory Operations &amp; Industrial Equipment Testing</span>
+              </div>
+              <span class="company-scope-badge">VAPI, GUJARAT, INDIA</span>
             </div>
-            <div class="card-meta">
-              <span class="org-name">VINDEEP EXPO ENGINEERS</span>
-              <span class="org-role">Quality & Compliance Engineer</span>
+
+            <div class="card-title-standard">
+              <div class="official-title-row">
+                <span class="title-label">OFFICIAL TITLE:</span>
+                <span class="official-title">Supply Chain Analyst</span>
+                <span class="tenure-badge">September 2023 – May 2024</span>
+              </div>
+              <div class="functional-scope-row">
+                <span class="scope-label">FUNCTIONAL SCOPE:</span>
+                <span class="functional-scope-text">Multi-Site Operations · Statutory Compliance · Risk Registers · Kaizen &amp; Workflow Optimization</span>
+              </div>
             </div>
-            <h3 class="card-heading">ASME Section VIII & European PED Pressure Vessel Compliance</h3>
-            <p class="company-research-summary">
-              I governed non-destructive testing (NDT), ultrasonic flaw detection, and radiographic inspections for export-grade chemical reactors and high-pressure vessels. Under the unforgiving mandates of ASME Section VIII and European PED standards, I maintained a flawless 100% first-pass audit success rate while accelerating shop floor throughput by 20%.
-            </p>
+
+            <div class="card-contribution-breakdown">
+              <div class="contrib-block">
+                <strong class="contrib-label">MY INDIVIDUAL CONTRIBUTION:</strong>
+                <ul class="contrib-bullets">
+                  <li>Managed multi-site operational testing projects from planning through execution, translating statutory codes into schedules, risk registers, and compliance plans maintaining <strong>100% regulatory adherence</strong>.</li>
+                  <li>Built a centralized Excel and MS Project tracking dashboard that consolidated operational milestones, reducing audit preparation time by <strong>15%</strong>.</li>
+                  <li>Applied <strong>Kaizen and PDCA cycles</strong> to identify operational bottlenecks in equipment inspection schedules, boosting workflow efficiency by <strong>20%</strong>.</li>
+                </ul>
+              </div>
+              <div class="team-context-block">
+                <strong class="team-label">TEAM CONTEXT:</strong>
+                <span class="team-text">Coordinated between field testing technicians, industrial plant safety managers, third-party government regulatory auditors, and logistics teams.</span>
+              </div>
+            </div>
+
             <div class="metric-pill-row">
               <div class="metric-pill highlight">
                 <span class="p-val">100%</span>
-                <span class="p-lbl">Audit Pass Rate</span>
+                <span class="p-lbl">Regulatory Adherence</span>
               </div>
               <div class="metric-pill">
-                <span class="p-val">20%</span>
-                <span class="p-lbl">Throughput Lift</span>
+                <span class="p-val">-15%</span>
+                <span class="p-lbl">Audit Prep Time</span>
               </div>
               <div class="metric-pill">
-                <span class="p-val">ASME / PED</span>
-                <span class="p-lbl">Certified Standards</span>
+                <span class="p-val">+20%</span>
+                <span class="p-lbl">Workflow Efficiency</span>
               </div>
             </div>
-          </div>
+
+            <div class="evidence-accordion">
+              <button type="button" class="btn-toggle-evidence" aria-expanded="false">
+                <span class="toggle-icon">+</span>
+                <span class="toggle-text">Inspect Methodology &amp; Evidence</span>
+              </button>
+              <div class="evidence-drawer-content" hidden>
+                <div class="evidence-grid-details">
+                  <div class="ev-item">
+                    <span class="ev-k">BASELINE:</span>
+                    <span class="ev-v">Disparate testing schedules across multiple client sites causing documentation lag and lengthy audit preparation cycles.</span>
+                  </div>
+                  <div class="ev-item">
+                    <span class="ev-k">METHOD:</span>
+                    <span class="ev-v">Consolidated project scheduling in MS Project and standardized technical verification checklists aligned with statutory safety mandates.</span>
+                  </div>
+                  <div class="ev-item">
+                    <span class="ev-k">RESULT:</span>
+                    <span class="ev-v">100% audit pass record achieved with 15% reduction in administrative prep time and 20% workflow efficiency improvement.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
 
           <!-- Card 5: Banco Products (India) Ltd -->
-          <div class="exp-bento-card glass-panel spotlight-card">
+          <article class="exp-bento-card glass-panel spotlight-card" data-roles="npi quality pm">
             <div class="card-company-header">
               <div class="company-logo-badge">
-                <img src="./assets/logos/banco_logo.png" alt="Banco Products (India) Ltd Logo" class="company-logo-img" />
+                <img src="./assets/logos/banco_logo.png" alt="Banco Logo" class="company-logo-img" />
               </div>
-              <span class="company-scope-badge">VADODARA, GUJARAT // LEAN MFG</span>
+              <div class="company-meta-col">
+                <span class="org-name">BANCO PRODUCTS (INDIA) LTD</span>
+                <span class="org-division">Automotive Thermal Systems Manufacturing Plant</span>
+              </div>
+              <span class="company-scope-badge">VADODARA, GUJARAT, INDIA</span>
             </div>
-            <div class="card-meta">
-              <span class="org-name">BANCO PRODUCTS (INDIA) LTD</span>
-              <span class="org-role">Industrial Operations & Lean Manufacturing Intern</span>
+
+            <div class="card-title-standard">
+              <div class="official-title-row">
+                <span class="title-label">OFFICIAL TITLE:</span>
+                <span class="official-title">Quality and Operations Intern</span>
+                <span class="tenure-badge">May 2022 – July 2022</span>
+              </div>
+              <div class="functional-scope-row">
+                <span class="scope-label">FUNCTIONAL SCOPE:</span>
+                <span class="functional-scope-text">Manufacturing Quality · Root Cause Analysis (RCA) · FMEA · Kaizen &amp; 5S Implementation</span>
+              </div>
             </div>
-            <h3 class="card-heading">Automotive Cooling Systems Lean Kaizen & Cellular Line Re-Balancing</h3>
-            <p class="company-research-summary">
-              I spearheaded Kaizen 5S workflow balancing across automotive radiator assembly cells for major commercial vehicle OEMs. By restructuring manual assembly sequences to match line cycle times strictly to takt time, I eliminated work-in-progress bottlenecks, cutting operational costs by 12% and slashing buffer inventory by 25%.
-            </p>
+
+            <div class="card-contribution-breakdown">
+              <div class="contrib-block">
+                <strong class="contrib-label">MY INDIVIDUAL CONTRIBUTION:</strong>
+                <ul class="contrib-bullets">
+                  <li>Conducted manufacturing process audits across automotive cooling lines using <strong>RCA, FMEA, SPC, and Lean tools</strong>, identifying <strong>10+ operational bottlenecks</strong>.</li>
+                  <li>Co-led a Kaizen and 5S workplace reorganization initiative across radiator assembly cells, reducing welding-related rework and scrap costs by <strong>12%</strong>.</li>
+                  <li>Mapped production takt times against operator cycle times to re-balance work distribution and reduce buffer WIP.</li>
+                </ul>
+              </div>
+              <div class="team-context-block">
+                <strong class="team-label">TEAM CONTEXT:</strong>
+                <span class="team-text">Worked with manufacturing plant superintendents, quality control inspectors, toolroom engineers, and line operators.</span>
+              </div>
+            </div>
+
             <div class="metric-pill-row">
               <div class="metric-pill highlight">
                 <span class="p-val">12%</span>
-                <span class="p-lbl">Cost Cut</span>
+                <span class="p-lbl">Welding Cost Reduction</span>
               </div>
               <div class="metric-pill">
-                <span class="p-val">5S Kaizen</span>
-                <span class="p-lbl">Cellular Balancing</span>
+                <span class="p-val">10+</span>
+                <span class="p-lbl">Bottlenecks Identified</span>
               </div>
               <div class="metric-pill">
-                <span class="p-val">-25%</span>
-                <span class="p-lbl">WIP Inventory</span>
+                <span class="p-val">5S / Kaizen</span>
+                <span class="p-lbl">Shopfloor Implementation</span>
               </div>
             </div>
-          </div>
+
+            <div class="evidence-accordion">
+              <button type="button" class="btn-toggle-evidence" aria-expanded="false">
+                <span class="toggle-icon">+</span>
+                <span class="toggle-text">Inspect Methodology &amp; Evidence</span>
+              </button>
+              <div class="evidence-drawer-content" hidden>
+                <div class="evidence-grid-details">
+                  <div class="ev-item">
+                    <span class="ev-k">BASELINE:</span>
+                    <span class="ev-v">Excessive weld spatter and uneven cycle times across manual welding stations creating buffer accumulation.</span>
+                  </div>
+                  <div class="ev-item">
+                    <span class="ev-k">METHOD:</span>
+                    <span class="ev-v">Ishikawa (Fishbone) root cause diagrams, FMEA risk prioritization, and 5S standardization of fixture tools.</span>
+                  </div>
+                  <div class="ev-item">
+                    <span class="ev-k">RESULT:</span>
+                    <span class="ev-v">12% reduction in welding-related rework and scrap costs; smoother flow across assembly cells.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
 
         </div>
 
@@ -614,11 +973,9 @@
     </section>
 
 
-
-
     <!-- ====================================================================
-         CHAPTER 04,  OPERATIONS (Deep Dives)
-         Atmosphere: Clean Industrial Precision & Decision Architecture
+         CHAPTER 04 : CASE STUDIES & SYSTEMS VISUALIZATIONS
+         Theme: 12-Part Consulting Format + Clear Classification Badges
          ==================================================================== -->
     <section id="projects" class="section work-section scene-operations">
       <div class="section-container">
@@ -627,204 +984,222 @@
           <div class="premise-tag">
             <span class="premise-idx">04</span>
             <span class="premise-dot">•</span>
-            <span class="premise-name">OPERATIONS & DECISION SYSTEMS</span>
+            <span class="premise-name">OPERATIONS &amp; CASE STUDIES</span>
             <span class="premise-dot">•</span>
-            <span class="premise-sub">Autonomous AI & Decision Architecture</span>
-          </div>
-          <div class="cinematic-quote-callout">
-            <span class="cinema-icon"><svg class="tech-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a14.5 14.5 0 0 0 0 20M12 2a14.5 14.5 0 0 1 0 20M2 12h20"/></svg></span>
-            <span class="cinema-series-tag">SYSTEMS LOGIC // CORE DIRECTIVE</span>
-            <span class="quote-cinema">"The bottleneck dictates the throughput of the entire system. Find it, encode it, automate it."</span>
+            <span class="premise-sub">Consulting Rigor · Technical Depth · Trade-Off Analysis</span>
           </div>
           <h2 class="section-title">
-            The system always has a pattern.<br>
-            <span class="gradient-cyan">Find it. Encode it. Automate it.</span>
+            Structured analysis.<br>
+            <span class="gradient-cyan">Tested in production reality.</span>
           </h2>
           <p class="section-summary">
-            Theory means nothing until it collides with production reality. Below are three mission-critical systems I designed, built, and deployed: converting chaotic enterprise data into automated, visual pipelines governed by deterministic code.
+            Below are structured, consulting-style case studies dissecting major technical initiatives. Each case study documents the baseline, analytical method, trade-offs, measurable results, and critical retrospective learnings.
           </p>
+          <div class="cinematic-quote-callout">
+            <span class="cinema-icon"><svg class="tech-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2a14.5 14.5 0 0 0 0 20M12 2a14.5 14.5 0 0 1 0 20M2 12h20"/></svg></span>
+            <span class="cinema-series-tag">THEORY COLLIDES WITH PRODUCTION</span>
+            <span class="quote-cinema">"Every operational intervention involves trade-offs. The goal is not an imaginary perfect state, but a robust system that delivers under real-world constraints."</span>
+          </div>
         </div>
 
-        <div class="deep-dive-cards-container">
+        <div class="deep-dive-cards-container" id="case-studies-container">
 
-          <!-- Deep Dive 1: Autonomous Multi-Agent SCM & 0.38pt ATS Layout Compactor -->
-          <article class="deep-dive-card glass-panel spotlight-card">
-            <div class="dd-header">
-              <span class="dd-tag">AI SYSTEMS // SCM REASONING & GEOMETRIC AST COMPACTOR</span>
-              <h3 class="dd-title">Autonomous Multi-Agent SCM Pipeline & 0.38pt ATS Layout Compactor</h3>
+          <!-- Case Study 1: Generac Clean Energy Sourcing Architecture -->
+          <article class="deep-dive-card glass-panel spotlight-card" data-roles="sourcing npi pm">
+            <div class="dd-header-row">
+              <div class="taxonomy-badge-wrapper">
+                <span class="taxonomy-badge badge-deployed">PROFESSIONAL DEPLOYMENT</span>
+                <span class="dd-discipline-tag">STRATEGIC SOURCING &amp; NPI OPERATIONS</span>
+              </div>
+              <h3 class="dd-title">Clean Energy Inverter Sourcing Architecture &amp; Decision Workflow</h3>
+              <p class="dd-subtitle">Generac Clean Energy (PWRmicro) · Sizing a $1.2M Annualized Sourcing Opportunity</p>
             </div>
 
-            <!-- Visual Graph 1: Multi-Agent Pipeline Architecture Flowchart -->
-            <div class="project-visual-container">
-              <div class="visual-header-row">
-                <span class="visual-badge">SYSTEM ARCHITECTURE // DATA FLOW PIPELINE</span>
-                <span class="visual-live-tag">Interactive Agent Nodes</span>
+            <!-- Structured 12-Step Consulting Breakdown -->
+            <div class="consulting-case-study-grid">
+              <div class="case-step-card">
+                <span class="step-num">01 / PROBLEM</span>
+                <p>NPI microinverter BOMs had fragmented supplier quotations with inconsistent pricing tiers, missing reliability test records, and unclear dual-sourcing feasibility across 20+ critical components.</p>
               </div>
-              <div class="pipeline-flow-diagram">
-                <div class="flow-step-node active">
-                  <span class="node-step">01</span>
-                  <span class="node-title">Raw PDF / RFQ</span>
-                  <span class="node-sub">Messy Unstructured Input</span>
-                </div>
-                <div class="flow-arrow-wire"><svg class="flow-arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                <div class="flow-step-node">
-                  <span class="node-step">02</span>
-                  <span class="node-title">Claude 3.5 Sonnet</span>
-                  <span class="node-sub">MCP Tool Retrieval</span>
-                </div>
-                <div class="flow-arrow-wire"><svg class="flow-arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                <div class="flow-step-node">
-                  <span class="node-step">03</span>
-                  <span class="node-title">AST Geometry Engine</span>
-                  <span class="node-sub">PyMuPDF Bounding Boxes</span>
-                </div>
-                <div class="flow-arrow-wire"><svg class="flow-arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                <div class="flow-step-node">
-                  <span class="node-step">04</span>
-                  <span class="node-title">0.38pt Delta Loop</span>
-                  <span class="node-sub">Iterative Margin Fitting</span>
-                </div>
-                <div class="flow-arrow-wire"><svg class="flow-arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-                <div class="flow-step-node success">
-                  <span class="node-step">05</span>
-                  <span class="node-title">100% Single-Page</span>
-                  <span class="node-sub">Zero Overflow Verified</span>
-                </div>
+              <div class="case-step-card">
+                <span class="step-num">02 / WHY IT MATTERED</span>
+                <p>Unvetted BOM costs threaten target product margins before volume ramp. Component documentation gaps create severe risk of production stops during commercial ramp.</p>
               </div>
-
-              <!-- Interactive Compaction Simulation Graph -->
-              <div class="visual-split-box">
-                <div class="visual-graph-col">
-                  <div class="graph-legend-row">
-                    <span class="legend-title">Page Overflow Convergence Curve (0.38pt Steps)</span>
-                    <span class="legend-val" id="ats-overflow-stat">Initial: 104.2% Height (2nd Page Spill)</span>
-                  </div>
-                  <canvas id="ats-convergence-canvas" class="visual-graph-canvas" height="150"></canvas>
-                  <div class="graph-controls-row">
-                    <button type="button" class="btn-graph-action" id="btn-run-compactor">
-                      <svg class="sim-btn-play" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                      <span>Execute 0.38pt Compaction Loop</span>
-                    </button>
-                    <span class="graph-status-text" id="ats-compactor-status">Ready. Click to run 6-iteration convergence.</span>
-                  </div>
-                </div>
-
-                <div class="visual-metrics-col">
-                  <div class="visual-kpi-card">
-                    <span class="kpi-num">0.38pt</span>
-                    <span class="kpi-label">Geometric Delta Step</span>
-                    <span class="kpi-desc">Sub-pixel padding reduction preventing text clipping</span>
-                  </div>
-                  <div class="visual-kpi-card">
-                    <span class="kpi-num">8s</span>
-                    <span class="kpi-label">Latency from 45 min</span>
-                    <span class="kpi-desc">Automated vendor RFQ parameter extraction</span>
-                  </div>
-                  <div class="visual-kpi-card success-kpi">
-                    <span class="kpi-num">100%</span>
-                    <span class="kpi-label">Single-Page Compliance</span>
-                    <span class="kpi-desc">Guaranteed zero second-page spill across ATS platforms</span>
-                  </div>
-                </div>
+              <div class="case-step-card">
+                <span class="step-num">03 / BASELINE</span>
+                <p>Initial component cost projections were based on single-source supplier estimates and unstandardized volume assumptions, leaving cost gaps unquantified.</p>
               </div>
-            </div>
-
-            <!-- Interactive Terminal Simulator -->
-            <div class="terminal-card glass-panel">
-              <div class="terminal-header">
-                <div class="window-dots">
-                  <span></span><span></span><span></span>
-                </div>
-                <span class="terminal-title">scm-agent-console // live simulation</span>
-                <span class="terminal-badge">Claude 3.5 Sonnet MCP</span>
+              <div class="case-step-card">
+                <span class="step-num">04 / CONSTRAINTS</span>
+                <p>Stringent electrical reliability specifications; strict NPI launch schedules; dual-sourcing required qualification without delaying time-to-market.</p>
               </div>
-
-              <div class="terminal-screen" id="terminal-screen">
-                <div class="terminal-row prompt">&gt; System ready. Select an operational directive:</div>
-                <div class="terminal-row dim">// Click a command below to stream live agent telemetry</div>
+              <div class="case-step-card">
+                <span class="step-num">05 / DATA</span>
+                <p>20+ component BOMs, supplier quotation matrices across volume tiers (10k/50k/100k), manufacturer spec sheets, and Arena PLM change records.</p>
               </div>
-
-              <div class="terminal-controls">
-                <button class="sim-btn" data-action="rfq"><svg class="sim-btn-play" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Audit Vendor RFQ ($1.2M Batch)</button>
-                <button class="sim-btn" data-action="ats"><svg class="sim-btn-play" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Run 0.38pt Layout Compactor</button>
-                <button class="sim-btn" data-action="mcp"><svg class="sim-btn-play" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Query Supplier Risk via MCP</button>
+              <div class="case-step-card">
+                <span class="step-num">06 / ANALYSIS</span>
+                <p>Constructed bottom-up should-cost comparison models in Advanced Excel; automated reconciliation across vendor quotes and drawings via PowerShell scripts.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">07 / MY RECOMMENDATION</span>
+                <p>Recommended a centralized component decision matrix: prioritized dual-sourcing on high-cost silicon and passive components, and surfaced documentation exceptions.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">08 / IMPLEMENTATION</span>
+                <p>Structured standardized repository in SharePoint and Excel; coordinated with engineering to resolve drawing discrepancies and update Arena PLM change orders.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">09 / RESULT</span>
+                <p>Identified and validated a <strong>$1.2M annualized sourcing opportunity</strong>, presented to sourcing leadership to anchor upcoming supplier negotiations.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">10 / HOW MEASURED</span>
+                <p>Calculated total landed price delta between baseline quotes and benchmark supplier price curves at scaled annual volume forecasts.</p>
+              </div>
+              <div class="case-step-card highlight-learning">
+                <span class="step-num">11 / WHAT I LEARNED</span>
+                <p>Supplier pricing is rarely a fixed number; it is an output of how cleanly your volume forecasts, risk allocations, and engineering specifications are communicated.</p>
+              </div>
+              <div class="case-step-card highlight-different">
+                <span class="step-num">12 / WHAT I WOULD DO DIFFERENTLY</span>
+                <p>I would engage the reliability testing team earlier in the component screening phase to synchronize test coupon lead times with commercial quotation deadlines.</p>
               </div>
             </div>
           </article>
 
-          <!-- Deep Dive 2: DC Slotting & Inventory Alignment -->
-          <article class="deep-dive-card glass-panel spotlight-card">
-            <div class="dd-header">
-              <span class="dd-tag">SUPPLY CHAIN // WAREHOUSE VELOCITY OPTIMIZATION</span>
-              <h3 class="dd-title">Dynamic Velocity-Based Warehouse Slotting & Inventory Alignment</h3>
+          <!-- Case Study 2: Warehouse Velocity Slotting & Pick-Path Optimization -->
+          <article class="deep-dive-card glass-panel spotlight-card" data-roles="sourcing npi quality pm">
+            <div class="dd-header-row">
+              <div class="taxonomy-badge-wrapper">
+                <span class="taxonomy-badge badge-deployed">PROFESSIONAL DEPLOYMENT</span>
+                <span class="dd-discipline-tag">WAREHOUSE OPERATIONS &amp; INDUSTRIAL ENGINEERING</span>
+              </div>
+              <h3 class="dd-title">Dynamic Omnichannel Warehouse Slotting &amp; Pick-Path Optimization</h3>
+              <p class="dd-subtitle">USC Retail Distribution Center · Re-engineering Stock Flow for 1,000+ SKUs</p>
             </div>
 
-            <!-- Visual Graph 2: Warehouse Slotting Heatmap & Pareto Curve -->
+            <!-- Interactive Heatmap Visualization Component -->
             <div class="project-visual-container">
               <div class="visual-header-row">
-                <span class="visual-badge">USC DISTRIBUTION CENTER // 2D VELOCITY HEATMAP</span>
+                <span class="visual-badge">USC DISTRIBUTION CENTER // 2D VELOCITY HEATMAP SIMULATION</span>
                 <div class="slotting-view-toggle">
-                  <button type="button" class="view-btn active" id="btn-view-slotting-after">Optimized Velocity Slotting</button>
+                  <button type="button" class="view-btn active" id="btn-view-slotting-after">Optimized ABC Layout (7.1 km)</button>
                   <button type="button" class="view-btn" id="btn-view-slotting-before">Unsorted Baseline (8.4 km)</button>
                 </div>
               </div>
 
               <div class="visual-split-box">
                 <div class="visual-graph-col">
-                  <canvas id="warehouse-slotting-canvas" class="visual-graph-canvas" height="240"></canvas>
+                  <canvas id="warehouse-slotting-canvas" class="visual-graph-canvas" height="240" aria-label="Warehouse Bay Heatmap"></canvas>
                   <div class="warehouse-legend-bar">
-                    <span class="legend-pill zone-a">Zone A: Fast-Movers (20% SKUs = 80% Picks)</span>
+                    <span class="legend-pill zone-a">Zone A: Fast-Movers (Top 20% SKUs = 80% Picks)</span>
                     <span class="legend-pill zone-b">Zone B: Medium Velocity</span>
-                    <span class="legend-pill zone-c">Zone C: Bulk Storage</span>
+                    <span class="legend-pill zone-c">Zone C: Bulk / Reserve Storage</span>
                   </div>
                 </div>
 
                 <div class="visual-metrics-col">
                   <div class="visual-kpi-card highlight-kpi">
                     <span class="kpi-num">&gt;98%</span>
-                    <span class="kpi-label">Inventory Record Accuracy</span>
-                    <span class="kpi-desc">Verified via real-time barcode reconciliation gates</span>
+                    <span class="kpi-label">Inventory Audit Accuracy</span>
+                    <span class="kpi-desc">Sustained via real-time barcode reconciliation and variance audits</span>
                   </div>
                   <div class="visual-kpi-card">
                     <span class="kpi-num">-15%</span>
-                    <span class="kpi-label">Picker Cycle Time</span>
-                    <span class="kpi-desc">Saved 3.3 km of wasted worker transit per shift</span>
+                    <span class="kpi-label">Restocking Cycle Time</span>
+                    <span class="kpi-desc">Picker travel reduced from 8.4 km to 7.1 km per representative batch</span>
                   </div>
                   <div class="visual-kpi-card">
                     <span class="kpi-num">1,000+</span>
-                    <span class="kpi-label">Active Retail SKUs</span>
-                    <span class="kpi-desc">Dynamically balanced across campus retail accounts</span>
+                    <span class="kpi-label">Active SKUs Managed</span>
+                    <span class="kpi-desc">Reconciled across multiple campus retail distribution channels</span>
                   </div>
                 </div>
               </div>
             </div>
+
+            <div class="consulting-case-study-grid">
+              <div class="case-step-card">
+                <span class="step-num">01 / PROBLEM</span>
+                <p>Picker transit times were inflated due to random item placement, leading to congestion in picking aisles and inventory audit discrepancies across 1,000+ SKUs.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">02 / WHY IT MATTERED</span>
+                <p>During campus peak order rushes, fulfillment delays cascaded into retail stockouts and overtime labor expenses.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">03 / BASELINE</span>
+                <p>8.4 km representative travel per worker shift batch; cycle counting accuracy fluctuated below 90% in high-velocity bays.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">04 / CONSTRAINTS</span>
+                <p>Fixed facility layout; zero budget for conveyor automation; layout changes could not interrupt ongoing store dispatches.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">05 / DATA</span>
+                <p>Historical pick frequency, cube-movement velocity, and order correlation data extracted from the warehouse management system.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">06 / ANALYSIS</span>
+                <p>Pareto 80/20 analysis revealed that 18% of SKUs accounted for 79% of all picker touches, yet were located throughout distant aisles.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">07 / MY RECOMMENDATION</span>
+                <p>Re-slot Zone A fast-movers adjacent to dispatch staging; establish dedicated replenishment lanes and visual bin locator barcodes.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">08 / IMPLEMENTATION</span>
+                <p>Executed staged slotting migration during off-peak weekend windows; built Excel exception trackers to audit bin transfers.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">09 / RESULT</span>
+                <p>Modeled picker travel reduced by 15.5% (to 7.1 km); restocking cycle time reduced by 15%; inventory record accuracy sustained above 98%.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">10 / HOW MEASURED</span>
+                <p>GPS simulated pick-path route calculations benchmarked against daily cycle-count audit logs.</p>
+              </div>
+              <div class="case-step-card highlight-learning">
+                <span class="step-num">11 / WHAT I LEARNED</span>
+                <p>Warehouse efficiency is fundamentally a geometry and velocity problem. Clean slotting delivers higher ROI than complex software overlays.</p>
+              </div>
+              <div class="case-step-card highlight-different">
+                <span class="step-num">12 / WHAT I WOULD DO DIFFERENTLY</span>
+                <p>I would implement dynamic seasonal re-slotting triggers into the inventory management system rather than running quarterly reviews.</p>
+              </div>
+            </div>
           </article>
 
-          <!-- Deep Dive 3: Real-Time Optical Defect Detection for Defense Fabrication -->
-          <article class="deep-dive-card glass-panel spotlight-card">
-            <div class="dd-header">
-              <span class="dd-tag">ROBOTICS & COMPUTER VISION // L&T DEFENSE FABRICATION</span>
-              <h3 class="dd-title">Real-Time Optical Defect Detection for Heavy Defense Fabrication</h3>
+          <!-- Case Study 3: Larsen & Toubro Robotic Welding Monitoring -->
+          <article class="deep-dive-card glass-panel spotlight-card" data-roles="npi quality pm ai">
+            <div class="dd-header-row">
+              <div class="taxonomy-badge-wrapper">
+                <span class="taxonomy-badge badge-deployed">PROFESSIONAL DEPLOYMENT</span>
+                <span class="dd-discipline-tag">MANUFACTURING AUTOMATION &amp; COMPUTER VISION</span>
+              </div>
+              <h3 class="dd-title">Synchronous Robotic Weld Monitoring &amp; Feasibility Modeling</h3>
+              <p class="dd-subtitle">Larsen &amp; Toubro Heavy Engineering · Hazira Complex Defense Fabrication</p>
             </div>
 
-            <!-- Visual Graph 3: Computer Vision Seam Laser Telemetry & Tolerance Corridors -->
+            <!-- Weld Profilometry Simulation Component -->
             <div class="project-visual-container">
               <div class="visual-header-row">
-                <span class="visual-badge">L&T DEFENSE ROBOTICS // REAL-TIME SEAM PROFILOMETRY</span>
-                <span class="visual-live-tag">Synchronous Pass-One Inspection</span>
+                <span class="visual-badge">L&amp;T AUTOMATION // REAL-TIME PROFILOMETRY SIMULATION</span>
+                <span class="visual-live-tag">Synchronous Pass-One Profiling</span>
               </div>
 
               <div class="visual-split-box">
                 <div class="visual-graph-col">
                   <div class="graph-legend-row">
-                    <span class="legend-title">Laser Seam Profile vs. CAD Tolerance Band (±0.05 mm)</span>
+                    <span class="legend-title">Seam Profile vs. CAD Tolerance Band (±0.05 mm)</span>
                     <button type="button" class="btn-graph-action" id="btn-simulate-weld-anomaly">
-                      <span>Simulate Porosity Anomaly</span>
+                      <span>Simulate Thermal Anomaly</span>
                     </button>
                   </div>
-                  <canvas id="weld-vision-canvas" class="visual-graph-canvas" height="200"></canvas>
+                  <canvas id="weld-vision-canvas" class="visual-graph-canvas" height="200" aria-label="Weld Seam Sensor Graph"></canvas>
                   <div class="weld-telemetry-strip" id="weld-telemetry-text">
-                    STATUS: SYNCHRONOUS TRACKING // ARC VOLTAGE: 24.2V // CURRENT: 185A // POROSITY: 0.00%
+                    STATUS: SYNCHRONOUS TRACKING // ARC VOLTAGE: 24.2V // CURRENT: 185A // DEFECT PROBABILITY: 0.02%
                   </div>
                 </div>
 
@@ -832,19 +1207,218 @@
                   <div class="visual-kpi-card highlight-kpi">
                     <span class="kpi-num">+20%</span>
                     <span class="kpi-label">Defect Detection Speed</span>
-                    <span class="kpi-desc">Synchronous pass-one detection vs traditional post-weld NDT</span>
+                    <span class="kpi-desc">Pass-one optical anomaly detection vs post-weld NDT delay</span>
                   </div>
                   <div class="visual-kpi-card">
-                    <span class="kpi-num">-10%</span>
-                    <span class="kpi-label">Rework & Scrap Cost</span>
-                    <span class="kpi-desc">Eliminated destructive grinding of deep root-pass flaws</span>
+                    <span class="kpi-num">10%</span>
+                    <span class="kpi-label">Projected Cost Avoidance</span>
+                    <span class="kpi-desc">Identified via supplier alternative sensitivity modeling</span>
                   </div>
                   <div class="visual-kpi-card">
-                    <span class="kpi-num">99.4%</span>
-                    <span class="kpi-label">Optical Vision Confidence</span>
-                    <span class="kpi-desc">Convolutional models robust to high-temperature arc noise</span>
+                    <span class="kpi-num">Agile PM</span>
+                    <span class="kpi-label">Cross-Functional Delivery</span>
+                    <span class="kpi-desc">Unified mechanical, electrical, and vision programming</span>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            <div class="consulting-case-study-grid">
+              <div class="case-step-card">
+                <span class="step-num">01 / PROBLEM</span>
+                <p>Critical heavy fabrication welds were inspected using post-weld NDT, leading to costly teardowns and rework cycles when root-pass defects occurred.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">02 / WHY IT MATTERED</span>
+                <p>Defense and nuclear structures require high structural integrity; discovering flaws deep in a multi-pass weld requires hours of grinding.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">03 / BASELINE</span>
+                <p>Inspection delays of 4 to 8 hours between welding and radiological/ultrasonic evaluation.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">04 / CONSTRAINTS</span>
+                <p>High-temperature arc radiance; extreme electromagnetic interference; optical sensors required rugged thermal shielding.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">05 / DATA</span>
+                <p>Optical camera image feeds, arc voltage, current telemetry, and weld defect logs across test coupon joints.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">06 / ANALYSIS</span>
+                <p>Evaluated synchronous image-processing algorithms to correlate molten weld pool anomalies with structural porosity.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">07 / MY RECOMMENDATION</span>
+                <p>Deploy a portable optical tracking sensor fixture on the 6-axis robot and source modular camera housings to cut integration expense.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">08 / IMPLEMENTATION</span>
+                <p>Managed mechanical and electrical integration workstreams using Agile sprints; built Excel supplier cost-benefit models for hardware selection.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">09 / RESULT</span>
+                <p>Delivered working prototype achieving a 20% improvement in defect detection speed; supplier analysis projected a 10% reduction in tooling rollout costs.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">10 / HOW MEASURED</span>
+                <p>Comparison of time-to-detection on calibrated weld coupon defects against standard NDT inspection timelines.</p>
+              </div>
+              <div class="case-step-card highlight-learning">
+                <span class="step-num">11 / WHAT I LEARNED</span>
+                <p>Automation projects succeed or fail at the sensor interface. If the physical hardware cannot handle shop-floor thermal noise, algorithmic complexity is useless.</p>
+              </div>
+              <div class="case-step-card highlight-different">
+                <span class="step-num">12 / WHAT I WOULD DO DIFFERENTLY</span>
+                <p>I would perform thermal envelope testing on sensor mounts during continuous multi-hour runs earlier in the prototyping phase.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Case Study 4: AI-Enabled Operations & Supplier Document RAG -->
+          <article class="deep-dive-card glass-panel spotlight-card" data-roles="sourcing ai pm">
+            <div class="dd-header-row">
+              <div class="taxonomy-badge-wrapper">
+                <span class="taxonomy-badge badge-prototype">PERSONAL PROTOTYPE</span>
+                <span class="dd-discipline-tag">AI-ENABLED OPERATIONS &amp; AUTOMATION</span>
+              </div>
+              <h3 class="dd-title">AI-Enabled Supplier Document Intelligence (RAG &amp; MCP Protocol)</h3>
+              <p class="dd-subtitle">Solving the Unstructured Document Bottleneck in Technical Procurement</p>
+            </div>
+
+            <!-- Terminal Simulator Component -->
+            <div class="terminal-card glass-panel">
+              <div class="terminal-header">
+                <div class="window-dots" aria-hidden="true">
+                  <span></span><span></span><span></span>
+                </div>
+                <span class="terminal-title">scm-operations-agent // live simulation</span>
+                <span class="terminal-badge">Python / MCP Tool Calling</span>
+              </div>
+
+              <div class="terminal-screen" id="terminal-screen" role="region" aria-live="polite">
+                <div class="terminal-row prompt">&gt; System initialized. Select an operational query below:</div>
+                <div class="terminal-row dim">// Demonstrating how AI automates unstructured document extraction with engineer verification</div>
+              </div>
+
+              <div class="terminal-controls">
+                <button type="button" class="sim-btn" data-action="rfq"><svg class="sim-btn-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg> Audit Vendor RFQ Quotes</button>
+                <button type="button" class="sim-btn" data-action="ats"><svg class="sim-btn-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg> Run Layout Compactor</button>
+                <button type="button" class="sim-btn" data-action="mcp"><svg class="sim-btn-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg> Query Supplier Risk via MCP</button>
+              </div>
+            </div>
+
+            <div class="consulting-case-study-grid">
+              <div class="case-step-card">
+                <span class="step-num">01 / BUSINESS PROBLEM</span>
+                <p>Supplier technical documentation—datasheets, reliability certificates, environmental declarations—arrives in unstructured, multi-page PDFs, forcing engineers to spend hours manually searching for critical compliance specs.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">02 / WHY IT MATTERED</span>
+                <p>Manual document triage slows sourcing cycle times and increases the risk of overlooking missing compliance parameters during supplier qualification.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">03 / BASELINE</span>
+                <p>30 to 45 minutes of manual engineer review required per component documentation package across multiple supplier candidates.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">04 / CONSTRAINTS</span>
+                <p>Strict verification standards for technical specifications; every extracted parameter must maintain verified line-level source provenance.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">05 / DATA</span>
+                <p>Unstructured supplier PDF datasheets, RoHS/REACH compliance forms, and thermal test matrices.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">06 / WHERE AI ENTERS</span>
+                <p>AI does not make autonomous procurement decisions. Instead, a retrieval-augmented generation (RAG) and Model Context Protocol (MCP) tool semantic-indexes technical specs by part number.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">07 / HUMAN OVERSIGHT</span>
+                <p>Every retrieved parameter displays the exact source page and paragraph bounding box, allowing the sourcing engineer to confirm values with one click.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">08 / IMPLEMENTATION</span>
+                <p>Built a Python pipeline using PyMuPDF for geometric parsing and standardized JSON tool schemas for LLM-assisted parameter verification.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">09 / RESULT</span>
+                <p>Reduced document parameter extraction time from 30+ minutes to seconds, surfacing missing specification exceptions instantly.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">10 / HOW MEASURED</span>
+                <p>Benchmarked document review latency and field extraction accuracy across sample component spec sheets.</p>
+              </div>
+              <div class="case-step-card highlight-learning">
+                <span class="step-num">11 / WHAT I LEARNED</span>
+                <p>In industrial systems, AI is a force multiplier for document indexing and exception flagging, never a substitute for engineering judgment.</p>
+              </div>
+              <div class="case-step-card highlight-different">
+                <span class="step-num">12 / WHAT I WOULD DO DIFFERENTLY</span>
+                <p>I would integrate direct optical character recognition (OCR) pre-processing to handle scanned low-resolution supplier test certificates.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Case Study 5: Multi-Echelon Inventory Optimization -->
+          <article class="deep-dive-card glass-panel spotlight-card" data-roles="sourcing npi">
+            <div class="dd-header-row">
+              <div class="taxonomy-badge-wrapper">
+                <span class="taxonomy-badge badge-research">ACADEMIC / RESEARCH</span>
+                <span class="dd-discipline-tag">INVENTORY OPTIMIZATION &amp; STOCHASTIC MODELING</span>
+              </div>
+              <h3 class="dd-title">Multi-Echelon Inventory Optimization &amp; Safety Stock Modeling</h3>
+              <p class="dd-subtitle">USC Viterbi Optimization Research · Evaluating Working Capital vs. Service Level</p>
+            </div>
+
+            <div class="consulting-case-study-grid">
+              <div class="case-step-card">
+                <span class="step-num">01 / PROBLEM</span>
+                <p>Multi-echelon distribution networks face conflicting incentives: holding inventory near consumers improves fill rates but inflates working capital, while centralized holding introduces lead-time stockout risks.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">02 / WHY IT MATTERED</span>
+                <p>Uncoordinated safety stock policies across regional distribution centers create the bullwhip effect and trap millions in tied-up operating capital.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">03 / BASELINE</span>
+                <p>Decentralized safety stock buffers calculated independently at each warehouse node with static lead-time assumptions.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">04 / CONSTRAINTS</span>
+                <p>Non-stationary customer demand; lead-time variance; minimum order quantity (MOQ) hurdles; strict 95% target service levels.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">05 / DATA</span>
+                <p>Simulated multi-year demand series, supplier lead-time distributions, carrying cost percentages, and stockout penalty costs.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">06 / ANALYSIS</span>
+                <p>Formulated non-linear optimization models in Python (SciPy) and Excel Solver evaluating trade-offs between holding costs and stockout risks.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">07 / MY RECOMMENDATION</span>
+                <p>Implement guaranteed-service model (GSM) safety-stock bounds, pooling high-variance safety stock at central hubs while maintaining lean forward buffers.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">08 / IMPLEMENTATION</span>
+                <p>Constructed a sensitivity dashboard allowing inventory planners to dynamically model service-level trade-offs under lead-time spikes.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">09 / RESULT</span>
+                <p>Modeled an 8% to 15% reduction in total inventory holding costs across regional distribution centers while sustaining target fill rates above 95%.</p>
+              </div>
+              <div class="case-step-card">
+                <span class="step-num">10 / HOW MEASURED</span>
+                <p>Monte Carlo simulation runs comparing stochastic stockout frequencies and total inventory carrying cost over 52 simulated weeks.</p>
+              </div>
+              <div class="case-step-card highlight-learning">
+                <span class="step-num">11 / WHAT I LEARNED</span>
+                <p>Safety stock should not be spread evenly across an enterprise. Risk pooling at upstream nodes offers superior resilience at lower capital cost.</p>
+              </div>
+              <div class="case-step-card highlight-different">
+                <span class="step-num">12 / WHAT I WOULD DO DIFFERENTLY</span>
+                <p>I would incorporate dynamic freight rate tariffs into the objective function to evaluate the interaction between inventory holding and expedited shipping costs.</p>
               </div>
             </div>
           </article>
@@ -855,35 +1429,35 @@
     </section>
 
 
-<section id="os" class="section work-section scene-pulp">
-      <canvas id="pulp-canvas" class="scene-canvas"></canvas>
+    <!-- ====================================================================
+         CHAPTER 05 : OPERATING SYSTEM (METHODOLOGY)
+         Theme: 8-Stage Operating Loop — Calm, Pragmatic Systems Discipline
+         ==================================================================== -->
+    <section id="os" class="section work-section scene-pulp">
+      <canvas id="pulp-canvas" class="scene-canvas" aria-hidden="true"></canvas>
 
       <div class="section-container">
 
         <div class="section-header">
-          <div class="cinematic-section-hero-banner">
-            <img src="./assets/visuals/pulp_briefcase.jpg" alt="Pulp Fiction Jules and Vincent Serious Coffee Discussion" class="cinematic-hero-img" />
-            <div class="cinematic-banner-tag">CINEMA REFERENCE: PULP FICTION // JULES & VINCENT // "SERIOUS GOURMET COFFEE"</div>
-          </div>
           <div class="premise-tag">
             <span class="premise-idx">05</span>
             <span class="premise-dot">•</span>
-            <span class="premise-name">PULP FICTION // WINSTON WOLFE PROTOCOL</span>
+            <span class="premise-name">OPERATIONS OPERATING SYSTEM</span>
             <span class="premise-dot">•</span>
-            <span class="premise-sub">Surgical Problem Solving Engine</span>
-          </div>
-          <div class="cinematic-quote-callout">
-            <span class="cinema-icon"><svg class="tech-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
-            <span class="cinema-series-tag">PULP FICTION // WINSTON WOLFE PROTOCOL</span>
-            <span class="quote-cinema">"I'm Winston Wolfe. I solve problems. Zero panic, surgical precision, deterministic closure."</span>
+            <span class="premise-sub">Disciplined Engineering Framework</span>
           </div>
           <h2 class="section-title">
-            It is not luck. It is not instinct.<br>
-            <span class="gradient-gold">It is my repeatable <em>operating system</em>.</span>
+            Not instinct. Not guesswork.<br>
+            <span class="gradient-gold">A repeatable <em>operating framework</em>.</span>
           </h2>
           <p class="section-summary">
-            Every breakthrough I deliver traces back to an immutable execution protocol. Step through each phase of the mental loop I deploy when confronted with high-stakes operational chaos, complete with interactive schematic blueprints.
+            When operational chaos strikes—a supplier line stops, lead times triple, or inventory reconciliations drift—panic is an unforced error. Below is the 8-stage loop I deploy to isolate root causes, model trade-offs, and engineer stable outcomes.
           </p>
+          <div class="cinematic-quote-callout">
+            <span class="cinema-icon"><svg class="tech-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
+            <span class="cinema-series-tag">OPERATIONAL PHILOSOPHY // WINSTON WOLFE CALM</span>
+            <span class="quote-cinema">"Good systems are not variance-free. They are designed to remain stable despite variance."</span>
+          </div>
         </div>
 
         <!-- 8-Stage Interactive Pipeline Flow Graphic -->
@@ -891,28 +1465,27 @@
           <div class="pipeline-header">
             <div class="pipeline-status">
               <span class="status-pulse-dot"></span>
-              <span class="pipeline-status-text">SURGICAL PIPELINE: STAGE <span id="pipeline-active-num">01</span> / 08</span>
+              <span class="pipeline-status-text">OPERATIONAL LOOP: STAGE <span id="pipeline-active-num">01</span> / 08</span>
             </div>
             <div class="pipeline-controls">
-              <button class="os-ctrl-btn" id="os-prev-btn" title="Previous Phase"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg> Prev</button>
-              <button class="os-ctrl-btn" id="os-next-btn" title="Next Phase">Next <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
-              <button class="os-ctrl-btn os-auto-btn" id="os-auto-btn" title="Toggle Auto Simulation"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg> Auto Loop</button>
+              <button type="button" class="os-ctrl-btn" id="os-prev-btn" title="Previous Phase"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg> Prev</button>
+              <button type="button" class="os-ctrl-btn" id="os-next-btn" title="Next Phase">Next <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
+              <button type="button" class="os-ctrl-btn os-auto-btn" id="os-auto-btn" title="Toggle Auto Simulation"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg> Auto Loop</button>
             </div>
           </div>
           
-          <div class="pipeline-nodes-track" id="pipeline-nodes-track">
-            <!-- Dynamically populated or rendered nodes -->
-            <div class="p-node active" data-step="0"><span class="p-num">01</span><span class="p-label">Ambiguity</span></div>
+          <div class="pipeline-nodes-track" id="pipeline-nodes-track" role="tablist" aria-label="Operating System Stages">
+            <div class="p-node active" data-step="0"><span class="p-num">01</span><span class="p-label">Problem</span></div>
             <div class="p-line"></div>
-            <div class="p-node" data-step="1"><span class="p-num">02</span><span class="p-label">System</span></div>
+            <div class="p-node" data-step="1"><span class="p-num">02</span><span class="p-label">Boundary</span></div>
             <div class="p-line"></div>
             <div class="p-node" data-step="2"><span class="p-num">03</span><span class="p-label">Constraint</span></div>
             <div class="p-line"></div>
             <div class="p-node" data-step="3"><span class="p-num">04</span><span class="p-label">Data</span></div>
             <div class="p-line"></div>
-            <div class="p-node" data-step="4"><span class="p-num">05</span><span class="p-label">Design</span></div>
+            <div class="p-node" data-step="4"><span class="p-num">05</span><span class="p-label">Architecture</span></div>
             <div class="p-line"></div>
-            <div class="p-node" data-step="5"><span class="p-num">06</span><span class="p-label">Execute</span></div>
+            <div class="p-node" data-step="5"><span class="p-num">06</span><span class="p-label">Execution</span></div>
             <div class="p-line"></div>
             <div class="p-node" data-step="6"><span class="p-num">07</span><span class="p-label">Measure</span></div>
             <div class="p-line"></div>
@@ -920,64 +1493,63 @@
           </div>
         </div>
 
-        <!-- Interactive 8-Stage Stepper & Blueprint Engine -->
+        <!-- Interactive 8-Stage Stepper & Narrative Body -->
         <div class="os-interactive-wrapper glass-panel spotlight-card">
 
-          <div class="os-stepper-nav" id="os-stepper-nav">
-            <button class="os-step-btn active" data-step="0">
+          <div class="os-stepper-nav" id="os-stepper-nav" role="tablist">
+            <button type="button" class="os-step-btn active" data-step="0" role="tab" aria-selected="true">
               <span class="s-num">01</span>
-              <span class="s-name">Messy Problem</span>
+              <span class="s-name">Problem Definition</span>
             </button>
-            <button class="os-step-btn" data-step="1">
+            <button type="button" class="os-step-btn" data-step="1" role="tab" aria-selected="false">
               <span class="s-num">02</span>
-              <span class="s-name">Understand System</span>
+              <span class="s-name">System Boundaries</span>
             </button>
-            <button class="os-step-btn" data-step="2">
+            <button type="button" class="os-step-btn" data-step="2" role="tab" aria-selected="false">
               <span class="s-num">03</span>
-              <span class="s-name">Find Constraints</span>
+              <span class="s-name">Constraint Analysis</span>
             </button>
-            <button class="os-step-btn" data-step="3">
+            <button type="button" class="os-step-btn" data-step="3" role="tab" aria-selected="false">
               <span class="s-num">04</span>
-              <span class="s-name">Analyze Data</span>
+              <span class="s-name">Ground Truth Data</span>
             </button>
-            <button class="os-step-btn" data-step="4">
+            <button type="button" class="os-step-btn" data-step="4" role="tab" aria-selected="false">
               <span class="s-num">05</span>
-              <span class="s-name">Design Solution</span>
+              <span class="s-name">Solution Design</span>
             </button>
-            <button class="os-step-btn" data-step="5">
+            <button type="button" class="os-step-btn" data-step="5" role="tab" aria-selected="false">
               <span class="s-num">06</span>
-              <span class="s-name">Execute</span>
+              <span class="s-name">Controlled Rollout</span>
             </button>
-            <button class="os-step-btn" data-step="6">
+            <button type="button" class="os-step-btn" data-step="6" role="tab" aria-selected="false">
               <span class="s-num">07</span>
-              <span class="s-name">Measure</span>
+              <span class="s-name">Empirical Validation</span>
             </button>
-            <button class="os-step-btn" data-step="7">
+            <button type="button" class="os-step-btn" data-step="7" role="tab" aria-selected="false">
               <span class="s-num">08</span>
-              <span class="s-name">Improve</span>
+              <span class="s-name">Kaizen Loop</span>
             </button>
           </div>
 
           <div class="os-card-body">
-            <div class="os-card-badge" id="os-card-badge">PHASE 01 // PROBLEM DEFINITION</div>
-            <h3 class="os-card-title" id="os-card-title">Embrace the Raw Ambiguity</h3>
+            <div class="os-card-badge" id="os-card-badge">STAGE 01 // PROBLEM DEFINITION</div>
+            <h3 class="os-card-title" id="os-card-title">Isolate the Structural Dilemma from Emotional Noise</h3>
             <p class="os-card-narrative" id="os-card-narrative">
-              Real-world operations rarely arrive with a clean problem statement. When lead times inflate or components vanish, I refuse to accept superficial explanations. My first step is stripping away the emotional noise to isolate the underlying mathematical dilemma.
+              Operational crises rarely arrive with clear problem statements. When shipments stall or costs surge, stakeholders often confuse symptoms with causes. The first duty of an operations engineer is stripping away narrative assumptions to formulate the underlying mathematical and physical trade-off.
             </p>
 
-            <!-- Dynamic Interactive Engineering Diagram Container -->
-            <div class="os-diagram-container" id="os-stage-diagram" aria-label="Interactive Operational Architecture Schematic">
+            <div class="os-diagram-container" id="os-stage-diagram" aria-label="Interactive Operational Schematic">
               <!-- Rendered dynamically by app.js based on selected phase -->
             </div>
 
             <div class="os-card-grid">
               <div class="os-detail-box">
-                <span class="os-d-lbl">MENTAL CHECKLIST</span>
-                <p class="os-d-txt" id="os-checklist">What is the symptom versus the root cause? Who is impacted downstream? What unverified assumptions are clouding our judgment?</p>
+                <span class="os-d-lbl">OPERATIONAL CHECKLIST</span>
+                <p class="os-d-txt" id="os-checklist">What is the verifiable symptom versus root cause? Who owns the downstream handoff? What unvalidated assumptions are distorting our view?</p>
               </div>
               <div class="os-detail-box">
-                <span class="os-d-lbl">REAL EXAMPLE</span>
-                <p class="os-d-txt" id="os-example">At Generac, sudden RFQ price spikes on microinverter BOMs were blamed on market scarcity. I dug into the bottom-up cost breakdown and proved the quotes were distorted by unverified should-cost models.</p>
+                <span class="os-d-lbl">EMPIRICAL EXAMPLE</span>
+                <p class="os-d-txt" id="os-example">At Generac, microinverter quotation spikes were initially attributed to market component scarcity. By building a bottom-up cost breakdown, I proved pricing was distorted by supplier volume assumptions rather than raw silicon shortage.</p>
               </div>
             </div>
           </div>
@@ -989,12 +1561,11 @@
 
 
     <!-- ====================================================================
-         CHAPTER 06,  DRIVE & FLOW
-         Atmosphere: Interstellar docking scene,  precision under extreme pressure.
-         Reference: Interstellar,  The docking. 90° angle. No margin for error.
+         CHAPTER 06 : DRIVE, COMPOSURE & PHILOSOPHY
+         Theme: Formula 1 Telemetry, Athletic Composure, Interstellar Scale
          ==================================================================== -->
     <section id="drive" class="section work-section scene-stellar">
-      <canvas id="stellar-canvas" class="scene-canvas"></canvas>
+      <canvas id="stellar-canvas" class="scene-canvas" aria-hidden="true"></canvas>
 
       <div class="section-container">
 
@@ -1002,110 +1573,102 @@
           <div class="premise-tag">
             <span class="premise-idx">06</span>
             <span class="premise-dot">•</span>
-            <span class="premise-name">Drive & Flow</span>
+            <span class="premise-name">DRIVE &amp; PHILOSOPHY</span>
             <span class="premise-dot">•</span>
-            <span class="premise-sub">Athletic Discipline & Cinematic Ambition</span>
+            <span class="premise-sub">Athletic Discipline &amp; Systems Thinking</span>
           </div>
           <h2 class="section-title">
-            In split seconds, composure is the skill.<br>
+            Under pressure, composure is the skill.<br>
             <span class="gradient-violet">Discipline scales. <em>Panic doesn't</em>.</span>
           </h2>
           <p class="section-summary">
-            In Formula 1, a grand prix is decided in a 2.1-second pit window. In the octagon, panic is terminal. The composure I forge in athletic competition is the exact discipline I bring to mission-critical supply networks: calculated, unyielding, and calm when the stakes escalate.
+            My engineering mindset is shaped by athletic discipline and grand-scale systems thinking. Whether analyzing tire degradation curves in Formula 1 or aligning the kinetic chain in cricket, the lesson is identical: sustainable excellence comes from mechanical repeatability, deep telemetry, and calm execution when the stakes escalate.
           </p>
+          <div class="cinematic-quote-callout">
+            <span class="cinema-icon"><svg class="signal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+            <span class="cinema-series-tag">ATHLETIC DISCIPLINE // TELEMETRY &amp; REPEATABILITY</span>
+            <span class="quote-cinema">"Champions do not rise to the occasion; they fall to the level of their preparation and process capability."</span>
+          </div>
         </div>
 
         <div class="bento-sports-grid">
 
           <div class="sport-bento-card glass-panel spotlight-card">
             <div class="sport-media-banner">
-              <img src="./assets/visuals/f1_telemetry.jpg" alt="Formula 1 Night Racing Telemetry & Tire Degradation Analysis" class="sport-banner-img" />
+              <img src="./assets/visuals/f1_telemetry.jpg" alt="Formula 1 Telemetry &amp; Strategy" class="sport-banner-img" />
               <div class="sport-media-overlay"></div>
-              <span class="sport-telemetry-badge">LIVE F1 TELEMETRY // 2.1s PIT WINDOW</span>
+              <span class="sport-telemetry-badge">DYNAMIC DECISION-MAKING // 2.1s PIT WINDOW</span>
             </div>
             <div class="sport-top">
               <span class="sport-title">Formula 1</span>
             </div>
-            <p class="sport-sub">Pit Window Timing & High-Speed Strategy</p>
-            <p class="sport-desc">To me, tire degradation curves and undercut pit stop strategies are not just racing; they are real-time dynamic replenishment models. When conditions shift unexpectedly, I calculate the optimal pit window rather than gambling on instinct.</p>
+            <p class="sport-sub">Tire Degradation Curves &amp; Dynamic Replenishment</p>
+            <p class="sport-desc">Tire degradation in F1 is a live case study in constrained optimization. Under safety-car variance or changing weather, the optimal undercut pit stop is calculated using predictive degradation curves rather than reactive intuition. In supply chains, dynamic inventory policies follow that exact principle.</p>
           </div>
 
           <div class="sport-bento-card glass-panel spotlight-card">
             <div class="sport-media-banner">
-              <img src="./assets/visuals/cricket_kinetic.jpg" alt="Cricket Cover Drive Kinetic Sequencing & Velocity Vectors" class="sport-banner-img" />
+              <img src="./assets/visuals/cricket_kinetic.jpg" alt="Cricket Kinetic Chain Sequencing" class="sport-banner-img" />
               <div class="sport-media-overlay"></div>
-              <span class="sport-telemetry-badge">KINETIC CHAIN // MOMENTUM TRANSFER</span>
+              <span class="sport-telemetry-badge">KINETIC CHAIN // MULTI-TIER SYNCHRONIZATION</span>
             </div>
             <div class="sport-top">
               <span class="sport-title">Cricket</span>
             </div>
-            <p class="sport-sub">Kinetic Chain Sequencing & Peak Execution</p>
-            <p class="sport-desc">Transferring momentum seamlessly through the kinetic chain from foot strike to ball release mirrors how I align multi-tier supply networks. A single broken link in the sequence destroys the outcome. Perfection requires total mechanical synchronization.</p>
+            <p class="sport-sub">Kinetic Chain Alignment &amp; Bullwhip Prevention</p>
+            <p class="sport-desc">In batting and bowling, energy transfers from ground strike through hips, shoulders, and wrists. A timing miscalibration at the root ruins the outcome at the release. Similarly, in multi-tier supply networks, uncoordinated handoffs create bullwhip distortion. Precision requires end-to-end synchronization.</p>
           </div>
 
           <div class="sport-bento-card glass-panel spotlight-card">
             <div class="sport-media-banner">
-              <img src="./assets/visuals/golf_precision.jpg" alt="PGA Tour Links Golf Precision & Launch Monitor Telemetry" class="sport-banner-img" />
+              <img src="./assets/visuals/golf_precision.jpg" alt="Golf Sub-Degree Face Tolerance" class="sport-banner-img" />
               <div class="sport-media-overlay"></div>
-              <span class="sport-telemetry-badge">PGA LAUNCH // 0.8 DEG FACE TOLERANCE</span>
+              <span class="sport-telemetry-badge">PROCESS REPEATABILITY // 0.8° FACE CORRIDOR</span>
             </div>
             <div class="sport-top">
               <span class="sport-title">Golf</span>
             </div>
-            <p class="sport-sub">Sub-Degree Tolerances</p>
-            <p class="sport-desc">A single half-degree error in clubface angle at impact turns a 300-yard drive into catastrophe. I hold my supply chains and fabrication cells to that exact discipline: microscopic tolerances and zero acceptance of variance.</p>
+            <p class="sport-sub">Repeatability &amp; Tolerance Corridors (Cpk)</p>
+            <p class="sport-desc">A single half-degree error in clubface angle at impact produces wild dispersion over a 300-yard flight. Championship golf is not heroic shot-making; it is disciplined process capability (Cpk). I hold manufacturing cells and supplier quality to that exact standard.</p>
           </div>
 
           <div class="sport-bento-card glass-panel spotlight-card">
             <div class="sport-media-banner">
-              <img src="./assets/visuals/mma_octagon.jpg" alt="Championship Octagon Composure Under Pressure" class="sport-banner-img" />
+              <img src="./assets/visuals/mma_octagon.jpg" alt="MMA Composure Under Physical Pressure" class="sport-banner-img" />
               <div class="sport-media-overlay"></div>
-              <span class="sport-telemetry-badge">OCTAGON OCTAVE // 185 BPM COMPOSURE</span>
+              <span class="sport-telemetry-badge">SITUATIONAL AWARENESS // PRESSURE TESTING</span>
             </div>
             <div class="sport-top">
               <span class="sport-title">MMA</span>
             </div>
-            <p class="sport-sub">Octagon Composure Under Fire</p>
-            <p class="sport-desc">When an opponent closes the distance or a Tier-1 supplier abruptly halts shipments, panic is an operational death sentence. I train myself to drop my heart rate under extreme pressure, see the physical geometry clearly, and strike with decisive clarity.</p>
+            <p class="sport-sub">Composure Under Operational Pressure</p>
+            <p class="sport-desc">When an opponent presses the pace or a critical supplier halts delivery, panic guarantees defeat. High-level martial arts teaches you to lower your pulse under stress, observe spatial geometry without emotion, and execute the highest-probability countermove with conviction.</p>
           </div>
 
           <div class="sport-bento-card glass-panel spotlight-card">
             <div class="sport-media-banner">
-              <img src="./assets/visuals/table_tennis.jpg" alt="Table Tennis High-Speed Reflex Arc & Ball Spin Dynamics" class="sport-banner-img" />
+              <img src="./assets/visuals/table_tennis.jpg" alt="Table Tennis High-Speed Reflex Arc" class="sport-banner-img" />
               <div class="sport-media-overlay"></div>
-              <span class="sport-telemetry-badge">ITTF PRO TOUR // 15ms SPIN VECTOR</span>
+              <span class="sport-telemetry-badge">REFLEX ARC // RAPID ANOMALY DETECTION</span>
             </div>
             <div class="sport-top">
               <span class="sport-title">Table Tennis</span>
             </div>
-            <p class="sport-sub">15ms Reflex Arc</p>
-            <p class="sport-desc">Reading the spin off the opponent's rubber in under 15 milliseconds taught me to anticipate trajectories before they manifest. I apply that exact reflex arc to real-time manufacturing telemetry and automated anomaly detection.</p>
+            <p class="sport-sub">Micro-Second Trajectory Anticipation</p>
+            <p class="sport-desc">Reading spin off the opponent's paddle in under 20 milliseconds requires reading subtle physical cues before the ball leaves the rubber. In manufacturing quality, that reflex is mirrored in synchronous optical monitoring: catching weld anomalies at pass one.</p>
           </div>
 
           <div class="sport-bento-card glass-panel spotlight-card">
             <div class="sport-media-banner">
-              <img src="./assets/visuals/soccer_spatial.jpg" alt="Champions League Tactical Night Stadium Spatial Passing Lanes" class="sport-banner-img" />
+              <img src="./assets/visuals/interstellar_gargantua.jpg" alt="Interstellar Gargantua Systems Architecture" class="sport-banner-img" />
               <div class="sport-media-overlay"></div>
-              <span class="sport-telemetry-badge">CHAMPIONS LEAGUE // 360 DEG SPATIAL LANES</span>
+              <span class="sport-telemetry-badge">SYSTEMS SCALE // CONSTRAINED DECISION HORIZONS</span>
             </div>
             <div class="sport-top">
-              <span class="sport-title">Soccer</span>
+              <span class="sport-title">Systems Cinema</span>
             </div>
-            <p class="sport-sub">360-Degree Spatial Anticipation</p>
-            <p class="sport-desc">Anticipating open passing lanes three moves before they materialize is identical to how I govern end-to-end supply chains: predicting downstream harbor and freight chokepoints weeks before containers ever touch the water.</p>
-          </div>
-
-          <div class="sport-bento-card glass-panel spotlight-card cinema-card">
-            <div class="sport-media-banner">
-              <img src="./assets/visuals/interstellar_gargantua.jpg" alt="Interstellar Gargantua Accretion Disk & Endurance Docking" class="sport-banner-img" />
-              <div class="sport-media-overlay"></div>
-              <span class="sport-telemetry-badge">INTERSTELLAR // 68 RPM SYNCHRONIZATION</span>
-            </div>
-            <div class="sport-top">
-              <span class="sport-title">Cinematic Curiosity</span>
-            </div>
-            <p class="sport-sub">Interstellar Scale // Operational Clarity</p>
-            <p class="sport-desc">I am drawn to grand-scale engineering, the relativity of time, and the pursuit of truth amid vast cosmic noise. In both interstellar astrophysics and complex global enterprises, the law holds: with relentless rigor and mathematical conviction, chaos collapses into clean, decisive trajectory.</p>
+            <p class="sport-sub">Interstellar Scale &amp; Structural Architecture</p>
+            <p class="sport-desc">I am drawn to filmmakers like Christopher Nolan who build interlocking, multi-layered narrative engines. In both cinematic structures and complex industrial enterprises, the universal principle holds: when you respect the underlying physics and structure your handoffs rigorously, vast systems operate with clarity.</p>
           </div>
 
         </div>
@@ -1115,100 +1678,125 @@
 
 
     <!-- ====================================================================
-         CHAPTER 07,  DISPATCH GATE (Contact)
-         Atmosphere: Confidential executive channel
+         CHAPTER 07 : LET'S BUILD BETTER SYSTEMS (CONTACT & CREDENTIALS)
+         Theme: Zero friction, immediate resume access, verified education
          ==================================================================== -->
-    <section id="dossier" class="section work-section scene-dispatch">
+    <section id="contact" class="section work-section scene-dispatch">
       <div class="section-container">
 
         <div class="section-header">
           <div class="premise-tag">
             <span class="premise-idx">07</span>
             <span class="premise-dot">•</span>
-            <span class="premise-name">Dispatch Gate</span>
+            <span class="premise-name">NEXT HORIZON</span>
             <span class="premise-dot">•</span>
-            <span class="premise-sub">Confidential Inquiry</span>
+            <span class="premise-sub">Full-Time Opportunities Beginning January 2027</span>
           </div>
           <h2 class="section-title">
-            I do not distribute résumés.<br>
-            <span class="gradient-cyan">I dispatch verified technical dossiers. On request.</span>
+            Let's build <span class="gradient-cyan">better systems.</span>
           </h2>
           <p class="section-summary">
-            To respect proprietary defense manufacturing data and strict supplier NDAs, I release my full technical whitepapers, architectural schematics, and official résumé directly to talent partners and executive leaders upon verified request.
+            I am currently completing my Master of Science in Engineering Management at USC Viterbi and am available for <strong>Full-Time Roles beginning January 2027</strong>. Explore immediate contact channels or download my verified resume directly below.
           </p>
         </div>
 
+        <!-- Fast-Track Recruiter & Executive Gateway -->
         <div class="dossier-layout">
-          <!-- Transmission Form & Contacts -->
           <div class="dossier-box glass-panel spotlight-card">
             <div class="dossier-form-header">
-              <span class="dossier-kicker">SECURE TRANSMISSION PORTAL</span>
-              <h3 class="dossier-headline">Request My Engineering Dossier</h3>
-              <p class="dossier-subtext">Direct delivery of my complete technical portfolio, verified ROI metrics, and industrial architecture whitepapers.</p>
+              <span class="dossier-kicker">TALENT &amp; EXECUTIVE INQUIRIES</span>
+              <h3 class="dossier-headline">Connect Directly or Download Credentials</h3>
+              <p class="dossier-subtext">
+                Targeting: <strong>Supply Chain · Strategic Sourcing · NPI Operations · Supplier Industrialization · Technical / Operations Program Management</strong>.
+              </p>
             </div>
 
-            <form id="dossier-form" class="clean-form" onsubmit="return false;">
-              <!-- Anti-Bot Cyber Security Trap (Honeypot) -->
-              <input type="text" name="_hp_security_trap" id="hp_security_trap" style="display:none!important;" tabindex="-1" autocomplete="off" aria-hidden="true" />
-              <div class="form-grid">
-                <div class="input-block">
-                  <label for="talent-name">Your Name & Title</label>
-                  <input type="text" id="talent-name" placeholder="e.g. Alex Morgan // Senior Talent Lead" required />
+            <!-- Direct Zero-Friction Actions -->
+            <div class="direct-recruiter-action-grid">
+              <a href="assets/Harsh_Mistry_Resume.pdf" download="Harsh_Mistry_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-primary btn-large-resume" title="Download Official PDF Resume">
+                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+                <span>Download Official Resume (PDF)</span>
+              </a>
+              <a href="mailto:harshnil@usc.edu?subject=Supply%20Chain%20%26%20Operations%20Inquiry%20-%20Harsh%20Mistry&body=Hello%20Harsh,%0A%0AI%20reviewed%20your%20portfolio%20and%20would%20like%20to%20discuss%20an%20opportunity%20with%20our%20team.%0A%0ABest%20regards," class="btn-secondary btn-large-email">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                <span>Email: harshnil@usc.edu</span>
+              </a>
+              <a href="https://www.linkedin.com/in/harshmistry8111/" target="_blank" rel="noopener noreferrer" class="btn-ghost btn-large-linkedin">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                <span>LinkedIn Profile</span>
+              </a>
+            </div>
+
+            <!-- Optional Confidential Dossier Drawer / Request Form -->
+            <div class="confidential-dossier-card">
+              <div class="dossier-callout-header">
+                <div class="dossier-shield-icon">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 </div>
-                <div class="input-block">
-                  <label for="talent-company">Organization & Role</label>
-                  <input type="text" id="talent-company" placeholder="e.g. Tesla // Global Supply Manager" required />
+                <div class="dossier-text-block">
+                  <span class="dossier-heading-sm">Request Confidential Engineering Dossier</span>
+                  <span class="dossier-sub-sm">For hiring leaders seeking proprietary defense manufacturing whitepapers or NDA-compliant sourcing deep dives.</span>
                 </div>
               </div>
 
-              <div class="input-block">
-                <label for="talent-email">Corporate Work Email</label>
-                <input type="email" id="talent-email" placeholder="e.g. amorgan@company.com" required />
-              </div>
+              <form id="dossier-form" class="clean-form" onsubmit="return false;">
+                <input type="text" name="_hp_trap" id="hp_security_trap" style="display:none!important;" tabindex="-1" autocomplete="off" aria-hidden="true" />
+                <div class="form-grid">
+                  <div class="input-block">
+                    <label for="talent-name">Your Name &amp; Title</label>
+                    <input type="text" id="talent-name" placeholder="e.g. Alex Morgan // SCM Director" required />
+                  </div>
+                  <div class="input-block">
+                    <label for="talent-company">Organization &amp; Team</label>
+                    <input type="text" id="talent-company" placeholder="e.g. Tesla // Sourcing &amp; Supply" required />
+                  </div>
+                </div>
 
-              <div class="form-btn-group">
-                <button type="button" id="submit-dossier-btn" class="btn-primary">
-                  <span>Send Dispatch Request</span>
-                  <span class="btn-arrow">→</span>
-                </button>
-                <a href="mailto:harshnil@usc.edu?subject=Executive%20SCM%20Inquiry%20-%20Harsh%20Mistry&body=Hello%20Harsh,%0A%0AWe%20would%20like%20to%20connect%20regarding%20an%20opportunity.%20Please%20share%20your%20confidential%20dossier.%0A%0ABest%20regards," class="btn-secondary">
-                  <span>harshnil@usc.edu</span>
-                </a>
-                <a href="mailto:hnmistry28@gmail.com" class="btn-ghost">
-                  <span>hnmistry28@gmail.com</span>
-                </a>
-              </div>
+                <div class="input-block">
+                  <label for="talent-email">Corporate Work Email</label>
+                  <input type="email" id="talent-email" placeholder="e.g. amorgan@company.com" required />
+                </div>
 
-              <div id="dossier-alert" class="form-alert hidden">
-                <span class="alert-icon">✓</span>
-                <span>Dispatch confirmed. I am preparing your verified engineering dossier for direct transmission.</span>
-              </div>
-            </form>
+                <div class="form-btn-group">
+                  <button type="button" id="submit-dossier-btn" class="btn-primary">
+                    <span>Submit Dossier Request</span>
+                    <span class="btn-arrow">→</span>
+                  </button>
+                  <span class="form-secure-note">Transmits directly to harshnil@usc.edu</span>
+                </div>
+
+                <div id="dossier-alert" class="form-alert hidden" role="status">
+                  <span class="alert-icon">✓</span>
+                  <span>Request received. I will review and transmit the confidential technical materials directly to your corporate inbox.</span>
+                </div>
+              </form>
+            </div>
+
           </div>
         </div>
 
-        <!-- Education Credentials with Scraped Official University Logos -->
+        <!-- Verified Education Credentials -->
         <div class="edu-credentials-strip">
           <div class="edu-card glass-panel spotlight-card">
             <div class="edu-logo-wrapper usc-logo-box">
-              <img src="./assets/logos/usc_logo.svg" alt="University of Southern California Official Seal" class="edu-logo-img usc-seal" />
+              <img src="./assets/logos/usc_logo.svg" alt="USC Viterbi Seal" class="edu-logo-img usc-seal" />
             </div>
             <div class="edu-text">
-              <span class="edu-degree">M.S. in Engineering Management &amp; Graduate Certificate in Optimization and Supply Chain Management</span>
-              <span class="edu-school">University of Southern California, Viterbi School of Engineering (Jan 2025 - Dec 2026)</span>
-              <span class="edu-detail">Los Angeles, CA // Current Cumulative GPA: 3.73 / 4.00 // Epstein ISE Department &amp; Marshall Business School Collaboration</span>
-              <span class="edu-detail" style="color: #64748b; font-size: 11px;">Verified Coursework: Time Series Forecasting (A), Engineering Project Mgmt (A), Economic Analysis (A), SCM (B+), Statistics (A-)</span>
+              <span class="edu-degree">Master of Science in Engineering Management &amp; Graduate Certificate in Optimization and SCM</span>
+              <span class="edu-school">University of Southern California, Viterbi School of Engineering (Jan 2025 – Dec 2026 Expected)</span>
+              <span class="edu-detail">Los Angeles, CA · Cumulative GPA: 3.73 / 4.00 · Epstein Department of Industrial &amp; Systems Engineering</span>
+              <span class="edu-detail" style="color: #94a3b8; font-size: 12px;">Verified Coursework: Supply Chain Management, Time Series Forecasting, Global Operations, Engineering Project Management, Supply Chain Analytics, Statistics for Engineers</span>
             </div>
           </div>
           <div class="edu-card glass-panel spotlight-card">
             <div class="edu-logo-wrapper pdeu-logo-box">
-              <img src="./assets/logos/pdeu_logo.png" alt="Pandit Deendayal Energy University Official Logo" class="edu-logo-img pdeu-seal" />
+              <img src="./assets/logos/pdeu_logo.png" alt="PDEU Logo" class="edu-logo-img pdeu-seal" />
             </div>
             <div class="edu-text">
-              <span class="edu-degree">B.Tech in Mechanical Engineering</span>
-              <span class="edu-school">Pandit Deendayal Energy University (PDEU) (Aug 2019 - May 2023)</span>
-              <span class="edu-detail">Gandhinagar, Gujarat // Final Cumulative CPI (CGPA): 9.06 / 10.00 (First Class with Distinction) // 159 Credits Completed</span>
-              <span class="edu-detail" style="color: #64748b; font-size: 11px;">Focus &amp; Honors: Optimization Techniques (A+), ML in Design &amp; Manufacturing (A+), Machine Kinematics (O), ASME Section VIII</span>
+              <span class="edu-degree">Bachelor of Technology in Mechanical Engineering</span>
+              <span class="edu-school">Pandit Deendayal Energy University (PDEU) (Aug 2019 – May 2023)</span>
+              <span class="edu-detail">Gandhinagar, Gujarat, India · Cumulative CPI (CGPA): 9.06 / 10.00 (First Class with Distinction) · 159 Credits Completed</span>
+              <span class="edu-detail" style="color: #94a3b8; font-size: 12px;">Focus: Manufacturing Processes, Optimization Techniques, Total Quality Management, Mechanics of Materials, Machine Kinematics, ASME Section VIII</span>
             </div>
           </div>
         </div>
@@ -1218,11 +1806,15 @@
 
   </main>
 
-  <!-- Minimal Footer -->
+  <!-- Minimalist Executive Footer -->
   <footer class="footer-wrapper">
     <div class="footer-inner">
-      <span class="footer-copy">© 2025 Harsh Nileshkumar Mistry. USC Viterbi School of Engineering.</span>
+      <div class="footer-copy-col">
+        <span class="footer-copy">© 2026 Harsh Nileshkumar Mistry. USC Viterbi School of Engineering.</span>
+        <span class="footer-sub">Physical Systems · Operational Systems · Analytical Systems</span>
+      </div>
       <div class="footer-links">
+        <a href="assets/Harsh_Mistry_Resume.pdf" download="Harsh_Mistry_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
         <a href="https://www.linkedin.com/in/harshmistry8111/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="mailto:harshnil@usc.edu">Email</a>
         <a href="#hero">Back to top ↑</a>
@@ -1231,6 +1823,5 @@
   </footer>
 
   <script src="app.js" defer></script>
-
 </body>
 </html>

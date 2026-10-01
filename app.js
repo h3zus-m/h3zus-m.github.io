@@ -1285,7 +1285,7 @@ function initLabCanvas() {
 /* ==========================================================================
    CHAPTER 05 : PULP FICTION // THE GOLDEN BRIEFCASE
    Radiating volumetric golden rays from the glowing briefcase,
-   vintage film dust, and The Wolf's surgical problem solving vectors.
+   vintage film dust, and The Wolf's methodical problem-solving vectors.
    ========================================================================== */
 function initPulpCanvas() {
   const canvas = document.getElementById("pulp-canvas");
@@ -1335,7 +1335,7 @@ function initPulpCanvas() {
     ctx.arc(originX, originY, 180, 0, Math.PI * 2);
     ctx.fill();
 
-    // The Wolf's 8-step surgical problem solving nodes
+    // The Wolf's 8-step methodical problem-solving nodes
     for (let step = 0; step < 8; step++) {
       const sAngle = (step / 8) * Math.PI * 2 + t * 0.15;
       const sx = originX + Math.cos(sAngle) * 120;
@@ -1917,156 +1917,167 @@ function initTerminalSimulator() {
 }
 
 /* ==========================================================================
-   CYBER DEFENSE INTEGRITY SHIELD (Website Examine Blocker)
+   SYSTEM TELEMETRY & CONSOLE SIGNATURE
    ========================================================================== */
-function initCyberDefenseShield() {
-  const toast = document.getElementById("cyber-defense-toast");
-  const msgEl = document.getElementById("cyber-toast-msg");
-  let toastTimer = null;
-
-  function triggerShield(reason) {
-    if (!toast) return;
-    if (msgEl && reason) msgEl.textContent = reason;
-    toast.classList.add("show");
-
-    document.body.classList.add("defense-perimeter-flash");
-    setTimeout(() => {
-      document.body.classList.remove("defense-perimeter-flash");
-    }, 400);
-
-    if (toastTimer) clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => {
-      toast.classList.remove("show");
-    }, 2800);
-  }
-
-  // 1. Intercept Right-Click (Context Menu, Desktop Only)
-  window.addEventListener("contextmenu", (e) => {
-    // Never trigger defense shield on mobile touch/tap-and-hold
-    if ("ontouchstart" in window || navigator.maxTouchPoints > 0) return;
-    e.preventDefault();
-    triggerShield("SOURCE INSPECTION RESTRICTED // ISO-27001 PROTOCOL");
-    console.warn("[SECURITY] Context menu inspection blocked by Cyber Defense Directive.");
-  });
-
-  // 2. Intercept DevTools Key Combinations
-  window.addEventListener("keydown", (e) => {
-    // F12
-    if (e.key === "F12") {
-      e.preventDefault();
-      triggerShield("ACCESS RESTRICTED // F12 DEVTOOLS LOCKED");
-      console.warn("[SECURITY] F12 keystroke intercepted.");
-      return;
-    }
-
-    // Ctrl+Shift+I / Cmd+Option+I (Inspect)
-    // Ctrl+Shift+J / Cmd+Option+J (Console)
-    // Ctrl+Shift+C / Cmd+Option+C (Inspect Element)
-    // Ctrl+U / Cmd+Option+U (View Source)
-    // Ctrl+S / Cmd+S (Save Page)
-    if (
-      (e.ctrlKey || e.metaKey) &&
-      (e.key === "I" || e.key === "i" ||
-       e.key === "J" || e.key === "j" ||
-       e.key === "C" || e.key === "c" ||
-       e.key === "U" || e.key === "u" ||
-       e.key === "S" || e.key === "s")
-    ) {
-      if (e.shiftKey || e.key === "u" || e.key === "U" || e.key === "s" || e.key === "S") {
-        e.preventDefault();
-        triggerShield("SOURCE EXAMINE BLOCKED // CRYPTOGRAPHIC INTEGRITY SHIELD");
-        console.warn("[SECURITY] Inspection keystroke blocked: " + e.key);
-      }
-    }
-  });
-
-  // 3. DevTools Detection & Anti-Tamper Shield (Desktop Only)
-  const isMobileEnvironment = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|Tablet|Silk|Kindle/i.test(navigator.userAgent) || ("ontouchstart" in window && window.innerWidth < 1024) || (navigator.maxTouchPoints > 1 && window.innerWidth < 1024);
-  let devToolsOpen = false;
-  const checkDevTools = () => {
-    // Never run on mobile devices (iOS/Android browser toolbars alter outerHeight/innerHeight)
-    if (isMobileEnvironment) return;
-    const widthThreshold = window.outerWidth - window.innerWidth > 160;
-    const heightThreshold = window.outerHeight - window.innerHeight > 160;
-    if ((widthThreshold || heightThreshold) && !devToolsOpen) {
-      devToolsOpen = true;
-      triggerShield("INSPECTION DETECTED // DEVTOOLS DEFENSE ENGAGED");
-      console.clear();
-      console.warn("[SECURITY] Inspection detected. Harsh Mistry defensive countermeasure active.");
-    } else if (!widthThreshold && !heightThreshold) {
-      devToolsOpen = false;
-    }
-  };
-  if (!isMobileEnvironment) {
-    window.addEventListener("resize", checkDevTools);
-    setInterval(checkDevTools, 2000);
-  }
-
-  // 4. Disable Asset Dragging (Prevents image scraping/extraction)
-  document.querySelectorAll("img").forEach(img => {
-    img.setAttribute("draggable", "false");
-    img.addEventListener("dragstart", e => e.preventDefault());
-  });
-
-  // 5. High-Engineering Console Security Banner
+function initSystemTelemetry() {
   console.log(
-    "%c" +
-    " [!] CYBER DEFENSE INTEGRITY SHIELD ACTIVE [!]\n" +
-    " ========================================================\n" +
-    " HARSH MISTRY // OPERATIONS & INDUSTRIAL SYSTEMS ARCHITECT\n" +
+    "%c HARSH MISTRY // OPERATIONS & INDUSTRIAL SYSTEMS %c\n" +
     " USC Viterbi School of Engineering '26 | M.S. Engineering Management\n" +
-    " Defense Fabrication (L&T) * Supply Chain (Generac, Banco) * Autonomous AI\n" +
-    " Security: ISO-27001 Protocol * Zero Vulnerabilities * Zero Half Measures\n" +
-    " Contact: harshnil@usc.edu | hnmistry28@gmail.com\n" +
-    " ========================================================",
-    "color: #00d4ff; font-family: monospace; font-size: 11px; font-weight: bold; line-height: 1.35;"
+    " B.Tech Mechanical Engineering (PDEU '23)\n" +
+    " SCM · Strategic Sourcing · NPI Operations · Industrial Systems · AI-Enabled Operations\n" +
+    " Available for Full-Time Roles Beginning January 2027\n" +
+    " Contact: harshnil@usc.edu | LinkedIn: linkedin.com/in/harshmistry8111",
+    "color: #00d4ff; font-family: monospace; font-size: 13px; font-weight: bold; background: #060c18; padding: 4px 8px; border-radius: 4px; border: 1px solid #00d4ff;",
+    "color: #94a3b8; font-family: monospace; font-size: 11px;"
   );
+}
+
+/* ==========================================================================
+   INTERACTIVE ROLE FILTER (EXPLORE MY WORK BY PROBLEM TYPE)
+   ========================================================================== */
+function initRoleFilter() {
+  const filterBtns = document.querySelectorAll('.role-filter-btn');
+  const expCards = document.querySelectorAll('#experience-grid .exp-bento-card');
+  const caseCards = document.querySelectorAll('#case-studies-container .deep-dive-card');
+  const countBadge = document.getElementById('filter-count-badge');
+  const lensText = document.getElementById('role-lens-text');
+
+  const lensDescriptions = {
+    all: "Displaying comprehensive operational history across manufacturing, global sourcing, distribution, and automation systems.",
+    sourcing: "SURFACED DIMENSIONS: Should-cost models, supplier quotation analysis, annual volume tiers, BOM reconciliation, and component dual-sourcing.",
+    npi: "SURFACED DIMENSIONS: BOM readiness, component qualification, Arena PLM engineering change orders (ECOs), Clear-to-Build (CTB) logic, and drawing specifications.",
+    quality: "SURFACED DIMENSIONS: Root cause analysis (RCA), FMEA risk prioritization, SPC process capability, weld laser profilometry, and audit readiness.",
+    pm: "SURFACED DIMENSIONS: Cross-functional engineering coordination, Agile workstreams, risk registers, blocker resolution, and capital sensitivity analysis.",
+    ai: "SURFACED DIMENSIONS: Supplier document RAG, Model Context Protocol (MCP) data retrieval, automated Python reconciliation, and computer vision inspection."
+  };
+
+  if (!filterBtns.length) return;
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const selectedRole = btn.getAttribute('data-role');
+
+      filterBtns.forEach((b) => {
+        const isActive = (b === btn);
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      if (lensText && lensDescriptions[selectedRole]) {
+        lensText.textContent = lensDescriptions[selectedRole];
+      }
+
+      let visibleExp = 0;
+      let visibleCase = 0;
+
+      expCards.forEach((card) => {
+        const roles = (card.getAttribute('data-roles') || '').split(' ');
+        const matches = (selectedRole === 'all' || roles.includes(selectedRole));
+        if (matches) {
+          card.style.display = '';
+          card.classList.remove('filter-dimmed');
+          visibleExp++;
+        } else {
+          card.style.display = 'none';
+          card.classList.add('filter-dimmed');
+        }
+      });
+
+      caseCards.forEach((card) => {
+        const roles = (card.getAttribute('data-roles') || '').split(' ');
+        const matches = (selectedRole === 'all' || roles.includes(selectedRole));
+        if (matches) {
+          card.style.display = '';
+          card.classList.remove('filter-dimmed');
+          visibleCase++;
+        } else {
+          card.style.display = 'none';
+          card.classList.add('filter-dimmed');
+        }
+      });
+
+      if (countBadge) {
+        countBadge.textContent = `Showing ${visibleExp} Experiences · ${visibleCase} Case Studies`;
+      }
+    });
+  });
+}
+
+/* ==========================================================================
+   PROGRESSIVE DISCLOSURE : EVIDENCE & METHODOLOGY ACCORDIONS
+   ========================================================================== */
+function initEvidenceAccordions() {
+  const toggleBtns = document.querySelectorAll('.btn-toggle-evidence');
+  toggleBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      const container = btn.closest('.evidence-accordion');
+      const drawer = container ? container.querySelector('.evidence-drawer-content') : null;
+      const icon = btn.querySelector('.toggle-icon');
+      const text = btn.querySelector('.toggle-text');
+
+      if (!drawer) return;
+
+      if (isExpanded) {
+        btn.setAttribute('aria-expanded', 'false');
+        drawer.hidden = true;
+        if (icon) icon.textContent = '+';
+        if (text) text.textContent = 'Inspect Methodology & Evidence';
+      } else {
+        btn.setAttribute('aria-expanded', 'true');
+        drawer.hidden = false;
+        if (icon) icon.textContent = '−';
+        if (text) text.textContent = 'Collapse Methodology & Evidence';
+      }
+    });
+  });
 }
 
 const convergenceData = {
   hardware: {
     badge: "DOMAINS // 01 PHYSICAL ENGINEERING",
     title: "Mechanical Precision & Heavy Fabrication",
-    desc: "I was forged in mechanical engineering and heavy fabrication (B.Tech in Mechanical Engineering from PDEU, CGPA 9.06/10.00). Long before I ever touched an optimization spreadsheet or an algorithm, I learned engineering with molten weld pools, ASME Section VIII pressure vessel codes, and sub-millimeter steel tolerances. I understand physical yield strengths, thermal distortion, and manufacturing bottlenecks before I touch a model.",
+    desc: "My engineering foundation was forged in mechanical design and heavy manufacturing (B.Tech in Mechanical Engineering from PDEU, CGPA 9.06/10.00). Before working with optimization models, I worked on shop floors with molten weld pools, ASME Section VIII pressure vessel codes, and sub-millimeter tolerances. Understanding physical yield strengths, thermal distortion, and machine kinematics provides a grounded reality check for every operational plan.",
     stats: [
       { val: "9.06 / 10", lbl: "PDEU Mechanical CGPA" },
       { val: "3.73 / 4.0", lbl: "USC Graduate GPA" },
       { val: "ASME VIII", lbl: "Pressure Vessel Code" }
     ],
-    tools: ["SolidWorks", "ANSYS FEA", "Robotic Welding", "Computer Vision", "ASME Section VIII", "GD&T", "CNC Machining"]
+    tools: ["SolidWorks", "GD&T", "Robotic Welding", "Manufacturing Quality", "ASME Section VIII", "Material Kinematics"]
   },
   supplychain: {
     badge: "DOMAINS // 02 SUPPLY CHAIN & LOGISTICS",
     title: "Omnichannel Velocity & Inventory Orchestration",
-    desc: "I architect resilient multi-echelon supply networks and high-throughput distribution facilities. I re-engineered fulfillment operations from the floor geometry to the dispatch dock, deploying ABC velocity slotting, dynamic safety stock formulas, and supplier risk models that eliminated kilometers of wasted transit every single shift.",
+    desc: "I architect resilient multi-echelon supply networks and high-throughput distribution facilities. From re-slotting retail distribution centers using Pareto ABC classification to reconciling complex BOMs and supplier price tiers, I structure logistics around actual volume velocity and physical constraints.",
     stats: [
-      { val: "3.3 km", lbl: "Transit Saved / Shift" },
-      { val: ">98%", lbl: "Inventory Accuracy" },
-      { val: "15%", lbl: "Pick Cycle Reduction" }
+      { val: "7.1 km", lbl: "Optimized Route Distance" },
+      { val: ">98%", lbl: "Inventory Audit Accuracy" },
+      { val: "-15%", lbl: "Restocking Cycle Time" }
     ],
-    tools: ["Warehouse Slotting", "Safety Stock Modeling", "EOQ / ROP Analytics", "SAP / Oracle ERP", "Tableau SCM", "Kanban Buffers", "BOM Optimization"]
-  },
-  ai: {
-    badge: "DOMAINS // 03 AUTONOMOUS AI & DECISION SYSTEMS",
-    title: "Deterministic AI Systems & Autonomous Workflows",
-    desc: "I design production AI agents that bridge unstructured physical reality with deterministic mathematical execution. I built my proprietary 0.38pt AST geometric layout compactor, MCP multi-tier supplier intelligence crawlers, and real-time computer vision defect pipelines with zero tolerance for failure.",
-    stats: [
-      { val: "0.38pt", lbl: "Deterministic AST Fit" },
-      { val: "45m -> 8s", lbl: "ATS Processing Speed" },
-      { val: "100%", lbl: "Deterministic Format" }
-    ],
-    tools: ["Claude 3.5 Sonnet", "Anthropic MCP", "Vector RAG", "Python / FastAPI", "OpenCV Vision", "AST Parsing", "Autonomous Agents"]
+    tools: ["Warehouse Slotting", "Safety Stock Modeling", "BOM Management", "Cycle Counting", "ERP Inventory Control", "Arena PLM", "Lean Six Sigma"]
   },
   business: {
-    badge: "DOMAINS // 04 STRATEGIC SOURCING & BUSINESS",
-    title: "Should-Cost Modeling & Capital Allocation",
-    desc: "I combine engineering physics with bottom-up should-cost modeling to break supplier monopolies and protect operating margins. At Generac, I dismantled microinverter BOM economics down to raw silicon, freight tariffs, and supplier yield rates, unlocking six-figure margin expansion in high-inflation environments.",
+    badge: "DOMAINS // 03 OPTIMIZATION & MODELING",
+    title: "Analytical Optimization & Trade-Off Modeling",
+    desc: "I leverage mathematical optimization, stochastic modeling, and sensitivity analysis to balance working capital against service level. Combining coursework in Time Series Forecasting and SCM Analytics at USC with hands-on cost modeling, I formulate data-backed recommendations that protect operating margins.",
     stats: [
       { val: "$1.2M", lbl: "Sourcing Capital Analyzed" },
-      { val: "12%", lbl: "Target Margin Expansion" },
-      { val: "3-Tier", lbl: "Supply Risk Mapping" }
+      { val: "8% - 15%", lbl: "Modeled Holding Cost Lift" },
+      { val: "95%+", lbl: "Target Service Level" }
     ],
-    tools: ["Should-Cost Engineering", "BOM Teardowns", "Supplier Negotiation", "TCO Analysis", "Tariff Optimization", "NPV / DCF Modeling", "Contract SLA Audits"]
+    tools: ["Linear Programming", "Excel Solver", "Python (SciPy)", "R Forecasting", "Should-Cost Models", "Multi-Echelon SCM", "Sensitivity Analysis"]
+  },
+  ai: {
+    badge: "DOMAINS // 04 AI-ENABLED OPERATIONS",
+    title: "AI-Enabled Operations & Workflow Automation",
+    desc: "I treat AI not as a gimmick, but as an operational force multiplier. By integrating Model Context Protocol (MCP) data tools, retrieval-augmented generation (RAG) for unstructured supplier technical documentation, and computer vision for manufacturing quality, I automate repetitive data reconciliation while keeping human engineers in command.",
+    stats: [
+      { val: "< 10s", lbl: "Document Spec Retrieval" },
+      { val: "+20%", lbl: "Weld Anomaly Detection" },
+      { val: "100%", lbl: "Provenance Grounding" }
+    ],
+    tools: ["Python / PyMuPDF", "Model Context Protocol", "Semantic RAG", "OpenCV Vision", "PowerShell Automation", "Advanced Excel"]
   }
 };
 
@@ -2709,13 +2720,15 @@ function initScrollReveal() {
 // ==========================================================================
 function initGlowShift() {
   const sectionGlows = {
-    hero:        { g1: '#4f46e5', g2: '#00d4ff', opacity: 0.2 },
-    convergence: { g1: '#00d4ff', g2: '#27ae60', opacity: 0.15 },
-    experience:  { g1: '#27ae60', g2: '#f0a500', opacity: 0.15 },
-    projects:    { g1: '#00ff41', g2: '#4f46e5', opacity: 0.18 },
-    os:          { g1: '#f0a500', g2: '#9b59b6', opacity: 0.15 },
-    drive:       { g1: '#9b59b6', g2: '#00d4ff', opacity: 0.2 },
-    dossier:     { g1: '#00d4ff', g2: '#4f46e5', opacity: 0.15 }
+    hero:          { g1: '#4f46e5', g2: '#00d4ff', opacity: 0.2 },
+    convergence:   { g1: '#00d4ff', g2: '#27ae60', opacity: 0.15 },
+    'work-explorer': { g1: '#00d4ff', g2: '#f0a500', opacity: 0.15 },
+    experience:    { g1: '#27ae60', g2: '#f0a500', opacity: 0.15 },
+    projects:      { g1: '#00ff41', g2: '#4f46e5', opacity: 0.18 },
+    os:            { g1: '#f0a500', g2: '#9b59b6', opacity: 0.15 },
+    drive:         { g1: '#9b59b6', g2: '#00d4ff', opacity: 0.2 },
+    contact:       { g1: '#00d4ff', g2: '#4f46e5', opacity: 0.15 },
+    dossier:       { g1: '#00d4ff', g2: '#4f46e5', opacity: 0.15 }
   };
 
   const glow1 = document.getElementById('glow-1');
@@ -2773,7 +2786,9 @@ function initAllSystems() {
   initWarehouseSlottingVisual();
   initWeldVisionVisual();
   initTerminalSimulator();
-  initCyberDefenseShield();
+  initSystemTelemetry();
+  initRoleFilter();
+  initEvidenceAccordions();
   initConvergenceTabs();
   initOperatingSystemStepper();
   initSpotlightCards();
