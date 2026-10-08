@@ -2765,31 +2765,30 @@ function initGlowShift() {
 // 13. BOOT SEQUENCE :  Initialize All Systems
 // ==========================================================================
 function initAllSystems() {
-  // Cipher headline decode
-  initCipherHeadline();
+  // Mobile Nav Drawer
+  initMobileNav();
 
-  // Huly Molten Lava Background (WebGL)
-  initHulyLava();
+  // Module 04 Maritime Wake Canvas
+  initMaritimeWake();
 
-  // Interactive 3D Supply Chain Digital Twin Console
-  initDigitalTwin();
+  // Module 03 6-Stage Narrative & Diorama
+  initNarrativeStepper();
+  initDioramaModule();
 
-  // Cinematic section canvases
-  initWireCanvas();
-  initChessCanvas();
-  initLabCanvas();
-  initPulpCanvas();
-  initStellarCanvas();
+  // Audience & Role Lenses
+  initRoleFilter();
+  initAudiencePerspectiveFilter();
 
-  // Interactive systems
+  // Company Sub-navigation
+  initCompanySubnav();
+
+  // Interactive Case Studies & Systems
   initAtsCompactorGraph();
   initWarehouseSlottingVisual();
   initWeldVisionVisual();
   initTerminalSimulator();
   initSystemTelemetry();
-  initRoleFilter();
   initEvidenceAccordions();
-  initConvergenceTabs();
   initOperatingSystemStepper();
   initSpotlightCards();
   initConfidentialDossier();
@@ -2797,11 +2796,367 @@ function initAllSystems() {
   initScrollReveal();
   initGlowShift();
 
-  console.log('[HARSH-PORTFOLIO] All cinematic systems initialized.');
+  console.log('[HARSH-PORTFOLIO] All modern supply chain systems initialized.');
 }
 
 if (document.readyState === 'loading') {
   window.addEventListener('DOMContentLoaded', initAllSystems);
 } else {
   initAllSystems();
+}
+
+
+
+/* ==========================================================================
+   MARITIME HERO, 6-STAGE NARRATIVE & 4 ANIMATION MODULES HANDLERS
+   ========================================================================== */
+
+// 1. Module 04 Maritime Wake Canvas Animation
+function initMaritimeWake() {
+  const canvas = document.getElementById('maritime-wake-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
+
+  let width = 0;
+  let height = 0;
+  let animId = null;
+  let isIntersecting = true;
+
+  function resize() {
+    width = canvas.width = canvas.offsetWidth;
+    height = canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+
+  const ripples = [];
+  const maxRipples = 28;
+
+  function spawnRipple() {
+    if (ripples.length >= maxRipples) return;
+    ripples.push({
+      x: width * (0.62 + Math.random() * 0.26),
+      y: height * (0.22 + Math.random() * 0.55),
+      radius: 4 + Math.random() * 6,
+      maxRadius: 38 + Math.random() * 45,
+      alpha: 0.35 + Math.random() * 0.25,
+      decay: 0.003 + Math.random() * 0.004,
+      speed: 0.35 + Math.random() * 0.45
+    });
+  }
+
+  for (let i = 0; i < 15; i++) {
+    ripples.push({
+      x: width * (0.62 + Math.random() * 0.26),
+      y: height * (0.22 + Math.random() * 0.55),
+      radius: Math.random() * 35,
+      maxRadius: 38 + Math.random() * 45,
+      alpha: Math.random() * 0.35,
+      decay: 0.0035,
+      speed: 0.4
+    });
+  }
+
+  let lastSpawn = 0;
+
+  function draw(now) {
+    if (!isIntersecting) return;
+    ctx.clearRect(0, 0, width, height);
+
+    if (now - lastSpawn > 260) {
+      spawnRipple();
+      lastSpawn = now;
+    }
+
+    for (let i = ripples.length - 1; i >= 0; i--) {
+      const r = ripples[i];
+      r.radius += r.speed;
+      r.alpha -= r.decay;
+
+      if (r.alpha <= 0 || r.radius >= r.maxRadius) {
+        ripples.splice(i, 1);
+        continue;
+      }
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(225, 242, 255, ${r.alpha.toFixed(3)})`;
+      ctx.lineWidth = 1.1;
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(r.x, r.y, r.radius * 0.65, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(0, 212, 255, ${(r.alpha * 0.4).toFixed(3)})`;
+      ctx.lineWidth = 0.8;
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    animId = requestAnimationFrame(draw);
+  }
+
+  const heroSection = document.getElementById('hero');
+  if (heroSection && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        isIntersecting = entry.isIntersecting;
+        if (isIntersecting && !animId) {
+          animId = requestAnimationFrame(draw);
+        } else if (!isIntersecting && animId) {
+          cancelAnimationFrame(animId);
+          animId = null;
+        }
+      });
+    }, { threshold: 0.05 });
+    observer.observe(heroSection);
+  }
+
+  animId = requestAnimationFrame(draw);
+}
+
+// 2. Module 03 & 6-Stage Supply Chain Narrative
+const narrativeStages = [
+  {
+    badge: "STAGE 01 // RAW MATERIAL & INPUT INTEGRITY",
+    title: "Metallurgical Specifications, Raw Steel & Statutory Compliance",
+    desc: "Supply chains begin at raw material extraction and technical qualification. At Vindeep Expo Engineers and in mechanical engineering coursework, I translated statutory codes and ASTM/ASME specifications into strict procurement standards, auditing raw material test certificates (MTC) to guarantee 100% regulatory adherence before machining commenced.",
+    exp: "Vindeep Expo Engineers · SCM Analyst",
+    comp: "Material Verification, Risk Registers & Compliance",
+    linkText: "View Multi-Site Compliance Track Record →",
+    linkHref: "#experience"
+  },
+  {
+    badge: "STAGE 02 // MANUFACTURING & PRODUCTION QUALITY",
+    title: "Sub-Millimeter CNC Machining, Weld Integrity & Kaizen",
+    desc: "A design only succeeds if production tooling can hold tolerance under thermal and mechanical strain. At Larsen & Toubro Heavy Engineering and Banco Products, I monitored robotic welding and heat exchanger lines, running FMEA, SPC, and Kaizen initiatives that reduced welding-related operational costs by 12% and cut inspection delays by 20%.",
+    exp: "Larsen & Toubro & Banco Products",
+    comp: "Welding Telemetry, FMEA, SPC & Shop-Floor Kaizen",
+    linkText: "Inspect Robotic Weld & Quality Case Studies →",
+    linkHref: "#projects"
+  },
+  {
+    badge: "STAGE 03 // SUPPLIER NETWORK & SOURCING ARCHITECTURE",
+    title: "Multi-Tier BOM Sourcing, Should-Cost & Sourcing Workflows",
+    desc: "High product margins and reliable NPI launches are won in supplier agreements and BOM architectures. At Generac Clean Energy (PWRmicro), I analyzed engineering BOMs and vendor quote matrices across 20+ priority components, uncovering a $1.2M annualized sourcing opportunity and establishing standardized supplier change workflows in Arena PLM.",
+    exp: "Generac Clean Energy · SCM Intern",
+    comp: "BOM Should-Cost Modeling & Arena PLM Governance",
+    linkText: "Examine Generac Sourcing Case Study →",
+    linkHref: "#projects"
+  },
+  {
+    badge: "STAGE 04 // WAREHOUSING & VELOCITY FULFILLMENT",
+    title: "High-Velocity ABC Slotting, Lean Six Sigma & Stock Flow",
+    desc: "Distribution centers are dynamic fluid networks: poor slotting turns fast-moving inventory into aisle gridlock. At the USC Bookstore Distribution Center, I managed stock control for 1,000+ SKUs, redesigning warehouse layouts via Pareto slotting to improve inventory accuracy above 98% and trim restocking cycle time by 15%.",
+    exp: "USC Bookstore Distribution Center · SCM Assistant",
+    comp: "Warehouse Velocity Slotting & Lean Variance Audits",
+    linkText: "Review Warehouse Slotting Case Study →",
+    linkHref: "#projects"
+  },
+  {
+    badge: "STAGE 05 // TRANSPORTATION & INVENTORY ALLOCATION",
+    title: "Freight Trade Lanes, Lead-Time Variance & Multi-Echelon Stocking",
+    desc: "Global transportation introduces stochastic transit variance that cascades down supply chains. In research modeling at USC Viterbi, I formulated multi-echelon inventory policies comparing FOQ, POQ, and LFL models under lead-time variance, achieving modeled inventory holding cost reductions of 8% to 15% while protecting 95% service fill rates.",
+    exp: "USC Viterbi Optimization Research",
+    comp: "Stochastic Inventory Modeling & Freight Trade Lanes",
+    linkText: "Inspect Multi-Echelon Optimization Models →",
+    linkHref: "#projects"
+  },
+  {
+    badge: "STAGE 06 // DECISION INTELLIGENCE & MCP WORKBENCH",
+    title: "Python-Powered Decision Workbenches & Automated Triage",
+    desc: "AI in supply chain operations is not a substitute for engineering judgment; it is an analytical copilot. I developed a Python-based decision workbench using Model Context Protocol (MCP) and SQL/ERP integrations over a simulated 12-plant supply network, automating document compliance audits and exception triage while preserving verified source provenance.",
+    exp: "Personal Prototype // Python & MCP Integration",
+    comp: "Automated Document RAG & ERP Telemetry Triage",
+    linkText: "Test SCM Terminal Simulation →",
+    linkHref: "#projects"
+  }
+];
+
+function initNarrativeStepper() {
+  const stepBtns = document.querySelectorAll('.narrative-step-btn');
+  const cardBadge = document.getElementById('n-card-badge');
+  const cardTitle = document.getElementById('n-card-title');
+  const cardDesc = document.getElementById('n-card-desc');
+  const cardMeta = document.getElementById('n-card-meta');
+  if (!stepBtns.length || !cardTitle) return;
+
+  stepBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const stageIdx = parseInt(btn.getAttribute('data-stage'), 10) || 0;
+      stepBtns.forEach((b) => {
+        const isActive = (b === btn);
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      const data = narrativeStages[stageIdx];
+      if (!data) return;
+
+      if (cardBadge) cardBadge.textContent = data.badge;
+      if (cardTitle) cardTitle.textContent = data.title;
+      if (cardDesc) cardDesc.textContent = data.desc;
+      if (cardMeta) {
+        cardMeta.innerHTML = `
+          <div class="n-meta-item">
+            <span class="n-meta-lbl">GROUNDING EXPERIENCE:</span>
+            <span class="n-meta-val">${data.exp}</span>
+          </div>
+          <div class="n-meta-item">
+            <span class="n-meta-lbl">CORE COMPETENCY:</span>
+            <span class="n-meta-val">${data.comp}</span>
+          </div>
+          <div class="n-meta-item">
+            <span class="n-meta-lbl">LINKED TRACK:</span>
+            <span class="n-meta-val"><a href="${data.linkHref}" class="n-link">${data.linkText}</a></span>
+          </div>
+        `;
+      }
+    });
+  });
+}
+
+// 3. Module 03 Diorama Inspector
+const dioramaNodes = {
+  quarry: {
+    kicker: "NODE 01 // RAW MATERIAL EXTRACTION & INGESTION",
+    title: "Quarry & Heavy Raw Material Supply",
+    text: "Material flows start here: supplier capacity, ore purity, extraction lead times, and transport to smelters. Physical variability at this node ripples through the entire downstream network unless dampened by safety stock and dual-sourcing."
+  },
+  factory: {
+    kicker: "NODE 02 // INDUSTRIAL MANUFACTURING & MACHINING",
+    title: "Automated Production Plant & Assembly Lines",
+    text: "Where raw materials become structural assemblies: CNC machining, robotic welding lines, cycle times, and statistical process control (SPC). Throughput constraints here dictate total finished-goods lead times."
+  },
+  transit: {
+    kicker: "NODE 03 // MULTIMODAL FREIGHT & RAIL LOGISTICS",
+    title: "Highway Freight & Rail Transport Corridors",
+    text: "Connecting factories with distribution hubs via dedicated drayage and rail transit. Route optimization, transit variance buffering, and fuel surcharges dictate total landed freight costs."
+  },
+  warehouse: {
+    kicker: "NODE 04 // AUTOMATED FULFILLMENT & INVENTORY HUBS",
+    title: "High-Bay Distribution Center & Velocity Slotting",
+    text: "Dynamic inventory staging: Pareto ABC slotting places high-turnover items adjacent to packing stations. Real-time ERP barcode reconciliation maintains inventory record accuracy above 98%."
+  },
+  retail: {
+    kicker: "NODE 05 // REGIONAL DISTRIBUTION & STOREFRONT",
+    title: "Regional Distribution Center & Retail Storefront",
+    text: "The customer touchpoint: stockout penalties, point-of-sale demand signals, and last-mile dispatch. Demand spikes here trigger replenishment orders back through the supply network."
+  },
+  analytics: {
+    kicker: "NODE 06 // DECISION TELEMETRY & SYSTEM ANALYTICS",
+    title: "Digital Network Overview & Operations Control Panel",
+    text: "The central intelligence layer: synthesizing throughput telemetry, in-transit container tracking, fill rates, and anomaly detection to guide proactive procurement decisions."
+  }
+};
+
+function initDioramaModule() {
+  const nodeBtns = document.querySelectorAll('.diorama-node-btn');
+  const inspectKicker = document.getElementById('d-inspect-kicker');
+  const inspectTitle = document.getElementById('d-inspect-title');
+  const inspectText = document.getElementById('d-inspect-text');
+  if (!nodeBtns.length || !inspectTitle) return;
+
+  nodeBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const nodeKey = btn.getAttribute('data-node');
+      nodeBtns.forEach((b) => {
+        const isActive = (b === btn);
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      const info = dioramaNodes[nodeKey];
+      if (!info) return;
+
+      if (inspectKicker) inspectKicker.textContent = info.kicker;
+      if (inspectTitle) inspectTitle.textContent = info.title;
+      if (inspectText) inspectText.textContent = info.text;
+    });
+  });
+}
+
+// 4. Audience Perspective Filter in Work Explorer
+function initAudiencePerspectiveFilter() {
+  const audienceBtns = document.querySelectorAll('.audience-btn');
+  const lensText = document.getElementById('role-lens-text');
+  if (!audienceBtns.length || !lensText) return;
+
+  const audienceInsights = {
+    recruiter: "RECRUITER LENS (30-SECOND FIT): M.S. Engineering Management at USC Viterbi (Dec 2026, GPA 3.73) | B.Tech Mechanical Engineering (PDEU, CGPA 9.06/10) | Available Full-Time January 2027 | Sourced $1.2M opportunity at Generac Clean Energy | Managed 1,000+ SKUs with >98% accuracy at USC DC | Direct 1-Click PDF Resume available in header.",
+    manager: "HIRING MANAGER LENS (EXECUTION & TOOLS): Concrete business problems tackled with Advanced Excel, SQL, Python, Arena PLM, and SAP S/4HANA. Demonstrates hands-on engineering ownership, automated PowerShell BOM reconciliation, Pareto slotting, and Kaizen/SPC process audits.",
+    director: "DIRECTOR / VP LENS (MARGINS, RISK & TRADE-OFFS): Evaluates should-cost modeling, multi-tier supplier leverage, dual-sourcing qualification trade-offs, inventory carrying cost reductions (8%-15%), and statutory risk registers with 100% regulatory adherence.",
+    executive: "CEO / COO LENS (SYSTEMS THINKING & GROWTH): Understands how physical manufacturing tolerances, freight volatility, and digital decision systems interact. Demonstrated initiative, technical composure under duress, and high potential to scale operations.",
+    technical: "TECHNICAL REVIEWER LENS (MATHEMATICAL & CODE RIGOR): Inspect non-linear inventory formulations (FOQ/POQ/LFL), guaranteed-service safety stock bounds, Python SciPy optimization, welding seam sensor profilometry (±0.05mm), and Model Context Protocol (MCP) tool schemas."
+  };
+
+  audienceBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const audKey = btn.getAttribute('data-audience');
+      audienceBtns.forEach((b) => {
+        const isActive = (b === btn);
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      if (audienceInsights[audKey]) {
+        lensText.textContent = audienceInsights[audKey];
+      }
+    });
+  });
+}
+
+// 5. In-Section Company Subnav Filter
+function initCompanySubnav() {
+  const compBtns = document.querySelectorAll('.company-tab-btn');
+  const expCards = document.querySelectorAll('#experience-grid .exp-bento-card');
+  const eduCards = document.querySelectorAll('#academic-foundations .edu-card');
+  if (!compBtns.length) return;
+
+  compBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const selectedCompany = btn.getAttribute('data-company');
+      compBtns.forEach((b) => {
+        const isActive = (b === btn);
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      expCards.forEach((card) => {
+        const compId = card.getAttribute('data-company-id');
+        const matches = (selectedCompany === 'all' || compId === selectedCompany);
+        card.style.display = matches ? '' : 'none';
+      });
+
+      eduCards.forEach((card) => {
+        const matches = (selectedCompany === 'all' || selectedCompany === 'academic');
+        card.style.display = matches ? '' : 'none';
+      });
+    });
+  });
+}
+
+// 6. Mobile Navigation Drawer Toggle
+function initMobileNav() {
+  const toggleBtn = document.getElementById('nav-mobile-toggle');
+  const navLinks = document.getElementById('primary-nav-links');
+  if (!toggleBtn || !navLinks) return;
+
+  toggleBtn.addEventListener('click', () => {
+    const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+    toggleBtn.setAttribute('aria-expanded', !isExpanded);
+    navLinks.classList.toggle('mobile-open', !isExpanded);
+  });
+
+  navLinks.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('click', () => {
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      navLinks.classList.remove('mobile-open');
+    });
+  });
 }
