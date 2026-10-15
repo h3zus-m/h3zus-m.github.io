@@ -216,13 +216,13 @@
         <div class="hero-stage">
           <div class="hero-spatial-container glass-panel spotlight-card">
             <div class="cinema-bar cinema-bar-top">
-              <span class="cinema-tag">SPATIAL CONTINUUM // 3D DIGITAL TWIN</span>
+              <span class="cinema-tag">CHAPTER 00 // THE BERSERKER THRESHOLD</span>
               <span class="cinema-tag-right">REAL-TIME WEBGL</span>
             </div>
 
             <!-- 3D Viewport with Live Three.js Canvas and Dependable Static Fallback -->
             <div class="hero-spatial-viewport" id="hero-spatial-viewport">
-              <canvas id="hero-3d-canvas" class="hero-3d-canvas" aria-label="Interactive 3D model of connected industrial supply chain continuum"></canvas>
+              <canvas id="hero-3d-canvas" class="hero-3d-canvas" aria-label="Interactive 3D model: Berserker Avatar opening Generac Sourcing and Industrial Continuum"></canvas>
 
               <!-- Dependable Static Fallback (Always ready, hides only after 3D renders) -->
               <div class="hero-spatial-fallback" id="hero-spatial-fallback" role="img" aria-label="Architectural schematic of physical engineering core and supply chain continuum">
@@ -243,10 +243,107 @@
                 </div>
               </div>
 
+              <!-- Floating Entrance Overlay: Berserker Strike Action -->
+              <div class="entrance-controls-overlay" id="entrance-controls-overlay">
+                <button type="button" class="btn-enter-world" id="btn-enter-world" title="Strike the monolith to reveal the industrial world">
+                  <span class="btn-sword-icon">⚔️</span>
+                  <span class="btn-enter-label">ENTER MY WORLD</span>
+                  <span class="btn-enter-glow"></span>
+                </button>
+                <div class="entrance-sub-actions">
+                  <button type="button" class="btn-skip-intro" id="btn-skip-intro" title="Skip cinematic entrance directly to Generac Sourcing model">
+                    Skip Intro ➔
+                  </button>
+                  <span class="reduced-motion-tag" title="Reduced motion supported">Reduced-Motion Safe</span>
+                </div>
+              </div>
+
+              <!-- Generac Exploded View Quick Actions -->
+              <div class="generac-quick-actions" id="generac-quick-actions">
+                <button type="button" class="btn-explode-assembly" id="btn-explode-assembly" title="Toggle exploded CAD view of microinverter">
+                  Explode Assembly
+                </button>
+                <span class="assembly-hint">Click components to inspect sourcing evidence</span>
+              </div>
+
+              <!-- Accessible Semantic HTML Evidence Drawer for Component Sourcing Trail -->
+              <div class="generac-evidence-drawer glass-panel" id="generac-evidence-drawer" role="dialog" aria-labelledby="drawer-comp-title" aria-modal="false">
+                <div class="drawer-header">
+                  <div class="drawer-badge-group">
+                    <span class="drawer-kicker">STRATEGIC SOURCING // COMPONENT EVIDENCE</span>
+                    <span class="drawer-status-badge">AEC-Q101 QUALIFIED</span>
+                  </div>
+                  <button type="button" class="btn-close-drawer" id="btn-close-evidence" aria-label="Close evidence drawer">✕</button>
+                </div>
+                <div class="drawer-body">
+                  <h4 class="drawer-comp-title" id="drawer-comp-title">Power MOSFET Array (6x N-Channel 650V)</h4>
+                  <div class="drawer-comp-category" id="drawer-comp-category">Power Semiconductor Electronics · Inverter Core</div>
+                  
+                  <div class="drawer-stat-grid">
+                    <div class="drawer-stat-card">
+                      <span class="dstat-label">BOM USAGE &amp; RUN RATE</span>
+                      <span class="dstat-val" id="drawer-comp-usage">6 / unit · 1.2M units/year</span>
+                    </div>
+                    <div class="drawer-stat-card">
+                      <span class="dstat-label">SIZED COST OPPORTUNITY</span>
+                      <span class="dstat-val text-cyan" id="drawer-comp-sizing">~$288,000 / year</span>
+                    </div>
+                  </div>
+
+                  <div class="drawer-section">
+                    <h5 class="dsec-title">1. Sourcing Problem &amp; Baseline Vulnerability</h5>
+                    <p class="dsec-desc" id="drawer-comp-problem">Single-source tier-1 fab vulnerability with fragmented distributor price tiers, exposing production ramp to margin compression and wafer allocation bottlenecks.</p>
+                  </div>
+
+                  <div class="drawer-section">
+                    <h5 class="dsec-title">2. Comparative Supplier Quotation Matrix</h5>
+                    <div class="drawer-table-wrapper">
+                      <table class="drawer-quotes-table">
+                        <thead>
+                          <tr>
+                            <th>Supplier</th>
+                            <th>Volume Tier</th>
+                            <th>Unit Quote</th>
+                            <th>Lead Time</th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody id="drawer-quotes-body">
+                          <tr>
+                            <td><strong>Incumbent Supplier A</strong></td>
+                            <td>500k-1M</td>
+                            <td class="quote-price">$1.42 / unit</td>
+                            <td>24 weeks</td>
+                            <td><span class="status-pill">Single-Source</span></td>
+                          </tr>
+                          <tr>
+                            <td><strong>Qualified Alternative B</strong></td>
+                            <td>1M+ Commitment</td>
+                            <td class="quote-price">$1.18 / unit</td>
+                            <td>14 weeks</td>
+                            <td><span class="status-pill status-approved">AEC-Q101 Passed</span></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="drawer-section">
+                    <h5 class="dsec-title">3. Decision Workflow &amp; Dual-Sourcing Allocation</h5>
+                    <p class="dsec-desc" id="drawer-comp-decision">Dual-sourcing allocation (70% primary, 30% qualified secondary), securing $0.24 unit delta across 1.2M annual run rate while protecting against fab stoppages.</p>
+                  </div>
+
+                  <div class="drawer-disclosure-box">
+                    <span class="disc-label">FACTUAL METRIC DISCLOSURE:</span>
+                    <span class="disc-text" id="drawer-comp-disclosure">Sized &amp; validated during NPI sourcing; actual realized savings depend on production volume ramp realization.</span>
+                  </div>
+                </div>
+              </div>
+
               <!-- Interaction Cue Tag -->
               <div class="hero-interaction-hint" aria-hidden="true">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
-                <span>Drag to inspect 3D core · Click nodes to focus</span>
+                <span>Drag to inspect 3D core · Click components for evidence</span>
               </div>
             </div>
 
@@ -255,15 +352,15 @@
               <div class="hud-phase-buttons" role="tablist" aria-label="Industrial Continuum Phases">
                 <button type="button" class="hero-phase-btn active" data-phase="1" role="tab" aria-selected="true">
                   <span class="phase-idx">01</span>
-                  <span class="phase-name">Component</span>
+                  <span class="phase-name">Generac</span>
                 </button>
                 <button type="button" class="hero-phase-btn" data-phase="2" role="tab" aria-selected="false">
                   <span class="phase-idx">02</span>
-                  <span class="phase-name">Fabrication</span>
+                  <span class="phase-name">Warehouse</span>
                 </button>
                 <button type="button" class="hero-phase-btn" data-phase="3" role="tab" aria-selected="false">
                   <span class="phase-idx">03</span>
-                  <span class="phase-name">Logistics</span>
+                  <span class="phase-name">Fabrication</span>
                 </button>
                 <button type="button" class="hero-phase-btn" data-phase="4" role="tab" aria-selected="false">
                   <span class="phase-idx">04</span>
@@ -272,10 +369,10 @@
               </div>
 
               <div class="hud-phase-details">
-                <span class="hud-kicker" id="hud-phase-kicker">PHASE 01 // MECHANICAL FOUNDATION</span>
-                <h3 class="hud-title" id="hud-phase-title">Precision Engineering &amp; Physical Rigor</h3>
+                <span class="hud-kicker" id="hud-phase-kicker">CHAPTER 00 // THE BERSERKER THRESHOLD</span>
+                <h3 class="hud-title" id="hud-phase-title">Forging the Luminous Rift</h3>
                 <p class="hud-desc" id="hud-phase-desc">
-                  ASME Sec VIII pressure equipment, machined turbine impeller architectures, and tight dimensional tolerances (±0.02mm) anchoring physical systems ownership.
+                  Standing before the monolithic boundary of industrial convention. Click "Enter My World" to initiate the weighted greatsword strike revealing Generac microinverter sourcing and global logistics networks.
                 </p>
               </div>
             </div>

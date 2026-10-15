@@ -2798,8 +2798,41 @@ function initAllSystems() {
   initScrollReveal();
   // Hero Phase HUD fallback & static compatibility
   initHeroPhaseHUD();
+  initBerserkerEntranceControls();
 
   console.log('[HARSH-PORTFOLIO] All modern supply chain systems initialized.');
+}
+
+function initBerserkerEntranceControls() {
+  const enterBtn = document.getElementById('btn-enter-world');
+  const skipBtn = document.getElementById('btn-skip-intro');
+  const explodeBtn = document.getElementById('btn-explode-assembly');
+  const closeEvidenceBtn = document.getElementById('btn-close-evidence');
+  const evidenceDrawer = document.getElementById('generac-evidence-drawer');
+
+  if (enterBtn) {
+    enterBtn.addEventListener('click', () => {
+      console.log('[PORTFOLIO] Enter My World activated.');
+    });
+  }
+
+  if (skipBtn) {
+    skipBtn.addEventListener('click', () => {
+      console.log('[PORTFOLIO] Skip intro activated.');
+    });
+  }
+
+  if (explodeBtn) {
+    explodeBtn.addEventListener('click', () => {
+      console.log('[PORTFOLIO] Explode assembly toggled.');
+    });
+  }
+
+  if (closeEvidenceBtn && evidenceDrawer) {
+    closeEvidenceBtn.addEventListener('click', () => {
+      evidenceDrawer.classList.remove('active');
+    });
+  }
 }
 
 function initHeroPhaseHUD() {
@@ -2811,24 +2844,24 @@ function initHeroPhaseHUD() {
 
   const phaseData = {
     1: {
-      kicker: "PHASE 01 // MECHANICAL FOUNDATION",
-      title: "Precision Engineering & Physical Rigor",
-      desc: "ASME Sec VIII pressure equipment, machined turbine impeller architectures, and tight dimensional tolerances (±0.02mm) anchoring physical systems ownership."
+      kicker: "CHAPTER 01 // GENERAC CLEAN ENERGY",
+      title: "PWRmicro Microinverter Sourcing Architecture",
+      desc: "Exploded conceptual assembly of the Generac PWRmicro solar inverter. Click on components to inspect BOM usage, dual-source quotations, and the $1.2M annualized sourcing model."
     },
     2: {
-      kicker: "PHASE 02 // AUTOMATED FABRICATION",
-      title: "Robotic Welding & In-Process Inspection",
-      desc: "Laser optical profilometry and automated weld seam tracking at Larsen & Toubro, delivering a 20% defect speed lift and real-time variance detection."
+      kicker: "CHAPTER 02 // WAREHOUSE TOPOLOGY",
+      title: "USC Distribution Center & Omnichannel Logistics",
+      desc: "Pareto velocity slotting, dynamic pick-path travel reduction, and physical inventory reconciliation maintaining >98% SKU accuracy across 40,000 sq ft operations."
     },
     3: {
-      kicker: "PHASE 03 // GLOBAL LOGISTICS",
-      title: "Intermodal Corridors & Port Dwell Buffers",
-      desc: "Trans-Pacific freight management, container demurrage reduction, and dynamic 14-day port buffer policies translating transit variance into predictable inventory."
+      kicker: "CHAPTER 03 // AUTOMATED FABRICATION",
+      title: "Robotic Welding & Optical Profilometry",
+      desc: "In-process weld seam inspection at Larsen & Toubro, delivering a 20% defect speed lift and ASME Section VIII pressure vessel manufacturing rigor."
     },
     4: {
-      kicker: "PHASE 04 // DECISION INTELLIGENCE",
-      title: "Stochastic Optimization & Operations Analytics",
-      desc: "Sizing $1.2M annual sourcing leverage at Generac, Pareto warehouse slotting, and guaranteed-service inventory modeling built on USC Viterbi research."
+      kicker: "CHAPTER 04 // DECISION INTELLIGENCE",
+      title: "12-Plant Supply Network Optimization",
+      desc: "Multi-Echelon Inventory Optimization (MEIO), deterministic lead-time buffering, and stochastic linear programming workbench developed at USC Viterbi."
     }
   };
 
