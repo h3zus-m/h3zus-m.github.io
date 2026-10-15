@@ -1848,32 +1848,32 @@ function initTerminalSimulator() {
 
   const simulations = {
     rfq: [
-      { text: "> DIRECTIVE: AUDIT VENDOR RFQ BATCH ($1.2M)", type: "prompt" },
-      { text: "// Connecting to Claude 3.5 Sonnet SCM Agent via MCP Tooling...", type: "dim" },
+      { text: "> DIRECTIVE: RUN ILLUSTRATIVE VENDOR RFQ AUDIT ($1.2M SOURCING SCOPE)", type: "prompt" },
+      { text: "// Executing deterministic document extraction & variance detection logic...", type: "dim" },
       { text: "[INGEST] 24 vendor submittals ingested across 6 tiers. 482 BOM line items.", type: "" },
-      { text: "[AST-PARSE] Mechanical tolerances verified: ±0.02 mm across ASME Sec VIII flanges.", type: "" },
-      { text: "[FLAGGED] Vendor-04 lead time anomaly: +14 days skew beyond production window.", type: "warn" },
-      { text: "[SHOULD-COST] Arbitrage identified: $148,200 potential savings on Tier-2 raw stock.", type: "success" },
-      { text: "[SUCCESS] RFQ BATCH AUDIT COMPLETE. 100% Compliance Verified in 7.8 seconds.", type: "prompt" }
+      { text: "[AST-PARSE] Mechanical tolerances parsed: ±0.02 mm across ASME Sec VIII flanges.", type: "" },
+      { text: "[FLAGGED] Vendor-04 lead time anomaly: +14 days skew beyond planned production window.", type: "warn" },
+      { text: "[SHOULD-COST] Variance flagged: $148,200 potential optimization on Tier-2 raw stock.", type: "success" },
+      { text: "[WORKFLOW COMPLETE] Parameter extraction and should-cost variances formatted for engineer review.", type: "prompt" }
     ],
     ats: [
       { text: "> DIRECTIVE: RUN 0.38PT GEOMETRIC LAYOUT COMPACTOR", type: "prompt" },
-      { text: "// Initializing AST layout compactor on resume DOM stream...", type: "dim" },
+      { text: "// Initializing AST layout compactor simulation on resume DOM stream...", type: "dim" },
       { text: "[DETECT] Container height overflow: 104.2% (Second-page spill detected).", type: "warn" },
       { text: "[ITER-01] Micro-padding reduction (-0.38pt) -> Container height: 103.1%.", type: "" },
       { text: "[ITER-02] Margins and letter-spacing delta (-0.38pt) -> Container height: 102.0%.", type: "" },
       { text: "[ITER-03] Line-height compaction (-0.38pt) -> Container height: 100.9%.", type: "" },
       { text: "[ITER-04] Final convergence step (-0.38pt) -> Container height: 99.8%.", type: "success" },
-      { text: "[SUCCESS] CONVERGENCE ACHIEVED: Single-page boundary locked. Page 2 spill = 0.00%.", type: "prompt" }
+      { text: "[WORKFLOW COMPLETE] Single-page boundary locked. Page 2 spill = 0.00%.", type: "prompt" }
     ],
     mcp: [
-      { text: "> DIRECTIVE: QUERY REAL-TIME SUPPLIER RISK VIA MCP", type: "prompt" },
-      { text: "// Querying enterprise MCP multi-tier supplier graph...", type: "dim" },
+      { text: "> DIRECTIVE: RUN SYNTHETIC MULTI-TIER SUPPLIER RISK QUERY", type: "prompt" },
+      { text: "// Simulating multi-tier supplier graph traversal and route telemetry...", type: "dim" },
       { text: "[ROUTE] Trans-Pacific trade corridor: Port of Los Angeles <-> Port of Hazira.", type: "" },
       { text: "[TELEMETRY] LA container dwell time: 2.4 days (Nominal). Hazira berth: Clear.", type: "" },
-      { text: "[SUPPLIER-HEALTH] Tier-1 Defense Supplier Solvency: 98.4 / 100 (Rock Solid).", type: "success" },
+      { text: "[SUPPLIER-HEALTH] Tier-1 Supplier Solvency index: 98.4 / 100 (Synthetic score).", type: "success" },
       { text: "[CONTINGENCY] Secondary routing standby via Singapore corridor pre-allocated.", type: "" },
-      { text: "[SUCCESS] RISK ASSESSMENT COMPLETE. Zero single-point-of-failure vulnerabilities.", type: "prompt" }
+      { text: "[WORKFLOW COMPLETE] Synthetic route check complete. Single-source paths flagged for contingency allocation.", type: "prompt" }
     ]
   };
 
@@ -2654,18 +2654,20 @@ function initConfidentialDossier() {
     localStorage.setItem('_dossier_last_sub', String(now));
 
     if (alertEl) {
-      alertEl.textContent = 'Dispatch confirmed. Dossier dispatching to ' + sanitizeInput(email) + '...';
+      alertEl.textContent = 'Preparing email draft... Opening your default email application addressed to harshnil@usc.edu.';
       alertEl.classList.remove('hidden');
-      alertEl.style.color = '#10b981';
+      alertEl.style.color = '#38bdf8';
     }
 
     const safeName    = encodeURIComponent(name.slice(0, 100));
     const safeCompany = encodeURIComponent(company.slice(0, 100));
     const safeEmail   = encodeURIComponent(email.slice(0, 100));
 
-    const mailto = `mailto:harshnil@usc.edu?subject=Verified%20SCM%20Dossier%20Request%20-%20${safeName}%20(${safeCompany})&body=Hello%20Harsh,%0A%0AWe%20are%20requesting%20your%20confidential%20operations%20dossier%20for%20${safeCompany}.%0A%0AName:%20${safeName}%0AOrganization:%20${safeCompany}%0AEmail:%20${safeEmail}%0A%0ABest%20regards,`;
+    const mailto = `mailto:harshnil@usc.edu?subject=Engineering%20Dossier%20Request%20-%20${safeName}%20(${safeCompany})&body=Hello%20Harsh,%0A%0AI%20am%20requesting%20your%20confidential%20engineering%20operations%20dossier%20for%20${safeCompany}.%0A%0AName:%20${safeName}%0AOrganization:%20${safeCompany}%0AEmail:%20${safeEmail}%0A%0ABest%20regards,`;
 
-    setTimeout(() => { window.location.href = mailto; }, 900);
+    setTimeout(() => {
+      window.location.href = mailto;
+    }, 700);
   });
 }
 
@@ -2794,9 +2796,57 @@ function initAllSystems() {
   initConfidentialDossier();
   initScrollSpy();
   initScrollReveal();
-  initGlowShift();
+  // Hero Phase HUD fallback & static compatibility
+  initHeroPhaseHUD();
 
   console.log('[HARSH-PORTFOLIO] All modern supply chain systems initialized.');
+}
+
+function initHeroPhaseHUD() {
+  const phaseBtns = document.querySelectorAll('.hero-phase-btn');
+  const kicker = document.getElementById('hud-phase-kicker');
+  const title = document.getElementById('hud-phase-title');
+  const desc = document.getElementById('hud-phase-desc');
+  if (!phaseBtns.length || !title) return;
+
+  const phaseData = {
+    1: {
+      kicker: "PHASE 01 // MECHANICAL FOUNDATION",
+      title: "Precision Engineering & Physical Rigor",
+      desc: "ASME Sec VIII pressure equipment, machined turbine impeller architectures, and tight dimensional tolerances (±0.02mm) anchoring physical systems ownership."
+    },
+    2: {
+      kicker: "PHASE 02 // AUTOMATED FABRICATION",
+      title: "Robotic Welding & In-Process Inspection",
+      desc: "Laser optical profilometry and automated weld seam tracking at Larsen & Toubro, delivering a 20% defect speed lift and real-time variance detection."
+    },
+    3: {
+      kicker: "PHASE 03 // GLOBAL LOGISTICS",
+      title: "Intermodal Corridors & Port Dwell Buffers",
+      desc: "Trans-Pacific freight management, container demurrage reduction, and dynamic 14-day port buffer policies translating transit variance into predictable inventory."
+    },
+    4: {
+      kicker: "PHASE 04 // DECISION INTELLIGENCE",
+      title: "Stochastic Optimization & Operations Analytics",
+      desc: "Sizing $1.2M annual sourcing leverage at Generac, Pareto warehouse slotting, and guaranteed-service inventory modeling built on USC Viterbi research."
+    }
+  };
+
+  phaseBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const p = parseInt(btn.getAttribute('data-phase'), 10);
+      phaseBtns.forEach(b => {
+        const isActive = (b === btn);
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+      if (phaseData[p]) {
+        if (kicker) kicker.textContent = phaseData[p].kicker;
+        if (title) title.textContent = phaseData[p].title;
+        if (desc) desc.textContent = phaseData[p].desc;
+      }
+    });
+  });
 }
 
 if (document.readyState === 'loading') {

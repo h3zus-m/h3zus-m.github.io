@@ -568,7 +568,7 @@ img { display: block; max-width: 100%; }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 110px 0 80px;
+  padding: 92px 0 44px;
   position: relative;
 }
 
@@ -579,8 +579,8 @@ img { display: block; max-width: 100%; }
   padding: 0 clamp(16px, 3.5vw, 24px);
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
-  gap: 48px;
-  align-items: start;
+  gap: clamp(24px, 3.5vw, 40px);
+  align-items: center;
   position: relative;
   z-index: 2;
 }
@@ -625,12 +625,12 @@ img { display: block; max-width: 100%; }
 /* HERO HEADLINE : Cinematic Large Type */
 .hero-headline {
   font-family: var(--font-heading);
-  font-size: clamp(38px, 5.6vw, 72px);
+  font-size: clamp(32px, 4.2vw, 52px);
   font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.04em;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
   color: #ffffff;
-  margin-bottom: 24px;
+  margin-bottom: 14px;
 }
 
 .headline-serif, .hero-headline em {
@@ -3704,8 +3704,10 @@ html, body {
     width: 100% !important;
   }
   .focus-domain-tag {
-    font-size: 10px !important;
+    font-size: 9.5px !important;
     letter-spacing: 0.08em !important;
+    line-height: 1.4 !important;
+    word-break: break-word !important;
   }
   .hero-lead {
     font-size: 13.5px !important;
@@ -4208,24 +4210,24 @@ html, body {
 
 /* 4. Hero Professional Focus & 5-Second Clarity */
 .hero-professional-focus {
-  margin: 16px 0 22px;
-  padding: 18px 22px;
+  margin: 12px 0 18px;
+  padding: 16px 20px;
   background: rgba(10, 18, 32, 0.7);
-  border: 1px solid rgba(0, 212, 255, 0.2);
-  border-left: 3px solid var(--accent-cyan);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-left: 3px solid #38bdf8;
   border-radius: 10px;
-  backdrop-filter: blur(8px);
-}
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
 }
 .focus-domain-tag {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
-  letter-spacing: 0.14em;
-  color: var(--accent-cyan);
+  letter-spacing: 0.12em;
+  color: #38bdf8;
   text-transform: uppercase;
   margin-bottom: 8px;
+  word-break: break-word;
+  line-height: 1.35;
 }
 .hero-meta-summary {
   display: flex;
@@ -5654,7 +5656,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 /* 7. Modernized Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  .hero-maritime-img, .maritime-wake-canvas, .route-pulse-line, .diorama-pulse-beacon {
+  .hero-maritime-img, .maritime-wake-canvas, .route-pulse-line, .diorama-pulse-beacon, .hero-3d-canvas {
     animation: none !important;
     transition: none !important;
   }
@@ -5665,3 +5667,284 @@ a:focus-visible, button:focus-visible, input:focus-visible {
     scroll-behavior: auto !important;
   }
 }
+
+/* ==========================================================================
+   8. HERO 3D SPATIAL CONTINUUM & IGLOO-INSPIRED VISUAL SYSTEM
+   ========================================================================== */
+.hero-spatial-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 68% 42%, #0e172a 0%, #070b13 55%, #03060a 100%);
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-spatial-container {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  background: rgba(10, 16, 28, 0.75);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.hero-spatial-viewport {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  background: radial-gradient(circle at 50% 50%, #0c1424 0%, #060912 100%);
+  cursor: grab;
+  user-select: none;
+  overflow: hidden;
+}
+
+.hero-spatial-viewport:active {
+  cursor: grabbing;
+}
+
+.hero-3d-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  z-index: 1;
+}
+
+/* Dependable Static Fallback */
+.hero-spatial-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 50%, #0b1120 0%, #050811 100%);
+  z-index: 2;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
+  pointer-events: auto;
+}
+
+.hero-spatial-fallback.rendered-hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.fallback-schematic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  text-align: center;
+}
+
+.fallback-svg {
+  width: 200px;
+  height: 200px;
+  filter: drop-shadow(0 0 16px rgba(14, 165, 233, 0.35));
+}
+
+.fallback-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.fallback-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: #38bdf8;
+  background: rgba(14, 165, 233, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 100px;
+  padding: 4px 12px;
+}
+
+.fallback-text {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: #94a3b8;
+  margin: 0;
+}
+
+/* Interaction Hint */
+.hero-interaction-hint {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(6, 10, 18, 0.8);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 100px;
+  padding: 5px 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #94a3b8;
+  letter-spacing: 0.06em;
+  pointer-events: none;
+  backdrop-filter: blur(8px);
+}
+
+.hero-interaction-hint svg {
+  color: #38bdf8;
+  flex-shrink: 0;
+}
+
+/* Spatial HUD & Phase Controls */
+.hero-spatial-hud {
+  padding: 12px 18px 14px;
+  background: rgba(6, 10, 18, 0.9);
+  border-top: 1px solid rgba(56, 189, 248, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hud-phase-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.hero-phase-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 7px 10px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  color: #94a3b8;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.hero-phase-btn:hover {
+  background: rgba(30, 41, 59, 0.85);
+  color: #ffffff;
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.hero-phase-btn.active {
+  background: rgba(14, 165, 233, 0.15);
+  border-color: #38bdf8;
+  color: #38bdf8;
+  box-shadow: 0 0 12px rgba(14, 165, 233, 0.25);
+}
+
+.hero-phase-btn .phase-idx {
+  font-weight: 700;
+  opacity: 0.8;
+}
+
+.hero-phase-btn .phase-name {
+  font-weight: 500;
+}
+
+.hud-phase-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hud-kicker {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: #38bdf8;
+  text-transform: uppercase;
+}
+
+.hud-title {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 600;
+  color: #f8fafc;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.hud-desc {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.5;
+  color: #94a3b8;
+  margin: 0;
+}
+
+/* Subtle Signals Strip (F1, Cricket, Golf, MMA, Cinema) */
+.hero-signals-strip {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-top: 24px;
+  padding: 10px 14px;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+}
+
+.signal-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #94a3b8;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: default;
+  transition: color 0.2s ease;
+}
+
+.signal-tag:hover {
+  color: #38bdf8;
+}
+
+.signal-kicker {
+  color: #f8fafc;
+  font-weight: 600;
+}
+
+.signal-sep {
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 11px;
+}
+
+@media (max-width: 992px) {
+  .hero-spatial-viewport {
+    height: 380px;
+  }
+  .hud-phase-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-spatial-viewport {
+    height: 320px;
+  }
+  .fallback-svg {
+    width: 170px;
+    height: 170px;
+  }
+  .hero-signals-strip {
+    gap: 6px 8px;
+    font-size: 10px;
+  }
+}
+
