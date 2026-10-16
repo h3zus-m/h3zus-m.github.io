@@ -4,6 +4,7 @@
  * UIController, and FallbackController into a unified high-performance runtime.
  */
 
+import * as THREE from '../assets/three.module.min.js';
 import { EngineRenderer } from './Renderer.js';
 import { CameraRig } from './CameraRig.js';
 import { ChapterController } from './ChapterController.js';
@@ -37,8 +38,62 @@ export class PortfolioSpatialEngine {
     this.fpsTimer = performance.now();
     this.isRunning = false;
 
+    // Expose engine instance globally for telemetry and verification
+    window.portfolioEngine = this;
+
+    // 4. Interactive 3D Raycasting Controller
+    this.raycaster = new THREE.Raycaster();
+    this.mouse = new THREE.Vector2(-999, -999);
+    this.hoveredHotspot = null;
+    this.setupInteractiveRaycasting();
+
     this.setupLifecycleObservers();
     this.start();
+  }
+
+  setupInteractiveRaycasting() {
+    if (!this.canvas) return;
+
+    this.canvas.addEventListener('mousemove', (e) => {
+      const rect = this.canvas.getBoundingClientRect();
+      this.mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      this.mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+
+      // Generac Chapter (1): Raycast against 3D PCBA components
+      const activeIdx = this.chapterController.currentChapterIndex;
+      if (activeIdx === 1) {
+        const genScene = this.chapterController.scenes.generac;
+        if (genScene && genScene.interactiveHotspots) {
+          const objects = genScene.interactiveHotspots.map(h => h.object);
+          this.raycaster.setFromCamera(this.mouse, this.cameraRig.camera);
+          const intersects = this.raycaster.intersectObjects(objects, true);
+
+          if (intersects.length > 0) {
+            let topObj = intersects[0].object;
+            while (topObj.parent && !genScene.interactiveHotspots.some(h => h.object === topObj)) {
+              topObj = topObj.parent;
+            }
+            const found = genScene.interactiveHotspots.find(h => h.object === topObj);
+            if (found) {
+              this.canvas.style.cursor = 'pointer';
+              this.hoveredHotspot = found;
+              return;
+            }
+          }
+        }
+      }
+      this.canvas.style.cursor = 'grab';
+      this.hoveredHotspot = null;
+    });
+
+    this.canvas.addEventListener('click', () => {
+      if (this.hoveredHotspot) {
+        const genScene = this.chapterController.scenes.generac;
+        if (genScene) {
+          genScene.selectComponent(this.hoveredHotspot.name);
+        }
+      }
+    });
   }
 
   setupLifecycleObservers() {
@@ -97,6 +152,12 @@ export class PortfolioSpatialEngine {
       // Render Active View
       this.rendererInstance.render(this.cameraRig.camera);
 
+      // Deactivate static fallback once real 3D frame renders
+      if (!this.hasRenderedFirstFrame) {
+        this.hasRenderedFirstFrame = true;
+        this.fallbackController.deactivateFallback();
+      }
+
       // Measure Real FPS
       this.frameCount++;
       if (currentTime - this.fpsTimer > 1000) {
@@ -113,9 +174,18 @@ export class PortfolioSpatialEngine {
   }
 }
 
-// Auto-boot on DOM ready
+// Auto-boot immediately when script executes (DOM already parsed before </body>)
+function bootEngine() {
+  if (window.portfolioEngine) return;
+  try {
+    window.portfolioEngine = new PortfolioSpatialEngine();
+  } catch (err) {
+    console.error('[Engine Boot Error]', err);
+    window.portfolioEngineError = err.toString() + '\n' + (err.stack || '');
+  }
+}
+
+bootEngine();
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => new PortfolioSpatialEngine());
-} else {
-  new PortfolioSpatialEngine();
+  document.addEventListener('DOMContentLoaded', bootEngine);
 }

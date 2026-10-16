@@ -18,6 +18,8 @@ export class FallbackController {
     if (!hasWebGL) {
       console.warn('[FallbackController] WebGL not supported. Activating dependable static mode.');
       this.activateFallback();
+    } else {
+      this.deactivateFallback();
     }
 
     // Listen for context loss events from engine

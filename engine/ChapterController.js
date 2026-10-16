@@ -34,6 +34,7 @@ export class ChapterController {
     this.scene = rendererInstance.scene;
 
     this.currentChapterIndex = 0;
+    this.chapterDefs = CHAPTER_DEFINITIONS;
     this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // Instantiate all 9 discrete scenes
