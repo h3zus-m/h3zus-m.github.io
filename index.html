@@ -98,6 +98,9 @@
 
       <div class="nav-actions">
         <!-- Direct High-Friction-Free Resume Download Link -->
+        <button type="button" class="btn-scene-action" id="btn-open-work-index" style="margin-right: 6px; padding: 6px 12px; font-size: 11px; border-radius: 16px;">
+          <span>Work Index ☰</span>
+        </button>
         <a href="assets/Harsh_Mistry_Resume.pdf" class="btn-nav-resume" download="Harsh_Mistry_Resume.pdf" target="_blank" rel="noopener noreferrer" title="Direct PDF Resume Download">
           <svg viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
           <span>Resume</span>
@@ -254,132 +257,257 @@
                   <button type="button" class="btn-skip-intro" id="btn-skip-intro" title="Skip cinematic entrance directly to Generac Sourcing model">
                     Skip Intro ➔
                   </button>
+                  <button type="button" class="btn-skip-intro" onclick="document.getElementById('btn-open-work-index').click()" title="Open comprehensive work index directory">
+                    Work Index ☰
+                  </button>
                   <span class="reduced-motion-tag" title="Reduced motion supported">Reduced-Motion Safe</span>
                 </div>
               </div>
 
-              <!-- Generac Exploded View Quick Actions -->
-              <div class="generac-quick-actions" id="generac-quick-actions">
-                <button type="button" class="btn-explode-assembly" id="btn-explode-assembly" title="Toggle exploded CAD view of microinverter">
-                  Explode Assembly
-                </button>
-                <span class="assembly-hint">Click components to inspect sourcing evidence</span>
+              <!-- Generac Exploded View Quick Actions Toolbar -->
+              <div class="scene-quick-controls hidden" id="generac-scene-controls">
+                <button type="button" class="btn-scene-action" id="btn-explode-toggle" title="Toggle exploded CAD view">Explode Assembly</button>
+                <button type="button" class="btn-scene-action" data-component-target="mosfet">MOSFETs</button>
+                <button type="button" class="btn-scene-action" data-component-target="choke">Chokes</button>
+                <button type="button" class="btn-scene-action" data-component-target="capacitor">Film Caps</button>
+                <button type="button" class="btn-scene-action" data-component-target="mcu">DSP MCU</button>
+                <button type="button" class="btn-scene-action" id="btn-open-evidence">View $1.2M BOM</button>
+              </div>
+
+              <!-- USC DC Warehouse Quick Controls -->
+              <div class="scene-quick-controls hidden" id="uscdc-scene-controls">
+                <button type="button" class="btn-scene-action active" id="btn-route-pareto">Optimized Pareto ABC Route</button>
+                <button type="button" class="btn-scene-action" id="btn-route-baseline">Baseline Pick Path</button>
               </div>
 
               <!-- Accessible Semantic HTML Evidence Drawer for Component Sourcing Trail -->
-              <div class="generac-evidence-drawer glass-panel" id="generac-evidence-drawer" role="dialog" aria-labelledby="drawer-comp-title" aria-modal="false">
+              <div class="generac-evidence-drawer glass-panel hidden" id="generac-evidence-drawer" role="dialog" aria-labelledby="drawer-comp-title" aria-modal="true">
                 <div class="drawer-header">
                   <div class="drawer-badge-group">
-                    <span class="drawer-kicker">STRATEGIC SOURCING // COMPONENT EVIDENCE</span>
-                    <span class="drawer-status-badge">AEC-Q101 QUALIFIED</span>
+                    <span class="drawer-kicker">STRATEGIC SOURCING // RECONCILED BOM LEVERAGE</span>
+                    <span class="drawer-status-badge">AEC-Q101 &amp; PPAP AUDITED</span>
                   </div>
                   <button type="button" class="btn-close-drawer" id="btn-close-evidence" aria-label="Close evidence drawer">✕</button>
                 </div>
                 <div class="drawer-body">
-                  <h4 class="drawer-comp-title" id="drawer-comp-title">Power MOSFET Array (6x N-Channel 650V)</h4>
-                  <div class="drawer-comp-category" id="drawer-comp-category">Power Semiconductor Electronics · Inverter Core</div>
-                  
-                  <div class="drawer-stat-grid">
-                    <div class="drawer-stat-card">
-                      <span class="dstat-label">BOM USAGE &amp; RUN RATE</span>
-                      <span class="dstat-val" id="drawer-comp-usage">6 / unit · 1.2M units/year</span>
+                  <div class="evidence-tab-btn-group">
+                    <button type="button" class="evidence-tab-btn active" data-tab="mosfet" onclick="document.querySelectorAll('.evidence-tab-pane').forEach(p=>p.classList.remove('active')); document.getElementById('tab-mosfet').classList.add('active'); this.parentElement.querySelectorAll('.evidence-tab-btn').forEach(b=>b.classList.remove('active')); this.classList.add('active');">MOSFET Array (Deep Dive)</button>
+                    <button type="button" class="evidence-tab-btn" data-tab="portfolio" onclick="document.querySelectorAll('.evidence-tab-pane').forEach(p=>p.classList.remove('active')); document.getElementById('tab-portfolio').classList.add('active'); this.parentElement.querySelectorAll('.evidence-tab-btn').forEach(b=>b.classList.remove('active')); this.classList.add('active');">Full $1.2M BOM Reconciliation</button>
+                  </div>
+
+                  <!-- Tab 1: MOSFET Deep Dive -->
+                  <div class="evidence-tab-pane active" id="tab-mosfet">
+                    <h4 class="drawer-comp-title" id="drawer-comp-title">Power MOSFET Array (6x N-Channel 650V in TO-247)</h4>
+                    <div class="drawer-comp-category">Power Semiconductor Electronics · Inverter Core · Dual-Source Model</div>
+                    
+                    <div class="drawer-stat-grid">
+                      <div class="drawer-stat-card">
+                        <span class="dstat-label">ANNUAL DEMAND (200k INVERTERS)</span>
+                        <span class="dstat-val">6 parts/unit · 1,200,000 units/yr</span>
+                      </div>
+                      <div class="drawer-stat-card">
+                        <span class="dstat-label">MAX FULL-VOLUME DELTA</span>
+                        <span class="dstat-val text-cyan">$288,000 / year ($0.24/part)</span>
+                      </div>
                     </div>
-                    <div class="drawer-stat-card">
-                      <span class="dstat-label">SIZED COST OPPORTUNITY</span>
-                      <span class="dstat-val text-cyan" id="drawer-comp-sizing">~$288,000 / year</span>
+
+                    <div class="drawer-section">
+                      <h5 class="dsec-title">1. Sourcing Problem &amp; Single-Source Exposure</h5>
+                      <p class="dsec-desc">Single-source tier-1 wafer fab vulnerability with rigid distributor pricing, exposing production ramp to margin compression and long allocation lead times (24 weeks).</p>
+                    </div>
+
+                    <div class="drawer-section">
+                      <h5 class="dsec-title">2. Comparative Supplier Quotation Matrix</h5>
+                      <div class="drawer-table-wrapper">
+                        <table class="drawer-quotes-table">
+                          <thead>
+                            <tr>
+                              <th>Supplier</th>
+                              <th>Volume Tier</th>
+                              <th>Unit Quote</th>
+                              <th>Lead Time</th>
+                              <th>Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td><strong>Incumbent Supplier A</strong></td>
+                              <td>500k-1M</td>
+                              <td class="quote-price">$1.42 / unit</td>
+                              <td>24 weeks</td>
+                              <td><span class="status-pill">Incumbent Single-Source</span></td>
+                            </tr>
+                            <tr>
+                              <td><strong>Qualified Alternative B</strong></td>
+                              <td>1M+ Commitment</td>
+                              <td class="quote-price">$1.18 / unit</td>
+                              <td>14 weeks</td>
+                              <td><span class="status-pill status-approved">AEC-Q101 Passed</span></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    <div class="drawer-section">
+                      <h5 class="dsec-title">3. Transparent Volume Allocation Scenarios</h5>
+                      <div class="drawer-table-wrapper">
+                        <table class="sourcing-reconciled-table">
+                          <thead>
+                            <tr>
+                              <th>Allocation Model</th>
+                              <th>Volume Allocated</th>
+                              <th>Gross Price Savings</th>
+                              <th>Testing / NRE Costs</th>
+                              <th>Net First-Year Benefit</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td><strong>100% Full Reallocation (Max Delta)</strong></td>
+                              <td>1,200,000 units</td>
+                              <td>$288,000 / yr</td>
+                              <td>$15,000 (AEC-Q101)</td>
+                              <td>$273,000 Net</td>
+                            </tr>
+                            <tr>
+                              <td><strong>30% Year-1 Dual-Source Ramp (Prudent)</strong></td>
+                              <td>360,000 units</td>
+                              <td>$86,400 / yr</td>
+                              <td>$15,000 (AEC-Q101)</td>
+                              <td>$71,400 Net</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
                   </div>
 
-                  <div class="drawer-section">
-                    <h5 class="dsec-title">1. Sourcing Problem &amp; Baseline Vulnerability</h5>
-                    <p class="dsec-desc" id="drawer-comp-problem">Single-source tier-1 fab vulnerability with fragmented distributor price tiers, exposing production ramp to margin compression and wafer allocation bottlenecks.</p>
-                  </div>
+                  <!-- Tab 2: Full $1.2M Portfolio BOM Reconciliation -->
+                  <div class="evidence-tab-pane" id="tab-portfolio" style="display:none;">
+                    <h4 class="drawer-comp-title">PWRmicro Electrical BOM: $1.2M Opportunity Reconciliation</h4>
+                    <div class="drawer-comp-category">Consolidated Analysis across 20+ Electrical Components (200,000 Inverters/Year)</div>
 
-                  <div class="drawer-section">
-                    <h5 class="dsec-title">2. Comparative Supplier Quotation Matrix</h5>
                     <div class="drawer-table-wrapper">
-                      <table class="drawer-quotes-table">
+                      <table class="sourcing-reconciled-table">
                         <thead>
                           <tr>
-                            <th>Supplier</th>
-                            <th>Volume Tier</th>
-                            <th>Unit Quote</th>
-                            <th>Lead Time</th>
-                            <th>Status</th>
+                            <th>BOM Component Group</th>
+                            <th>Qty / Unit</th>
+                            <th>Annual Volume</th>
+                            <th>Unit Delta</th>
+                            <th>Annual Sourcing Leverage</th>
+                            <th>Sourcing Strategy</th>
                           </tr>
                         </thead>
-                        <tbody id="drawer-quotes-body">
+                        <tbody>
                           <tr>
-                            <td><strong>Incumbent Supplier A</strong></td>
-                            <td>500k-1M</td>
-                            <td class="quote-price">$1.42 / unit</td>
-                            <td>24 weeks</td>
-                            <td><span class="status-pill">Single-Source</span></td>
+                            <td><strong>Power MOSFET Array (TO-247)</strong></td>
+                            <td>6</td>
+                            <td>1,200,000</td>
+                            <td>$0.24</td>
+                            <td class="quote-price">$288,000</td>
+                            <td>Dual-source fab qualification</td>
                           </tr>
                           <tr>
-                            <td><strong>Qualified Alternative B</strong></td>
-                            <td>1M+ Commitment</td>
-                            <td class="quote-price">$1.18 / unit</td>
-                            <td>14 weeks</td>
-                            <td><span class="status-pill status-approved">AEC-Q101 Passed</span></td>
+                            <td><strong>Toroidal Power Chokes</strong></td>
+                            <td>2</td>
+                            <td>400,000</td>
+                            <td>$0.85</td>
+                            <td class="quote-price">$340,000</td>
+                            <td>Powder core alternate &amp; winding</td>
+                          </tr>
+                          <tr>
+                            <td><strong>High-Voltage Film Capacitors</strong></td>
+                            <td>4</td>
+                            <td>800,000</td>
+                            <td>$0.225</td>
+                            <td class="quote-price">$180,000</td>
+                            <td>Alternate tier-2 capacitor source</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Digital Control DSP / MCU</strong></td>
+                            <td>1</td>
+                            <td>200,000</td>
+                            <td>$0.825</td>
+                            <td class="quote-price">$165,000</td>
+                            <td>Pin-compatible secondary package</td>
+                          </tr>
+                          <tr>
+                            <td><strong>AC / DC Interconnects &amp; Harness</strong></td>
+                            <td>1 set</td>
+                            <td>200,000</td>
+                            <td>$0.71</td>
+                            <td class="quote-price">$142,000</td>
+                            <td>Tooling localization &amp; molding</td>
+                          </tr>
+                          <tr>
+                            <td><strong>Remaining 15+ Discretes &amp; Passives</strong></td>
+                            <td>Various</td>
+                            <td>Various</td>
+                            <td>Aggregated</td>
+                            <td class="quote-price">$85,000</td>
+                            <td>Corporate tier consolidation</td>
+                          </tr>
+                          <tr class="total-row">
+                            <td colspan="4"><strong>TOTAL IDENTIFIED ANNUALIZED SOURCING LEVERAGE</strong></td>
+                            <td class="quote-price" style="font-size:13px;">$1,200,000 / yr</td>
+                            <td><strong>20+ Components Analyzed</strong></td>
                           </tr>
                         </tbody>
                       </table>
                     </div>
                   </div>
 
-                  <div class="drawer-section">
-                    <h5 class="dsec-title">3. Decision Workflow &amp; Dual-Sourcing Allocation</h5>
-                    <p class="dsec-desc" id="drawer-comp-decision">Dual-sourcing allocation (70% primary, 30% qualified secondary), securing $0.24 unit delta across 1.2M annual run rate while protecting against fab stoppages.</p>
-                  </div>
-
                   <div class="drawer-disclosure-box">
-                    <span class="disc-label">FACTUAL METRIC DISCLOSURE:</span>
-                    <span class="disc-text" id="drawer-comp-disclosure">Sized &amp; validated during NPI sourcing; actual realized savings depend on production volume ramp realization.</span>
+                    <span class="disc-label">GOVERNANCE &amp; AUDIT INTEGRITY NOTE:</span>
+                    <span class="disc-text">The $1.2M headline represents the identified annualized cost leverage opportunity discovered through engineering teardowns and supplier quotation negotiations across 20+ BOM parts. Specific single-component transitions (such as MOSFET dual-sourcing) are phased over production volume tiers.</span>
                   </div>
                 </div>
               </div>
 
+              <!-- Persistent Chapter Waypoints Bar (Chapters 00 through 08) -->
+              <nav class="chapter-waypoints-bar" aria-label="Chapter Waypoints">
+                <button type="button" class="chapter-waypoint-btn active" data-chapter="0"><span class="c-num">00</span> Entrance</button>
+                <button type="button" class="chapter-waypoint-btn" data-chapter="1"><span class="c-num">01</span> Generac</button>
+                <button type="button" class="chapter-waypoint-btn" data-chapter="2"><span class="c-num">02</span> USC DC</button>
+                <button type="button" class="chapter-waypoint-btn" data-chapter="3"><span class="c-num">03</span> Vindeep</button>
+                <button type="button" class="chapter-waypoint-btn" data-chapter="4"><span class="c-num">04</span> L&T</button>
+                <button type="button" class="chapter-waypoint-btn" data-chapter="5"><span class="c-num">05</span> Banco</button>
+                <button type="button" class="chapter-waypoint-btn" data-chapter="6"><span class="c-num">06</span> Projects</button>
+                <button type="button" class="chapter-waypoint-btn" data-chapter="7"><span class="c-num">07</span> Education</button>
+                <button type="button" class="chapter-waypoint-btn" data-chapter="8"><span class="c-num">08</span> Contact</button>
+              </nav>
+
               <!-- Interaction Cue Tag -->
               <div class="hero-interaction-hint" aria-hidden="true">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
-                <span>Drag to inspect 3D core · Click components for evidence</span>
+                <span>Drag to inspect 3D core · Select waypoints to navigate continuum</span>
               </div>
             </div>
 
             <!-- Interactive Phase Inspection HUD -->
             <div class="hero-spatial-hud">
-              <div class="hud-phase-buttons" role="tablist" aria-label="Industrial Continuum Phases">
-                <button type="button" class="hero-phase-btn active" data-phase="1" role="tab" aria-selected="true">
-                  <span class="phase-idx">01</span>
-                  <span class="phase-name">Generac</span>
-                </button>
-                <button type="button" class="hero-phase-btn" data-phase="2" role="tab" aria-selected="false">
-                  <span class="phase-idx">02</span>
-                  <span class="phase-name">Warehouse</span>
-                </button>
-                <button type="button" class="hero-phase-btn" data-phase="3" role="tab" aria-selected="false">
-                  <span class="phase-idx">03</span>
-                  <span class="phase-name">Fabrication</span>
-                </button>
-                <button type="button" class="hero-phase-btn" data-phase="4" role="tab" aria-selected="false">
-                  <span class="phase-idx">04</span>
-                  <span class="phase-name">Analytics</span>
-                </button>
-              </div>
-
               <div class="hud-phase-details">
                 <span class="hud-kicker" id="hud-phase-kicker">CHAPTER 00 // THE BERSERKER THRESHOLD</span>
-                <h3 class="hud-title" id="hud-phase-title">Forging the Luminous Rift</h3>
-                <p class="hud-desc" id="hud-phase-desc">
+                <h3 class="hud-title" id="hud-phase-title">The Berserker Entrance</h3>
+                <p class="hud-desc" id="hud-phase-problem" style="margin-bottom:4px; color:#cbd5e1;">
                   Standing before the monolithic boundary of industrial convention. Click "Enter My World" to initiate the weighted greatsword strike revealing Generac microinverter sourcing and global logistics networks.
                 </p>
+                <p class="hud-desc" id="hud-phase-impact" style="color:#38bdf8; font-size:11px;">
+                  Guts Berserker Armor avatar strikes the obsidian threshold with the 2.2m Dragon Slayer, opening the continuum.
+                </p>
+                <div style="margin-top:6px;">
+                  <button type="button" class="btn-scene-action hidden" id="btn-open-evidence" style="font-size:10px; padding:4px 10px;">
+                    View $1.2M Sourcing Breakdown
+                  </button>
+                </div>
               </div>
             </div>
 
             <div class="cinema-bar cinema-bar-bottom">
               <span class="cinema-tag">LOS ANGELES, CA // AVAILABLE JAN 2027</span>
-              <span class="cinema-tag-right">USC · GENERAC · L&amp;T · BANCO · VINDEEP</span>
+              <span class="cinema-tag-right">USC · GENERAC · L&T · BANCO · VINDEEP</span>
             </div>
           </div>
         </div>
@@ -1954,7 +2082,88 @@
     </div>
   </footer>
 
-  <script type="module" src="hero-3d.js"></script>
+  <script type="module" src="engine/Engine.js"></script>
   <script src="app.js" defer></script>
+  <!-- ====================================================================
+       WORK INDEX MODAL : Accessible Comprehensive Directory
+       ==================================================================== -->
+  <div class="work-index-modal hidden" id="work-index-modal" role="dialog" aria-labelledby="wi-modal-title" aria-modal="true">
+    <div class="work-index-card">
+      <div class="work-index-header">
+        <div class="work-index-title-group">
+          <h3 id="wi-modal-title">Work Index &amp; Career Directory</h3>
+          <p>Direct scannable access to every verified employer, project, and academic credential</p>
+        </div>
+        <button type="button" class="btn-close-drawer" id="btn-close-work-index" aria-label="Close Work Index">✕</button>
+      </div>
+      <div class="work-index-body">
+        <div class="work-index-grid">
+          <!-- 1. Generac -->
+          <div class="work-index-item" onclick="location.hash='#generac'; document.getElementById('btn-close-work-index').click();">
+            <span class="wi-kicker">01 // Strategic Sourcing</span>
+            <div class="wi-company">Generac Power Systems</div>
+            <div class="wi-role">Supply Chain Intern · June 2026 – Aug 2026</div>
+            <div class="wi-impact">Analyzed 20+ electrical BOM components; identified $1.2M annualized sourcing leverage and resolved specification gaps.</div>
+          </div>
+
+          <!-- 2. USC DC -->
+          <div class="work-index-item" onclick="location.hash='#usc-dc'; document.getElementById('btn-close-work-index').click();">
+            <span class="wi-kicker">02 // Warehouse Operations</span>
+            <div class="wi-company">USC Bookstore DC</div>
+            <div class="wi-role">SCM Operations Assistant · June 2025 – Aug 2025</div>
+            <div class="wi-impact">Managed 1,000+ SKUs with Lean Six Sigma; boosted inventory accuracy above 98% and cut restocking cycle time by 15%.</div>
+          </div>
+
+          <!-- 3. Vindeep -->
+          <div class="work-index-item" onclick="location.hash='#vindeep'; document.getElementById('btn-close-work-index').click();">
+            <span class="wi-kicker">03 // Multi-Site Operations</span>
+            <div class="wi-company">Vindeep Expo Engineers</div>
+            <div class="wi-role">Supply Chain Analyst · Sept 2023 – May 2024</div>
+            <div class="wi-impact">Managed multi-site statutory compliance and scheduling for ASME Section VIII equipment with 100% adherence.</div>
+          </div>
+
+          <!-- 4. L&T -->
+          <div class="work-index-item" onclick="location.hash='#lt'; document.getElementById('btn-close-work-index').click();">
+            <span class="wi-kicker">04 // Automation Engineering</span>
+            <div class="wi-company">Larsen &amp; Toubro</div>
+            <div class="wi-role">Project Management Intern · Dec 2022 – May 2023</div>
+            <div class="wi-impact">Coordinated 6-axis robotic weld monitoring system with optical laser profilometry; lifted defect detection speed by 20%.</div>
+          </div>
+
+          <!-- 5. Banco -->
+          <div class="work-index-item" onclick="location.hash='#banco'; document.getElementById('btn-close-work-index').click();">
+            <span class="wi-kicker">05 // Quality Assurance</span>
+            <div class="wi-company">Banco Products (India) Ltd.</div>
+            <div class="wi-role">Quality &amp; Operations Intern · May 2022 – July 2022</div>
+            <div class="wi-impact">Conducted RCA/FMEA process audits; led Kaizen &amp; 5S initiative cutting welding-related costs by 12%.</div>
+          </div>
+
+          <!-- 6. Decision Workbench -->
+          <div class="work-index-item" onclick="location.hash='#projects'; document.getElementById('btn-close-work-index').click();">
+            <span class="wi-kicker">06 // Decision Systems</span>
+            <div class="wi-company">Supply Network Workbench</div>
+            <div class="wi-role">Python, MCP, SQL/ERP · May 2026 – June 2026</div>
+            <div class="wi-impact">Built decision workbench over 12 simulated manufacturing plants for KPI segmentation and opportunity sizing.</div>
+          </div>
+
+          <!-- 7. Education -->
+          <div class="work-index-item" onclick="location.hash='#education'; document.getElementById('btn-close-work-index').click();">
+            <span class="wi-kicker">07 // Academic Foundation</span>
+            <div class="wi-company">USC Viterbi &amp; PDEU</div>
+            <div class="wi-role">M.S. Eng Mgmt (GPA 3.73) · B.Tech Mech (CGPA 9.06)</div>
+            <div class="wi-impact">Comprehensive foundation across operations research, supply network modeling, and mechanics of materials.</div>
+          </div>
+
+          <!-- 8. Contact & Resume -->
+          <div class="work-index-item" onclick="location.hash='#contact'; document.getElementById('btn-close-work-index').click();">
+            <span class="wi-kicker">08 // Executive Contact</span>
+            <div class="wi-company">Harsh Nileshkumar Mistry</div>
+            <div class="wi-role">Email: harshnil@usc.edu · Los Angeles, CA</div>
+            <div class="wi-impact">Available for Full-Time Supply Chain &amp; Operations Roles Starting January 2027.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

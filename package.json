@@ -1,0 +1,25 @@
+{
+  "name": "harsh-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio and interactive digital twin console for Harsh Nileshkumar Mistry. Specialization: Industrial Systems Architecture, Global Supply Chain Engineering, Real-Time Telemetry, Autonomous Decision Agents, and Precision Manufacturing.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/h3zus-m/h3zus-m.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/h3zus-m/h3zus-m.github.io/issues"
+  },
+  "homepage": "https://github.com/h3zus-m/h3zus-m.github.io#readme",
+  "dependencies": {
+    "gsap": "^3.15.0",
+    "three": "^0.160.0"
+  }
+}

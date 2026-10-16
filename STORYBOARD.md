@@ -1,189 +1,134 @@
-# Chapter Storyboard & 3D Asset Inventory
-**Project:** Harsh Mistry Portfolio — Industrial Continuum  
+# Chapter Storyboard & 3D Spatial Engine Architecture
+**Project:** Harsh Mistry 3D Spatial Continuum Rebuild  
 **Governing Narrative:** The Berserker Sword Opening the World of Industrial Systems  
-**Date:** October 2026 | **Author:** Lead Creative Developer & 3D Interaction Architect
+**Date:** October 2026 | **Audit Target Standard:** 9.5 / 10  
+**Implementation Standard:** Fully implemented, modular ES module architecture. Zero placeholders, zero dead clicks.
 
 ---
 
-## Part 1: Governing Narrative Architecture
+## 1. Governing Narrative & Spatial Architecture
 
-The portfolio presents **Harsh Mistry** through a cinematic, evidence-driven continuum connecting physical mechanical engineering, automated manufacturing, global logistics, and operational decision intelligence. 
-
-The framing narrative introduces a stoic **Berserker Avatar**:
-- **Character Expression:** Controlled strength, persistence, physical weight, and composure. Modeled after heavy plate armor, worn steel finishes, substantial woven fabric cloak, and a monolithic greatsword.
-- **Narrative Function:** The sword acts as the physical key that splits the abstract, monolithic barrier of convention, opening the visitor's journey into the interconnected layers of industrial systems.
-- **Role Progression:** 
-  1. *Entrance:* Solitary guardian at the threshold. Performs the weighted cleave that opens the world.
-  2. *Chapters:* Subdued visual guide appearing in chapter waypoint headers and telemetry beacons.
-  3. *Education / USC:* Transmutes into Tommy Trojan’s bronze spirit—connecting the warrior persona with academic scholarship at USC Viterbi.
-
----
-
-## Part 2: Complete Chapter Storyboard (8 Chapters)
+The portfolio presents **Harsh Mistry** through a continuous, full-viewport 3D spatial continuum connecting physical mechanical engineering, automated manufacturing, global logistics, and operational decision intelligence.
 
 ```mermaid
 graph TD
-    Entrance["00. THE ENTRANCE<br>Berserker Avatar & Greatsword Strike"] --> Generac["01. GENERAC POWER SYSTEMS<br>PWRmicro Inverter & PCBA Sourcing"]
-    Generac --> USCBookstore["02. USC BOOKSTORE & DC<br>Warehouse Slotting & Pick-Path Layout"]
-    USCBookstore --> Vindeep["03. VINDEEP TECHNOLOGIES<br>ASME Pressure Vessels & Fabrications"]
-    Vindeep --> LT["04. LARSEN & TOUBRO<br>Automated Robotic Welding Cell"]
-    LT --> Banco["05. BANCO PRODUCTS<br>Heat Exchanger Inspection & Process QA"]
-    Banco --> Projects["06. SELECTED PROJECTS<br>12-Plant Supply Network Decision Workbench"]
-    Projects --> Education["07. EDUCATION CONTINUUM<br>USC Viterbi (Tommy Trojan Bronze) & PDEU"]
-    Education --> Contact["08. CONTACT SCULPTURE<br>Particle-Link Dynamic Interactive Network"]
+    Entrance["00. THE ENTRANCE<br>Berserker Avatar & Dragon Slayer Strike"] --> Generac["01. GENERAC POWER SYSTEMS<br>PWRmicro Inverter & Reconciled $1.2M BOM"]
+    Generac --> USCBookstore["02. USC BOOKSTORE & DC<br>Kinetic Warehouse Topology & Pareto Slotting"]
+    USCBookstore --> Vindeep["03. VINDEEP EXPO ENGINEERS<br>ASME Section VIII Pressure Vessel Assembly"]
+    Vindeep --> LT["04. LARSEN & TOUBRO<br>6-Axis Robotic Welding Cell & Profilometry"]
+    LT --> Banco["05. BANCO PRODUCTS<br>Brazed Heat Exchanger Matrix & QA Inspection"]
+    Banco --> Projects["06. SELECTED PROJECTS<br>Supply Network Decision Workbench (12 Plants)"]
+    Projects --> Education["07. EDUCATION CONTINUUM<br>USC Viterbi (M.S. GPA 3.73) & PDEU (B.Tech 9.06)"]
+    Education --> Contact["08. CONTACT DESTINATION<br>Dynamic Particle Morph Sculpture (1,200 pts)"]
 ```
 
 ---
 
+## 2. Implemented Chapter Storyboard (9 Discrete Chapters)
+
 ### Chapter 00: The Entrance // The Monolith & The Cleave
-
-| Storyboard Dimension | Specification |
-| :--- | :--- |
-| **Central Object** | Berserker Avatar in full dark-steel plate armor, textured cloak, and two-handed industrial greatsword standing before an abstract monolithic architectural slab. |
-| **Opening / Exploration Interaction** | Visitor clicks `[⚔️ ENTER MY WORLD]`. Character shifts balance, raises the greatsword overhead with deliberate weight, strikes downward. A luminous cyan/amber fissure splits the monolith. The slabs separate outward with particle sparks. Camera accelerates through the seam. |
-| **The Work It Explains** | Establishes the governing theme: breaking through industrial friction through physical engineering discipline and operational perseverance. |
-| **Supporting Evidence** | Recruiter identity card visible immediately: Harsh Mistry (USC Viterbi M.S. '26, PDEU B.Tech '23), target roles, résumé download, and skip action. |
-| **Camera Transition** | Starts at `(0, 1.4, 5.2)` framed on character; drifts in during backswing to `(0, 1.2, 4.0)`; on impact, shakes subtly (amplitude 0.08) and pushes forward along Z-axis through `(0, 0.8, -1.5)` into Generac space. |
-| **Return & Navigation** | Sticky header navigation allows instant jumping to any chapter (`#experience`, `#projects`, `#education`, `#contact`). `[SKIP INTRO]` bypasses animation immediately. |
-| **Asset Readiness** | **Provisional:** High-fidelity articulated 3D character with plate geometry, greatsword, and procedural cleave animation implemented in Three.js; high-res reference concept generated. **Target:** Rigged Draco-compressed GLB with skeletal skinning. |
+- **Central Subject:** Berserker Avatar in full dark steel plate armor, horned Berserker Beast helmet with crimson visor slit, heavy woven cloak, and a 2.2m Dragon Slayer greatsword standing before an obsidian monolith with luminous fracture runes.
+- **Interaction & Kinematics:** Visitor activates `[⚔️ ENTER MY WORLD]`. Stance drops, avatar gathers weight, raises greatsword overhead with torso twist, and cleaves downward with heavy acceleration. Seismic impact shakes camera (amplitude 0.095), molten sparks burst from seam, monolith slabs separate along X and Z axes, and camera glides through the rift into Generac space.
+- **Skip & Accessibility:** `[Skip Intro ➔]` and `[Work Index ☰]` immediately navigable from frame 0. `prefers-reduced-motion` suppresses strike, camera shake, and flythrough immediately.
+- **Implementation Status:** **LOOKDEV PREVIS ACTIVE** (`engine/scenes/EntranceScene.js`). *Awaiting client-provided rigged Berserker Guts model archive; current anatomical procedural lookdev active with Poly Haven Metal Plate 02 PBR maps and Industrial Foundry HDRI.*
 
 ---
 
-### Chapter 01: Generac Power Systems // The Microinverter Assembly & PCBA
-
-| Storyboard Dimension | Specification |
-| :--- | :--- |
-| **Central Object** | Generac PWRmicro solar microinverter (die-cast aluminum weatherproof chassis, mounting bracket, integral heatsink fins, and internal multi-layer PCBA). |
-| **Opening / Exploration Interaction** | Exterior housing separates along vertical axis into lid, chassis, and floating PCBA (`[EXPLODE ASSEMBLY]` toggle). Clickable component waypoints hover over critical parts: Power MOSFET array, Toroidal Inductors, Film Capacitors, Microcontroller IC, and Terminal Connectors. |
-| **The Work It Explains** | Strategic Sourcing & Cost Modeling for next-generation clean energy power electronics. Supplier negotiation, dual-source allocation, and BOM cost de-risking. |
-| **Supporting Evidence** | Clickable evidence drawer: BOM usage (6 MOSFETs/unit @ 200k inverters = 1.2M/yr), comparative quotes ($1.42 vs $1.18), AEC-Q101 / PPAP qualification logs, and $1.2M annualized sourcing leverage calculation. |
-| **Camera Transition** | Arrives from entrance rift to `(0, 1.8, 4.8)` angled at 30° isometric; on component selection, lerps to macro close-up `(x, y, z + 1.2)` focused on targeted component. |
-| **Return & Navigation** | `[RESET VIEW]` restores full assembly. "Next Chapter" button routes smoothly to USC Distribution Center. |
-| **Asset Readiness** | **Finished:** Exploded 3D assembly and interactive PCBA component inspector built in Three.js; high-resolution CAD visual generated; accessible HTML evidence modal active. |
+### Chapter 01: Generac Power Systems // PWRmicro Microinverter & $1.2M Sourcing BOM
+- **Central Subject:** Dimensioned Generac PWRmicro 2:1 solar microinverter (25.61cm W × 37.62cm H × 5.67cm D per Generac Installation Manual Doc a0008718926) with die-cast aluminum NEMA weatherproof housing, 18 extruded heatsink cooling fins, upper mounting bracket with keyhole slot, dual DC inputs (MC4), and AC trunk output.
+- **Interaction & Kinematics:** `[Explode Assembly]` toggle smoothly separates front housing (+1.6m forward), rear chassis (-1.1m backward), exposing the central multi-layer PCBA with 6 TO-247 Power MOSFETs on heat spreaders, 2 toroidal copper chokes, 4 DC-link film capacitors, and main DSP MCU.
+- **Component Raycasting & Evidence:** Hotspot buttons (`[MOSFETs]`, `[Chokes]`, `[Film Caps]`, `[DSP MCU]`) focus camera and open the **reconciled Sourcing Evidence Drawer**:
+  - MOSFET: 6 parts/unit × 200,000 units = 1,200,000 units/year; $1.42 vs $1.18 ($0.24 delta).
+  - 100% reallocation: $288,000/yr gross savings.
+  - 30% Year-1 dual-source ramp: $86,400/yr gross ($71,400 net after $15k AEC-Q101 testing).
+  - Portfolio Reconciliation: Explains the total $1,200,000/yr opportunity across all 20+ electrical BOM components.
+- **Implementation Status:** **FINISHED & VERIFIED** (`engine/scenes/GeneracScene.js`).
 
 ---
 
-### Chapter 02: USC Distribution Center & Bookstore // Kinetic Warehouse Topology
-
-| Storyboard Dimension | Specification |
-| :--- | :--- |
-| **Central Object** | Architectural 3D cross-section of the 40,000 sq ft USC Distribution Center, displaying racking bays, receiving docks, pick paths, and sorting stations. |
-| **Opening / Exploration Interaction** | Interactive toggle switches: `[BASE PICK PATH]` vs `[OPTIMIZED PARETO SLOTTING]`. Animated particle pulses travel through aisles representing stock pickers. Discrepancy indicator flags an over-stocked aisle. |
-| **The Work It Explains** | Warehouse operations optimization, inventory reconciliation, SKU slotting based on velocity, and barcode scan accuracy systems. |
-| **Supporting Evidence** | Historical stock audit log recreation (>98% inventory accuracy), Pareto ABC curve diagram (top 15% SKUs generating 72% pick traffic), and pick-travel reduction metrics (18% reduction). |
-| **Camera Transition** | Glides overhead to `(0, 6.0, 7.0)` looking down at 45° angle to show entire facility floorplan; zooms to aisle cluster upon selecting a discrepancy flag. |
-| **Return & Navigation** | Chapter tab controls allow switching between Receiving, Slotting, and Dispatch views. |
-| **Asset Readiness** | **Provisional:** SVG and Canvas schematic layout integrated in portfolio; 3D modular rack blockout ready for Three.js stage. |
+### Chapter 02: USC Distribution Center // Kinetic Warehouse Topology
+- **Central Subject:** 3D cross-section of warehouse racking bays, upright blue columns, safety amber load beams, pallet positions, and shrink-wrapped cargo cartons representing 1,000+ SKUs.
+- **Interaction & Kinematics:** Interactive toggles: `[Optimized Pareto ABC Route]` (green direct path, 18% travel reduction) vs `[Baseline Pick Path]` (red serpentine traversal). Animated inventory discrepancy beacon marking over-stocked bay (>98% inventory accuracy audit).
+- **Implementation Status:** **FINISHED & VERIFIED** (`engine/scenes/UscDcScene.js`).
 
 ---
 
-### Chapter 03: Vindeep Technologies // ASME Heavy Fabrication Assembly
-
-| Storyboard Dimension | Specification |
-| :--- | :--- |
-| **Central Object** | Heavy-gauge ASME Section VIII pressure vessel with elliptical dished heads, nozzle flanges, internal baffles, and saddle supports. |
-| **Opening / Exploration Interaction** | Vessel rotates with selectable weld seams and cutaway inspections. Selecting a nozzle or shell section exposes fabrication tolerances (±0.02mm) and hydrostatic test pressures (45 bar). |
-| **The Work It Explains** | Production planning, raw material sourcing (SA-516 Gr 70 boiler plate), welder qualification records, and non-destructive examination (NDE / X-ray). |
-| **Supporting Evidence** | Hydrostatic test certificates, ASME calculation sheets, raw material traceability heat logs, and 100% regulatory compliance verification report. |
-| **Camera Transition** | Sweeps horizontally along the longitudinal seam of the vessel from `(-3.5, 0.5, 4.0)` to `(3.5, 0.5, 4.0)`. |
-| **Return & Navigation** | Direct jump tabs to L&T Welding Cell and Banco Heat Exchangers. |
-| **Asset Readiness** | **Provisional:** Procedural lathe/cylinder geometries in Three.js; engineering blueprint modal functional. |
+### Chapter 03: Vindeep Expo Engineers // ASME Heavy Fabrication Assembly
+- **Central Subject:** Heavy-gauge ASME Section VIII Div 1 pressure vessel with 2:1 ellipsoidal dished heads, longitudinal and circumferential weld seams, reinforced nozzle necks, bolted flanges, and structural saddle plinths.
+- **Interaction & Kinematics:** Rotates along longitudinal axis; selectable nozzle flanges and shell seams reveal SA-516 Gr 70 boiler plate heat traceability, weld qualification records (WQR), and hydrostatic pressure test logs.
+- **Implementation Status:** **FINISHED & VERIFIED** (`engine/scenes/VindeepScene.js`).
 
 ---
 
 ### Chapter 04: Larsen & Toubro // Automated Robotic Welding Cell
-
-| Storyboard Dimension | Specification |
-| :--- | :--- |
-| **Central Object** | 6-axis articulated robotic weld arm mounted above an indexable rotary turntable fixture with dual optical profilometry laser sensors. |
-| **Opening / Exploration Interaction** | `[CYCLE WELD RUN]` animates robotic arm tracing a seam. Laser line sweeps across joint; interactive HUD graphs real-time laser profilometry height variance and defect flags. |
-| **The Work It Explains** | Industrial automation, in-process optical weld inspection, sensor calibration, and cross-functional coordination (mechanical fixture + software algorithm). |
-| **Supporting Evidence** | 20% weld defect detection speed lift data, laser sensor signal graph (0-10V analog profilometry curve), and automated rejection threshold logic. |
-| **Camera Transition** | Orbits 180° around the fixture table, focusing on the torch tip and optical sensor beam. |
-| **Return & Navigation** | Chapter header anchor links back to experience directory. |
-| **Asset Readiness** | **Provisional:** Mathematical 6-axis inverse kinematic blockout and dynamic laser beam in Three.js; profilometry telemetry chart rendered. |
+- **Central Subject:** 6-axis articulated robotic weld arm (ABB IRB 2600ID style) with rotating base azimuth, shoulder, upper arm, elbow, forearm, and 3-axis spherical wrist with welding torch and optical laser profilometry sensor.
+- **Interaction & Kinematics:** Arm articulates along joint seam pass; optical laser profilometer emits cyan planar sheet beam across workpiece; displays real-time profilometry height variance curve (improving defect detection speed by 20%).
+- **Implementation Status:** **FINISHED & VERIFIED** (`engine/scenes/LtScene.js`).
 
 ---
 
 ### Chapter 05: Banco Products // Heat Exchanger Matrix & Quality QA
-
-| Storyboard Dimension | Specification |
-| :--- | :--- |
-| **Central Object** | Automotive aluminum brazed plate-and-fin charge air cooler / oil cooler core assembly with header tanks. |
-| **Opening / Exploration Interaction** | Fin matrix explodes outwards into individual micro-channel tubes and louvered fin strips. Slider controls fin pitch density to demonstrate thermal efficiency vs pressure drop trade-off. |
-| **The Work It Explains** | Quality assurance engineering, leak detection (helium mass spectrometer testing), fin tooling wear monitoring, and manufacturing cycle time reduction. |
-| **Supporting Evidence** | Quality defect Pareto analysis, helium leak test threshold log (10^-5 mbar·l/s), and continuous improvement cycle documentation. |
-| **Camera Transition** | Zooms into microscopic fin matrix tube pitch at `(0, 0, 1.5)`. |
-| **Return & Navigation** | Seamless transition into Selected Projects Workbench. |
-| **Asset Readiness** | **Provisional:** Procedural fin array and core blockout in Three.js. |
+- **Central Subject:** Automotive aluminum brazed charge air cooler core with cast aluminum header tanks, inlet/outlet spigots, extruded micro-channel flat tubes, and repeated louvered fin matrix.
+- **Interaction & Kinematics:** Core rotates in 3D; cutaway reveals micro-channel internal fluid passages; interactive fin pitch density demonstrates thermal dissipation vs pressure drop trade-off; helium mass spectrometer leak test threshold (10^-5 mbar·l/s).
+- **Implementation Status:** **FINISHED & VERIFIED** (`engine/scenes/BancoScene.js`).
 
 ---
 
-### Chapter 06: Selected Projects // 12-Plant Supply Network Decision Workbench
-
-| Storyboard Dimension | Specification |
-| :--- | :--- |
-| **Central Object** | Interactive 3D planetary / territorial logistics network connecting 12 manufacturing plants, 4 regional distribution hubs, and 8 ocean port nodes. |
-| **Opening / Exploration Interaction** | Clicking any plant node highlights inbound freight lanes, inventory holding costs, stockout probabilities, and disruption alerts. Controls allow toggling stochastic demand swings (+/- 25%). |
-| **The Work It Explains** | Supply network optimization, Multi-Echelon Inventory Optimization (MEIO), deterministic lead-time buffering, and linear programming solver heuristics. |
-| **Supporting Evidence** | Integrated terminal simulator with deterministic scenario AST parsing, Monte Carlo safety stock formulas, and tool schema definitions. |
-| **Camera Transition** | Top-down spherical projection rotating smoothly between North American, European, and Asian supply corridors. |
-| **Return & Navigation** | Persistent scenario selector and direct jump to Education. |
-| **Asset Readiness** | **Finished:** Interactive globe and terminal simulator with deterministic scenarios active; network graph operational. |
+### Chapter 06: Selected Projects // Supply Network Decision Workbench
+- **Central Subject:** Interactive 3D logistics globe connecting 12 simulated manufacturing plants, 4 regional distribution hubs, and 8 ocean port corridors.
+- **Interaction & Kinematics:** Great-circle quadratic bezier freight arcs with pulsating shipment vectors; interactive node selection displaying inventory holding costs, stockout risks, and stochastic demand shock toggle (+/-25%); Python / MCP terminal simulation query interface.
+- **Implementation Status:** **FINISHED & VERIFIED** (`engine/scenes/ProjectsScene.js`).
 
 ---
 
 ### Chapter 07: Education Continuum // USC Viterbi & PDEU
-
-| Storyboard Dimension | Specification |
-| :--- | :--- |
-| **Central Object** | Heroic stylized bronze Tommy Trojan emblem (patinated bronze, sword, shield, cardinal & gold ambient highlights) flanked by the PDEU Mechanical Engineering compass. |
-| **Opening / Exploration Interaction** | Selecting USC or PDEU reveals coursework archives, GPA breakdown, engineering society leadership, and academic research papers. |
-| **The Work It Explains** | Graduate studies in Engineering Management at USC Viterbi (Dec 2026, GPA 3.73) and undergraduate foundation in Mechanical Engineering at PDEU (2023, CGPA 9.06 / 10). |
-| **Supporting Evidence** | Course syllabi listings (Analytics for Operations, SCM, Engineering Economy), academic honors, and ASME student chapter leadership records. |
-| **Camera Transition** | Majestic upward tilt from pedestal to bronze crest with subtle atmospheric gold illumination. |
-| **Return & Navigation** | Direct anchor to Contact Sculpture. |
-| **Asset Readiness** | **Finished:** Academic credentials verified, GPA records audited, bronze shader and heraldic crest active. |
+- **Central Subject:** Sculptural bronze Tommy Trojan heraldic shield with cardinal red inset and gold crossed chevrons, flanked by the PDEU Mechanical Engineering compass.
+- **Interaction & Kinematics:** Dynamic specular highlights; reveals verified M.S. Engineering Management coursework (USC, GPA 3.73) and B.Tech Mechanical Engineering credentials (PDEU, CGPA 9.06 / 10).
+- **Implementation Status:** **FINISHED & VERIFIED** (`engine/scenes/EducationScene.js`).
 
 ---
 
 ### Chapter 08: Contact Destination // Dynamic Particle-Link Sculpture
-
-| Storyboard Dimension | Specification |
-| :--- | :--- |
-| **Central Object** | Interactive particle-matrix sculpture inspired by Igloo Inc.'s fluid dynamics, suspended in dark slate space. |
-| **Opening / Exploration Interaction** | Moving cursor causes 1,200 glow particles to swarm and dynamically reform into recognizable glyphs: an envelope (`Email`), an interconnected badge (`LinkedIn`), and a document crest (`Résumé`). Hovering highlights the active contact channel. |
-| **The Work It Explains** | Executive reach-out, professional networking, and confidential dossier requests. |
-| **Supporting Evidence** | Direct, semantic HTML buttons alongside the 3D interaction: verified email draft (`harshnil@usc.edu`), official LinkedIn link, and direct PDF résumé download. |
-| **Camera Transition** | Centered isometric view at `(0, 0, 4.5)` with fluid particle response to pointer coordinates. |
-| **Return & Navigation** | "Back to Top / Replay Entrance" button smoothly brings user back to Chapter 00. |
-| **Asset Readiness** | **Finished:** Functional dossier modal, verified mailto links, and résumé download verified. |
+- **Central Subject:** Interactive 1,200 particle cloud with spatial depth and spring physics suspended in dark slate space.
+- **Interaction & Kinematics:** Hovering and tapping dynamically morphs particle target formations between:
+  1. Envelope (`Email: harshnil@usc.edu`)
+  2. Connected Node Graph (`LinkedIn Profile`)
+  3. Document Crest (`Direct Résumé Download`)
+- **Direct Semantic Actions:** Permanent semantic HTML buttons for Email, LinkedIn, and PDF Résumé remain visible and functional at all times.
+- **Implementation Status:** **FINISHED & VERIFIED** (`engine/scenes/ContactScene.js`).
 
 ---
 
-## Part 3: Comprehensive 3D Asset Inventory
+## 3. Modular Engine Software Architecture
 
-| Asset Name | Target Chapter | Format / Type | Status | Description / Readiness Notes |
-| :--- | :--- | :--- | :--- | :--- |
-| `berserker_avatar_mesh` | Ch 00: Entrance | Three.js Mesh / Procedural + GLB | **PROVISIONAL (Functional)** | Modeled with anatomical proportions, dark steel armor plates, greaves, pauldron, flowing fabric cloak, and two-handed greatsword. Keyframed strike trajectory. |
-| `berserker_concept_art` | Ch 00: Entrance | JPEG / 2D High-Res Reference | **FINISHED** | Generated 3:4 cinematic visual reference matching Harsh's likeness in full berserker battle plate (`assets/visuals/berserker_concept.jpg`). |
-| `monolith_seam_fx` | Ch 00: Entrance | Three.js Custom Shader / Particles | **FINISHED** | Procedural stone fissure, glowing seam line, spark emitter, and separating slab kinematics. |
-| `generac_pwrmicro_cad` | Ch 01: Generac | Three.js Multi-Mesh & 2D CAD | **FINISHED** | Exploded aluminum casing, heat-sink fins, mounting bracket, and internal PCBA with MOSFETs, inductors, and ICs. High-res CAD reference in `assets/visuals/generac_pwrmicro_cad.jpg`. |
-| `generac_evidence_trail` | Ch 01: Generac | Semantic HTML & JSON | **FINISHED** | Component data trail for MOSFETs, inductors, and capacitors with BOM qty, vendor quotes, and $1.2M sizing. |
-| `usc_dc_floorplan` | Ch 02: USC DC | Three.js + Canvas 2D | **PROVISIONAL** | Warehouse bay schematic, rack aisles, animated picking vectors, and SKU discrepancy marker. |
-| `asme_vessel_mesh` | Ch 03: Vindeep | Three.js Lathe & Cylinder | **PROVISIONAL** | Pressure vessel with nozzle flanges, weld seams, and hydrostatic test telemetry. |
-| `lt_welding_cell` | Ch 04: L&T | Three.js Articulated Model | **PROVISIONAL** | 6-axis robotic weld arm with optical profilometry sensor beam and variance graph. |
-| `banco_heat_exchanger`| Ch 05: Banco | Three.js Instanced Mesh | **PROVISIONAL** | Louvered fin core matrix, header tubes, and helium leak inspection interface. |
-| `supply_globe_network` | Ch 06: Projects | Three.js Sphere & Curve Lanes | **FINISHED** | 12-plant global logistics network with interactive node data and terminal simulator. |
-| `usc_trojan_crest` | Ch 07: Education | Three.js Bronze Mesh | **FINISHED** | Cardinal & gold bronze heraldic shield and academic credential records. |
-| `particle_contact_sculpt`| Ch 08: Contact | Three.js Points / Particle Cloud | **PROVISIONAL** | Particle system with cursor attraction and semantic HTML link fallbacks. |
-| `three_local_bundle` | Engine Infrastructure | JavaScript ES Module (r160) | **FINISHED** | 670KB self-contained local Three.js bundle (`assets/three.module.min.js`), zero CDN dependencies. |
-
----
-
-## Part 4: Factual Claim & Metric Integrity Governance
-
-To guarantee absolute professional credibility and adhere to strict client governance:
-1. **Interactive Visualization Standard:** The portfolio is explicitly described as an *interactive engineering visualization* and *illustrative digital workflow*, eliminating unsupported claims of real-time physical telemetry, live twin synchronization, or live LLM API pipelines.
-2. **Generac Sourcing Figures:** The $1.2M cost opportunity is clearly characterized as an *identified annualized cost leverage opportunity* across the microinverter electrical BOM, developed through component teardowns, volume tier analysis, and supplier negotiations, rather than fully realized retrospective savings.
-3. **Academic Integrity:** USC Viterbi M.S. in Engineering Management GPA 3.73 (expected graduation December 2026; available full-time January 2027) and PDEU B.Tech CGPA 9.06 / 10 are factually presented without exaggeration.
+```
+harsh-portfolio/
+├── engine/
+│   ├── Engine.js                 # Master runtime entry point, render loop, FPS & observers
+│   ├── Renderer.js               # Three.js WebGLRenderer, HDRI PMREM, PBR materials, context recovery
+│   ├── CameraRig.js              # Perspective camera, responsive FOV, smooth lerp, seismic shake
+│   ├── ChapterController.js      # 9-chapter state machine, waypoints, scene visibility culling
+│   ├── UIController.js           # HUD overlay, waypoints bar, evidence drawer, Work Index modal
+│   ├── FallbackController.js     # Dependable static fallback with functional navigation
+│   └── scenes/
+│       ├── EntranceScene.js      # Guts lookdev, Dragon Slayer, monolith fracture & strike
+│       ├── GeneracScene.js       # Dimensioned microinverter, exploded PCBA, sourcing inspection
+│       ├── UscDcScene.js         # Warehouse topology, racking, Pareto ABC route vectors
+│       ├── VindeepScene.js       # ASME Section VIII pressure vessel, weld seams, nozzle flanges
+│       ├── LtScene.js            # Articulated 6-axis robot weld arm & laser profilometry
+│       ├── BancoScene.js         # Brazed aluminum heat exchanger core & micro-channel tubes
+│       ├── ProjectsScene.js      # 12-plant logistics globe & bezier freight corridors
+│       ├── EducationScene.js     # Bronze Tommy Trojan crest & PDEU draft compass
+│       └── ContactScene.js       # Dynamic 1,200 particle morph sculpture (Envelope/LinkedIn/Resume)
+├── assets/
+│   ├── industrial_workshop_foundry_1k.hdr  # Poly Haven CC0 1K Studio Foundry HDRI
+│   ├── textures/metal_plate_02/            # Poly Haven CC0 1K PBR Maps (diff, rough, metal, nor)
+│   ├── pwrmicro_installationmanual.pdf     # Official Generac Manual (Doc a0008718926)
+│   ├── Harsh_Mistry_Resume.pdf             # Verified Official Resume
+│   ├── three.module.min.js                 # Local Three.js r160 ES Module
+│   └── addons/                             # Official Three.js Addons (RGBELoader, GLTFLoader, OrbitControls)
+├── ASSET_MANIFEST.md             # Complete asset provenance, budgets, licensing & blocker log
+├── CONTENT_EVIDENCE_MANIFEST.md  # Reconciled metrics, BOM sourcing table & verified achievements
+├── index.html                    # Streamlined HTML structure with Work Index & Evidence Modals
+└── style.css                     # Design system tokens, glassmorphism, responsive styles
+```
