@@ -124,8 +124,52 @@ export class CameraRig {
 
       const delta = Math.sign(e.deltaY) * 0.055;
       this.targetProgress = Math.max(0.0, Math.min(1.0, this.targetProgress + delta));
+      this.syncScrollPosition();
       this.notifyChapterFromProgress();
     }, { passive: true });
+
+    // Touch Swipe Controller for Mobile Continuum Navigation
+    let touchStartY = 0;
+    window.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (e.target.closest('#work-index-modal') || e.target.closest('#generac-evidence-drawer')) return;
+      if (e.touches.length === 1) {
+        const dy = touchStartY - e.touches[0].clientY;
+        if (Math.abs(dy) > 20) {
+          const delta = Math.sign(dy) * 0.045;
+          this.targetProgress = Math.max(0.0, Math.min(1.0, this.targetProgress + delta));
+          this.syncScrollPosition();
+          this.notifyChapterFromProgress();
+          touchStartY = e.touches[0].clientY;
+        }
+      }
+    }, { passive: true });
+
+    // Native Window Scroll Synchronization
+    this.isProgrammaticScroll = false;
+    window.addEventListener('scroll', () => {
+      if (this.isProgrammaticScroll) return;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (maxScroll > 10) {
+        this.targetProgress = Math.max(0.0, Math.min(1.0, window.scrollY / maxScroll));
+        this.notifyChapterFromProgress();
+      }
+    }, { passive: true });
+  }
+
+  syncScrollPosition() {
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    if (maxScroll > 10) {
+      this.isProgrammaticScroll = true;
+      window.scrollTo({
+        top: this.targetProgress * maxScroll,
+        behavior: 'auto'
+      });
+      setTimeout(() => { this.isProgrammaticScroll = false; }, 100);
+    }
   }
 
   notifyChapterFromProgress() {
@@ -142,6 +186,16 @@ export class CameraRig {
     this.targetProgress = clampedIdx / (numChapters - 1);
     this.targetPosition.copy(this.keyStations[clampedIdx].pos);
     this.targetLookAt.copy(this.keyStations[clampedIdx].look);
+
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    if (maxScroll > 10) {
+      this.isProgrammaticScroll = true;
+      window.scrollTo({
+        top: this.targetProgress * maxScroll,
+        behavior: (immediate || this.prefersReducedMotion) ? 'auto' : 'smooth'
+      });
+      setTimeout(() => { this.isProgrammaticScroll = false; }, 600);
+    }
 
     if (immediate || this.prefersReducedMotion) {
       this.progress = this.targetProgress;

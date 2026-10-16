@@ -191,6 +191,40 @@ export class UIController {
       });
     });
 
+    // Timeline Prev / Next Arrow Controls
+    const btnPrev = document.getElementById('btn-prev-chapter');
+    const btnNext = document.getElementById('btn-next-chapter');
+    if (btnPrev) {
+      btnPrev.addEventListener('click', () => {
+        const prev = Math.max(0, this.chapterController.currentChapterIndex - 1);
+        this.chapterController.goToChapter(prev);
+      });
+    }
+    if (btnNext) {
+      btnNext.addEventListener('click', () => {
+        const next = Math.min(CHAPTER_DEFINITIONS.length - 1, this.chapterController.currentChapterIndex + 1);
+        this.chapterController.goToChapter(next);
+      });
+    }
+
+    // Direct Jump to Contact
+    const btnContact = document.getElementById('btn-contact-jump');
+    if (btnContact) {
+      btnContact.addEventListener('click', () => {
+        this.chapterController.goToChapter(9);
+      });
+    }
+
+    // Reduced Motion Force Toggle
+    const btnMotion = document.getElementById('btn-motion-toggle');
+    if (btnMotion) {
+      btnMotion.addEventListener('click', () => {
+        const isReduced = document.body.classList.toggle('force-reduced-motion');
+        const icon = document.getElementById('motion-icon');
+        if (icon) icon.textContent = isReduced ? '🛑' : '⚡';
+      });
+    }
+
     // Listen to Engine Chapter Changes
     document.addEventListener('engine:chapterchange', (e) => {
       this.onChapterChanged(e.detail.index, e.detail.id, e.detail.definition);
@@ -227,6 +261,12 @@ export class UIController {
   }
 
   onChapterChanged(index, id, def) {
+    // Update top station indicator badge
+    const indicator = document.getElementById('hud-station-indicator');
+    if (indicator && def) {
+      indicator.textContent = `${def.number} / 09 · ${def.title.toUpperCase()}`;
+    }
+
     // Update waypoint button active states
     this.waypointButtons.forEach((btn, i) => {
       const target = btn.getAttribute('data-chapter');

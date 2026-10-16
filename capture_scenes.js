@@ -3,18 +3,23 @@ const fs = require('fs');
 const path = require('path');
 const { spawn } = require('child_process');
 
+const os = require('os');
+const port = 9400 + Math.floor(Math.random() * 500);
+const tempDir = `${os.tmpdir()}/edge-capture-${Date.now()}`;
+
 async function captureAllScenes() {
   const edgePath = "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
   const edge = spawn(edgePath, [
     "--headless=new",
-    "--remote-debugging-port=9226",
+    `--remote-debugging-port=${port}`,
+    `--user-data-dir=${tempDir}`,
     "--window-size=1920,1080",
     "http://localhost:8080"
   ]);
 
   await new Promise(r => setTimeout(r, 2500));
 
-  http.get("http://localhost:9226/json", (res) => {
+  http.get(`http://localhost:${port}/json`, (res) => {
     let data = '';
     res.on('data', c => data += c);
     res.on('end', async () => {
@@ -37,32 +42,60 @@ async function captureAllScenes() {
         }));
 
         const scenesToCapture = [
-          { name: "scene_00_entrance", chapter: 0, setup: "" },
-          { name: "scene_01_generac_exploded", chapter: 1, setup: "window.portfolioEngine.chapterController.scenes.generac.setExplodeProgress(1.0);" },
-          { name: "scene_01_generac_drawer", chapter: 1, setup: "document.getElementById('generac-evidence-drawer').classList.remove('hidden'); document.getElementById('generac-evidence-drawer').style.display='flex';" },
-          { name: "scene_02_uscdc", chapter: 2, setup: "document.getElementById('generac-evidence-drawer').classList.add('hidden'); document.getElementById('generac-evidence-drawer').style.display='none';" },
-          { name: "scene_03_vindeep", chapter: 3, setup: "" },
-          { name: "scene_04_lt", chapter: 4, setup: "" },
-          { name: "scene_05_banco", chapter: 5, setup: "" },
-          { name: "scene_06_workbench", chapter: 6, setup: "window.portfolioEngine.chapterController.scenes.workbench.filterRegion('West');" },
-          { name: "scene_07_inventory", chapter: 7, setup: "window.portfolioEngine.chapterController.scenes.inventory.setPolicy('POQ');" },
-          { name: "scene_08_education", chapter: 8, setup: "" },
-          { name: "scene_09_contact", chapter: 9, setup: "window.portfolioEngine.chapterController.scenes.contact.setMorphTarget('LINKEDIN');" }
+          { name: "scene_00_entrance", chapter: 0, setup: "", mobile: false },
+          { name: "scene_01_generac_exploded", chapter: 1, setup: "window.portfolioEngine.chapterController.scenes.generac.setExplodeProgress(1.0);", mobile: false },
+          { name: "scene_01_generac_drawer", chapter: 1, setup: "document.getElementById('generac-evidence-drawer').classList.remove('hidden'); document.getElementById('generac-evidence-drawer').style.display='flex';", mobile: false },
+          { name: "scene_02_uscdc", chapter: 2, setup: "document.getElementById('generac-evidence-drawer').classList.add('hidden'); document.getElementById('generac-evidence-drawer').style.display='none';", mobile: false },
+          { name: "scene_03_vindeep", chapter: 3, setup: "", mobile: false },
+          { name: "scene_04_lt", chapter: 4, setup: "", mobile: false },
+          { name: "scene_05_banco", chapter: 5, setup: "", mobile: false },
+          { name: "scene_06_workbench", chapter: 6, setup: "window.portfolioEngine.chapterController.scenes.workbench.filterRegion('West');", mobile: false },
+          { name: "scene_07_inventory", chapter: 7, setup: "window.portfolioEngine.chapterController.scenes.inventory.setPolicy('POQ');", mobile: false },
+          { name: "scene_08_education", chapter: 8, setup: "", mobile: false },
+          { name: "scene_09_contact", chapter: 9, setup: "window.portfolioEngine.chapterController.scenes.contact.setMorphTarget('LINKEDIN');", mobile: false },
+          // Mobile captures (390 x 844)
+          { name: "mobile_00_entrance", chapter: 0, setup: "", mobile: true },
+          { name: "mobile_01_generac", chapter: 1, setup: "window.portfolioEngine.chapterController.scenes.generac.setExplodeProgress(0.8);", mobile: true },
+          { name: "mobile_02_uscdc", chapter: 2, setup: "", mobile: true },
+          { name: "mobile_09_contact", chapter: 9, setup: "", mobile: true }
         ];
 
         let idx = 0;
         let msgIdCounter = 1000;
+        let isCurrentlyMobile = false;
 
-        function captureNext() {
+        async function captureNext() {
           if (idx >= scenesToCapture.length) {
-            console.log("\nAll 11 scene captures completed with verified 1920x1080 dimensions!");
+            console.log("\nAll 15 scene captures (11 desktop + 4 mobile) completed successfully!");
             ws.close();
             edge.kill();
             process.exit(0);
           }
 
           const sc = scenesToCapture[idx++];
-          console.log(`Setting up ${sc.name} (Chapter ${sc.chapter})...`);
+          console.log(`Setting up ${sc.name} (Chapter ${sc.chapter}${sc.mobile ? ' - Mobile 390x844' : ''})...`);
+
+          // Switch metrics if mobile mode changed
+          if (sc.mobile !== isCurrentlyMobile) {
+            isCurrentlyMobile = sc.mobile;
+            const emulId = ++msgIdCounter;
+            ws.send(JSON.stringify({
+              id: emulId,
+              method: "Emulation.setDeviceMetricsOverride",
+              params: sc.mobile ? {
+                width: 390,
+                height: 844,
+                deviceScaleFactor: 2,
+                mobile: true
+              } : {
+                width: 1920,
+                height: 1080,
+                deviceScaleFactor: 1,
+                mobile: false
+              }
+            }));
+            await new Promise(r => setTimeout(r, 600));
+          }
 
           // 1. Move camera & setup scene state
           const evalId = ++msgIdCounter;
@@ -97,21 +130,14 @@ async function captureAllScenes() {
             if (r.id === evalId) {
               ws.removeEventListener('message', onEvalResp);
               
-              // 2. Request Page Screenshot at explicit 1920x1080 clip bounds
+              // 2. Request Page Screenshot of the active viewport
               const shotId = ++msgIdCounter;
               ws.send(JSON.stringify({
                 id: shotId,
                 method: "Page.captureScreenshot",
                 params: {
                   format: "png",
-                  quality: 100,
-                  clip: {
-                    x: 0,
-                    y: 0,
-                    width: 1920,
-                    height: 1080,
-                    scale: 1
-                  }
+                  quality: 100
                 }
               }));
 
@@ -129,7 +155,7 @@ async function captureAllScenes() {
                     fs.writeFileSync(path.join(artifactDir, `${sc.name}.png`), buf);
                   } catch (e) {}
 
-                  console.log(`Saved screenshot: ${sc.name}.png (${buf.length} bytes, 1920x1080 verified)`);
+                  console.log(`Saved screenshot: ${sc.name}.png (${buf.length} bytes, verified)`);
                   captureNext();
                 }
               };
