@@ -1,7 +1,7 @@
 /**
  * CHAPTER CONTROLLER & LIFECYCLE COORDINATOR
- * Manages the 9 discrete chapter destinations, camera waypoints, scene visibility culling,
- * smooth continuous spatial transitions, and deep linking.
+ * Manages the 10 discrete chapter destinations, CatmullRomCurve3 waypoints,
+ * scene visibility culling, smooth continuous spatial transitions, and deep linking.
  */
 
 import * as THREE from '../assets/three.module.min.js';
@@ -11,20 +11,22 @@ import { UscDcScene } from './scenes/UscDcScene.js';
 import { VindeepScene } from './scenes/VindeepScene.js';
 import { LtScene } from './scenes/LtScene.js';
 import { BancoScene } from './scenes/BancoScene.js';
-import { ProjectsScene } from './scenes/ProjectsScene.js';
+import { WorkbenchScene } from './scenes/WorkbenchScene.js';
+import { InventoryScene } from './scenes/InventoryScene.js';
 import { EducationScene } from './scenes/EducationScene.js';
 import { ContactScene } from './scenes/ContactScene.js';
 
 export const CHAPTER_DEFINITIONS = [
   { id: 'entrance', number: '00', title: 'The Entrance', subtitle: 'Berserker Avatar & Greatsword Monolith Cleave' },
-  { id: 'generac', number: '01', title: 'Generac Power Systems', subtitle: 'PWRmicro Microinverter & $1.2M Sourcing BOM' },
+  { id: 'generac', number: '01', title: 'Generac Power Systems', subtitle: 'PWRmicro Microinverter & Sourcing BOM Reconciliation' },
   { id: 'usc-dc', number: '02', title: 'USC Bookstore DC', subtitle: 'Kinetic Warehouse Topology & Pareto Slotting' },
-  { id: 'vindeep', number: '03', title: 'Vindeep Expo Engineers', subtitle: 'ASME Section VIII Pressure Vessel Assembly' },
-  { id: 'lt', number: '04', title: 'Larsen & Toubro', subtitle: 'Automated 6-Axis Robotic Welding Cell' },
+  { id: 'vindeep', number: '03', title: 'Vindeep Expo Engineers', subtitle: 'Statutory Testing Operations & Compliance Framework' },
+  { id: 'lt', number: '04', title: 'Larsen & Toubro', subtitle: 'Automated Robotic Welding Seam Monitoring' },
   { id: 'banco', number: '05', title: 'Banco Products', subtitle: 'Brazed Heat Exchanger & Quality Assurance' },
-  { id: 'projects', number: '06', title: 'Selected Projects', subtitle: 'Supply Network Decision Workbench (12 Plants)' },
-  { id: 'education', number: '07', title: 'Education Continuum', subtitle: 'USC Viterbi (M.S. GPA 3.73) & PDEU (B.Tech 9.06)' },
-  { id: 'contact', number: '08', title: 'Contact Destination', subtitle: 'Dynamic Particle-Link Interactive Sculpture' }
+  { id: 'workbench', number: '06', title: 'AI Decision Workbench', subtitle: 'Governed Python MCP Server (12 Plants)' },
+  { id: 'inventory', number: '07', title: 'Inventory Policy Optimization', subtitle: 'FOQ vs LFL vs POQ Demand Simulation' },
+  { id: 'education', number: '08', title: 'Academic Foundation', subtitle: 'USC (M.S. Engineering Management) & PDEU (B.Tech)' },
+  { id: 'contact', number: '09', title: 'Contact Destination', subtitle: 'Dynamic Particle-Link Interactive Sculpture' }
 ];
 
 export class ChapterController {
@@ -37,7 +39,7 @@ export class ChapterController {
     this.chapterDefs = CHAPTER_DEFINITIONS;
     this.prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // Instantiate all 9 discrete scenes
+    // Instantiate all 10 discrete scenes
     this.scenes = {
       entrance: new EntranceScene(rendererInstance, cameraRig),
       generac: new GeneracScene(rendererInstance),
@@ -45,7 +47,8 @@ export class ChapterController {
       vindeep: new VindeepScene(rendererInstance),
       lt: new LtScene(rendererInstance),
       banco: new BancoScene(rendererInstance),
-      projects: new ProjectsScene(rendererInstance),
+      workbench: new WorkbenchScene(rendererInstance),
+      inventory: new InventoryScene(rendererInstance),
       education: new EducationScene(rendererInstance),
       contact: new ContactScene(rendererInstance)
     };
@@ -57,15 +60,16 @@ export class ChapterController {
 
     // Camera Waypoints for each chapter [CameraPos, LookAtPos]
     this.waypoints = [
-      [new THREE.Vector3(0, 1.35, 5.2), new THREE.Vector3(0, 0.45, 0)],         // 00 Entrance
-      [new THREE.Vector3(0, 0.4, -4.2), new THREE.Vector3(0, 0, -8)],           // 01 Generac
-      [new THREE.Vector3(0, 3.8, -13.0), new THREE.Vector3(0, -0.4, -18)],       // 02 USC DC
-      [new THREE.Vector3(0, 1.1, -23.5), new THREE.Vector3(0, 0, -28)],          // 03 Vindeep
-      [new THREE.Vector3(0, 1.1, -33.5), new THREE.Vector3(0, 0, -38)],          // 04 L&T
-      [new THREE.Vector3(0, 0.8, -43.5), new THREE.Vector3(0, 0, -48)],          // 05 Banco
-      [new THREE.Vector3(0, 1.2, -53.2), new THREE.Vector3(0, 0, -58)],          // 06 Projects
-      [new THREE.Vector3(0, 0.6, -63.5), new THREE.Vector3(0, 0, -68)],          // 07 Education
-      [new THREE.Vector3(0, 0.2, -73.5), new THREE.Vector3(0, 0, -78)]           // 08 Contact
+      [new THREE.Vector3(0, 1.4, 5.2),   new THREE.Vector3(0, 0.45, 0)],      // 00 Entrance
+      [new THREE.Vector3(0, 0.4, -4.2),  new THREE.Vector3(0, 0, -8)],       // 01 Generac
+      [new THREE.Vector3(0, 3.8, -13.0), new THREE.Vector3(0, -0.4, -18)],   // 02 USC DC
+      [new THREE.Vector3(0, 1.1, -23.5), new THREE.Vector3(0, 0, -28)],      // 03 Vindeep
+      [new THREE.Vector3(0, 1.1, -33.5), new THREE.Vector3(0, 0, -38)],      // 04 L&T
+      [new THREE.Vector3(0, 0.8, -43.5), new THREE.Vector3(0, 0, -48)],      // 05 Banco
+      [new THREE.Vector3(0, 1.4, -53.2), new THREE.Vector3(0, 0, -58)],      // 06 Workbench
+      [new THREE.Vector3(0, 1.2, -63.5), new THREE.Vector3(0, 0, -68)],      // 07 Inventory
+      [new THREE.Vector3(0, 0.6, -73.5), new THREE.Vector3(0, 0, -78)],      // 08 Education
+      [new THREE.Vector3(0, 0.2, -83.5), new THREE.Vector3(0, 0, -88)]       // 09 Contact
     ];
 
     this.setupListeners();
@@ -81,6 +85,22 @@ export class ChapterController {
     // Listen for hash changes
     window.addEventListener('hashchange', () => {
       this.handleHashRoute(window.location.hash);
+    });
+
+    // Listen for scroll progress from CameraRig
+    document.addEventListener('camera:progresschange', (e) => {
+      const idx = e.detail.chapterIndex;
+      if (idx !== this.currentChapterIndex && idx >= 0 && idx < CHAPTER_DEFINITIONS.length) {
+        this.currentChapterIndex = idx;
+        this.updateSceneVisibility(idx);
+        document.dispatchEvent(new CustomEvent('engine:chapterchange', {
+          detail: {
+            index: idx,
+            id: CHAPTER_DEFINITIONS[idx].id,
+            definition: CHAPTER_DEFINITIONS[idx]
+          }
+        }));
+      }
     });
 
     // Reduced motion listener
@@ -120,10 +140,14 @@ export class ChapterController {
       'lt': 4,
       'larsen-toubro': 4,
       'banco': 5,
+      'workbench': 6,
       'projects': 6,
-      'education': 7,
-      'usc': 7,
-      'contact': 8
+      'project-a': 6,
+      'inventory': 7,
+      'project-b': 7,
+      'education': 8,
+      'usc': 8,
+      'contact': 9
     };
 
     if (map[clean] !== undefined) {
@@ -142,14 +166,16 @@ export class ChapterController {
 
     this.currentChapterIndex = index;
     const def = CHAPTER_DEFINITIONS[index];
-    const [camPos, lookAt] = this.waypoints[index];
 
     // If reduced motion is active or entrance was skipped
     if (this.prefersReducedMotion && index > 0 && !this.scenes.entrance.isFinished) {
       this.scenes.entrance.skipStrike();
     }
 
-    this.cameraRig.setDestination(camPos, lookAt, immediate || this.prefersReducedMotion);
+    // Drive camera rig along 3D CatmullRomCurve3 spline
+    if (this.cameraRig) {
+      this.cameraRig.setChapterProgress(index, immediate || this.prefersReducedMotion);
+    }
 
     // Update scene visibility for rendering performance
     this.updateSceneVisibility(index);
@@ -176,7 +202,7 @@ export class ChapterController {
   }
 
   update(delta, time) {
-    // Update active scenes
+    // Update active scene
     const activeId = CHAPTER_DEFINITIONS[this.currentChapterIndex].id;
     if (this.scenes[activeId] && typeof this.scenes[activeId].update === 'function') {
       this.scenes[activeId].update(delta, time);

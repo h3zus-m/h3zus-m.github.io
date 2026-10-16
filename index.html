@@ -168,9 +168,9 @@
               Connecting physical component tolerances and precision fabrication through global intermodal distribution into analytical decision intelligence.
             </p>
             <div class="hero-meta-summary">
-              <span class="hero-pill-meta"><strong style="color:#38bdf8;">USC Viterbi</strong> M.S. in Engineering Management (Dec 2026 · GPA 3.73)</span>
+              <span class="hero-pill-meta"><strong style="color:#38bdf8;">USC</strong> M.S. in Engineering Management (Expected Dec 2026)</span>
               <span class="hero-pill-meta meta-available">Available Full-Time <strong>January 2027</strong></span>
-              <span class="hero-pill-meta">B.Tech in Mechanical Engineering (PDEU · CGPA 9.06 / 10)</span>
+              <span class="hero-pill-meta">B.Tech in Mechanical Engineering (Pandit Deendayal Petroleum University)</span>
             </div>
             <div class="hero-target-roles">
               <span class="target-label">Target Roles:</span>
@@ -280,19 +280,45 @@
                 <button type="button" class="btn-scene-action" id="btn-route-baseline">Baseline Pick Path</button>
               </div>
 
+              <!-- Chapter 06: Workbench 12-Plant Region Filter Controls -->
+              <div class="scene-quick-controls hidden" id="workbench-scene-controls">
+                <button type="button" class="btn-scene-action active" data-workbench-region="All">All 12 Plants</button>
+                <button type="button" class="btn-scene-action" data-workbench-region="West">West</button>
+                <button type="button" class="btn-scene-action" data-workbench-region="Central">Central</button>
+                <button type="button" class="btn-scene-action" data-workbench-region="East">East</button>
+                <button type="button" class="btn-scene-action" data-workbench-region="South">South</button>
+              </div>
+
+              <!-- Chapter 07: Inventory Policy Simulation Controls -->
+              <div class="scene-quick-controls hidden" id="inventory-scene-controls">
+                <button type="button" class="btn-scene-action active" data-inventory-policy="POQ">Period Order (POQ · -12% Cost)</button>
+                <button type="button" class="btn-scene-action" data-inventory-policy="FOQ">Fixed Order (FOQ, Q=250)</button>
+                <button type="button" class="btn-scene-action" data-inventory-policy="LFL">Lot-for-Lot (LFL)</button>
+              </div>
+
+              <!-- Chapter 09: Contact Sculpture Controls -->
+              <div class="scene-quick-controls hidden" id="contact-scene-controls">
+                <button type="button" class="btn-scene-action active" data-contact-action="ENVELOPE">Email (harshnil@usc.edu)</button>
+                <button type="button" class="btn-scene-action" data-contact-action="LINKEDIN">LinkedIn Profile</button>
+                <button type="button" class="btn-scene-action" data-contact-action="RESUME">Download Résumé</button>
+              </div>
+
               <!-- Accessible Semantic HTML Evidence Drawer for Component Sourcing Trail -->
               <div class="generac-evidence-drawer glass-panel hidden" id="generac-evidence-drawer" role="dialog" aria-labelledby="drawer-comp-title" aria-modal="true">
                 <div class="drawer-header">
                   <div class="drawer-badge-group">
                     <span class="drawer-kicker">STRATEGIC SOURCING // RECONCILED BOM LEVERAGE</span>
-                    <span class="drawer-status-badge">AEC-Q101 &amp; PPAP AUDITED</span>
+                    <span class="drawer-status-badge">NPI BOM/CBOM RECONCILIATION · ARENA PLM &amp; SHAREPOINT</span>
                   </div>
                   <button type="button" class="btn-close-drawer" id="btn-close-evidence" aria-label="Close evidence drawer">✕</button>
                 </div>
                 <div class="drawer-body">
                   <div class="evidence-tab-btn-group">
-                    <button type="button" class="evidence-tab-btn active" data-tab="mosfet" onclick="document.querySelectorAll('.evidence-tab-pane').forEach(p=>p.classList.remove('active')); document.getElementById('tab-mosfet').classList.add('active'); this.parentElement.querySelectorAll('.evidence-tab-btn').forEach(b=>b.classList.remove('active')); this.classList.add('active');">MOSFET Array (Deep Dive)</button>
-                    <button type="button" class="evidence-tab-btn" data-tab="portfolio" onclick="document.querySelectorAll('.evidence-tab-pane').forEach(p=>p.classList.remove('active')); document.getElementById('tab-portfolio').classList.add('active'); this.parentElement.querySelectorAll('.evidence-tab-btn').forEach(b=>b.classList.remove('active')); this.classList.add('active');">Full $1.2M BOM Reconciliation</button>
+                    <button type="button" class="evidence-tab-btn active" data-tab="mosfet" onclick="document.querySelectorAll('.evidence-tab-pane').forEach(p=>p.classList.remove('active')); document.getElementById('tab-mosfet').classList.add('active'); this.parentElement.querySelectorAll('.evidence-tab-btn').forEach(b=>b.classList.remove('active')); this.classList.add('active');">MOSFET Array</button>
+                    <button type="button" class="evidence-tab-btn" data-tab="choke" onclick="document.querySelectorAll('.evidence-tab-pane').forEach(p=>p.classList.remove('active')); document.getElementById('tab-choke').classList.add('active'); this.parentElement.querySelectorAll('.evidence-tab-btn').forEach(b=>b.classList.remove('active')); this.classList.add('active');">Power Chokes</button>
+                    <button type="button" class="evidence-tab-btn" data-tab="capacitor" onclick="document.querySelectorAll('.evidence-tab-pane').forEach(p=>p.classList.remove('active')); document.getElementById('tab-capacitor').classList.add('active'); this.parentElement.querySelectorAll('.evidence-tab-btn').forEach(b=>b.classList.remove('active')); this.classList.add('active');">Film Capacitors</button>
+                    <button type="button" class="evidence-tab-btn" data-tab="mcu" onclick="document.querySelectorAll('.evidence-tab-pane').forEach(p=>p.classList.remove('active')); document.getElementById('tab-mcu').classList.add('active'); this.parentElement.querySelectorAll('.evidence-tab-btn').forEach(b=>b.classList.remove('active')); this.classList.add('active');">DSP Controller</button>
+                    <button type="button" class="evidence-tab-btn" data-tab="portfolio" onclick="document.querySelectorAll('.evidence-tab-pane').forEach(p=>p.classList.remove('active')); document.getElementById('tab-portfolio').classList.add('active'); this.parentElement.querySelectorAll('.evidence-tab-btn').forEach(b=>b.classList.remove('active')); this.classList.add('active');">Full $1.2M Reconciliation</button>
                   </div>
 
                   <!-- Tab 1: MOSFET Deep Dive -->
@@ -342,7 +368,7 @@
                               <td>1M+ Commitment</td>
                               <td class="quote-price">$1.18 / unit</td>
                               <td>14 weeks</td>
-                              <td><span class="status-pill status-approved">AEC-Q101 Passed</span></td>
+                              <td><span class="status-pill status-approved">Dual-Source Candidate</span></td>
                             </tr>
                           </tbody>
                         </table>
@@ -367,14 +393,14 @@
                               <td><strong>100% Full Reallocation (Max Delta)</strong></td>
                               <td>1,200,000 units</td>
                               <td>$288,000 / yr</td>
-                              <td>$15,000 (AEC-Q101)</td>
+                              <td>$15,000 (Qualification)</td>
                               <td>$273,000 Net</td>
                             </tr>
                             <tr>
                               <td><strong>30% Year-1 Dual-Source Ramp (Prudent)</strong></td>
                               <td>360,000 units</td>
                               <td>$86,400 / yr</td>
-                              <td>$15,000 (AEC-Q101)</td>
+                              <td>$15,000 (Qualification)</td>
                               <td>$71,400 Net</td>
                             </tr>
                           </tbody>
@@ -383,10 +409,86 @@
                     </div>
                   </div>
 
-                  <!-- Tab 2: Full $1.2M Portfolio BOM Reconciliation -->
-                  <div class="evidence-tab-pane" id="tab-portfolio" style="display:none;">
+                  <!-- Tab 2: Toroidal Power Chokes -->
+                  <div class="evidence-tab-pane" id="tab-choke">
+                    <h4 class="drawer-comp-title">Toroidal Power Chokes (2x High-Frequency Filter Inductors)</h4>
+                    <div class="drawer-comp-category">Magnetics Assembly · Copper Winding &amp; High-Permeability Core</div>
+                    
+                    <div class="drawer-stat-grid">
+                      <div class="drawer-stat-card">
+                        <span class="dstat-label">ANNUAL DEMAND</span>
+                        <span class="dstat-val">2 parts/unit · 400,000 units/yr</span>
+                      </div>
+                      <div class="drawer-stat-card">
+                        <span class="dstat-label">IDENTIFIED SOURCING LEVERAGE</span>
+                        <span class="dstat-val text-cyan">$340,000 / year ($0.85/part)</span>
+                      </div>
+                    </div>
+
+                    <div class="drawer-section">
+                      <h5 class="dsec-title">1. Discrepancy &amp; Specification Alignment</h5>
+                      <p class="dsec-desc">Flagged engineering drawing mismatch between magnetic core permeability ratings and quote line items. Resolved documentation gap with engineering in Arena PLM to align winding counts with second-tier magnetics fabricators.</p>
+                    </div>
+
+                    <div class="drawer-section">
+                      <h5 class="dsec-title">2. Sourcing Action &amp; Negotiation Priorities</h5>
+                      <p class="dsec-desc">Translated cost gaps into RFQ bidding packages across 3 qualified magnetics vendors, establishing baseline tooling rebates for 400k annual volume commitment.</p>
+                    </div>
+                  </div>
+
+                  <!-- Tab 3: Film Capacitors -->
+                  <div class="evidence-tab-pane" id="tab-capacitor">
+                    <h4 class="drawer-comp-title">High-Voltage DC-Link Film Capacitors (4x Energy Storage Array)</h4>
+                    <div class="drawer-comp-category">Passive Electronics · Ripple Current Endurance &amp; Thermal Stability</div>
+                    
+                    <div class="drawer-stat-grid">
+                      <div class="drawer-stat-card">
+                        <span class="dstat-label">ANNUAL DEMAND</span>
+                        <span class="dstat-val">4 parts/unit · 800,000 units/yr</span>
+                      </div>
+                      <div class="drawer-stat-card">
+                        <span class="dstat-label">IDENTIFIED SOURCING LEVERAGE</span>
+                        <span class="dstat-val text-cyan">$180,000 / year ($0.225/part)</span>
+                      </div>
+                    </div>
+
+                    <div class="drawer-section">
+                      <h5 class="dsec-title">1. Lead Pitch Dimensional Verification</h5>
+                      <p class="dsec-desc">Automated BOM cross-checks in Excel and PowerShell comparing PCB layout keep-out zones against supplier mechanical drawings, preventing pin-pitch assembly clashes during prototype NPI builds.</p>
+                    </div>
+
+                    <div class="drawer-section">
+                      <h5 class="dsec-title">2. Sourcing Strategy</h5>
+                      <p class="dsec-desc">Secured volume bracket pricing by consolidating demand commitments across related inverter product lines.</p>
+                    </div>
+                  </div>
+
+                  <!-- Tab 4: DSP MCU -->
+                  <div class="evidence-tab-pane" id="tab-mcu">
+                    <h4 class="drawer-comp-title">Digital Signal Processor (32-Bit Inverter Control MCU)</h4>
+                    <div class="drawer-comp-category">Semiconductor Processing · Real-Time Grid-Tied Synchronization</div>
+                    
+                    <div class="drawer-stat-grid">
+                      <div class="drawer-stat-card">
+                        <span class="dstat-label">ANNUAL DEMAND</span>
+                        <span class="dstat-val">1 part/unit · 200,000 units/yr</span>
+                      </div>
+                      <div class="drawer-stat-card">
+                        <span class="dstat-label">IDENTIFIED SOURCING LEVERAGE</span>
+                        <span class="dstat-val text-cyan">$165,000 / year ($0.825/part)</span>
+                      </div>
+                    </div>
+
+                    <div class="drawer-section">
+                      <h5 class="dsec-title">1. Lead-Time Mitigation &amp; Alternate Packages</h5>
+                      <p class="dsec-desc">Addressed 32-week allocation lead-time exposure by identifying pin-compatible alternate silicon revisions and coordinating direct fab reservation agreements.</p>
+                    </div>
+                  </div>
+
+                  <!-- Tab 5: Full $1.2M Portfolio BOM Reconciliation -->
+                  <div class="evidence-tab-pane" id="tab-portfolio">
                     <h4 class="drawer-comp-title">PWRmicro Electrical BOM: $1.2M Opportunity Reconciliation</h4>
-                    <div class="drawer-comp-category">Consolidated Analysis across 20+ Electrical Components (200,000 Inverters/Year)</div>
+                    <div class="drawer-comp-category">Illustrative Engineering Sourcing Scenario (Based on Harsh's BOM/CBOM reconciliation across 20+ priority components)</div>
 
                     <div class="drawer-table-wrapper">
                       <table class="sourcing-reconciled-table">
@@ -461,12 +563,12 @@
 
                   <div class="drawer-disclosure-box">
                     <span class="disc-label">GOVERNANCE &amp; AUDIT INTEGRITY NOTE:</span>
-                    <span class="disc-text">The $1.2M headline represents the identified annualized cost leverage opportunity discovered through engineering teardowns and supplier quotation negotiations across 20+ BOM parts. Specific single-component transitions (such as MOSFET dual-sourcing) are phased over production volume tiers.</span>
+                    <span class="disc-text">The $1.2M headline represents the identified annualized sourcing opportunity discovered through engineering BOM/CBOM reconciliation, drawing-to-quote verification, and quotation analysis across 20+ priority components as reported on Harsh Mistry's résumé. The specific component breakdown above represents an illustrative engineering scenario demonstrating the reconciliation workflow.</span>
                   </div>
                 </div>
               </div>
 
-              <!-- Persistent Chapter Waypoints Bar (Chapters 00 through 08) -->
+              <!-- Persistent Chapter Waypoints Bar (Chapters 00 through 09) -->
               <nav class="chapter-waypoints-bar" aria-label="Chapter Waypoints">
                 <button type="button" class="chapter-waypoint-btn active" data-chapter="0"><span class="c-num">00</span> Entrance</button>
                 <button type="button" class="chapter-waypoint-btn" data-chapter="1"><span class="c-num">01</span> Generac</button>
@@ -474,9 +576,10 @@
                 <button type="button" class="chapter-waypoint-btn" data-chapter="3"><span class="c-num">03</span> Vindeep</button>
                 <button type="button" class="chapter-waypoint-btn" data-chapter="4"><span class="c-num">04</span> L&T</button>
                 <button type="button" class="chapter-waypoint-btn" data-chapter="5"><span class="c-num">05</span> Banco</button>
-                <button type="button" class="chapter-waypoint-btn" data-chapter="6"><span class="c-num">06</span> Projects</button>
-                <button type="button" class="chapter-waypoint-btn" data-chapter="7"><span class="c-num">07</span> Education</button>
-                <button type="button" class="chapter-waypoint-btn" data-chapter="8"><span class="c-num">08</span> Contact</button>
+                <button type="button" class="chapter-waypoint-btn" data-chapter="6"><span class="c-num">06</span> Workbench</button>
+                <button type="button" class="chapter-waypoint-btn" data-chapter="7"><span class="c-num">07</span> Inventory</button>
+                <button type="button" class="chapter-waypoint-btn" data-chapter="8"><span class="c-num">08</span> Education</button>
+                <button type="button" class="chapter-waypoint-btn" data-chapter="9"><span class="c-num">09</span> Contact</button>
               </nav>
 
               <!-- Interaction Cue Tag -->
@@ -2082,8 +2185,6 @@
     </div>
   </footer>
 
-  <script type="module" src="engine/Engine.js"></script>
-  <script src="app.js" defer></script>
   <!-- ====================================================================
        WORK INDEX MODAL : Accessible Comprehensive Directory
        ==================================================================== -->
@@ -2165,5 +2266,7 @@
       </div>
     </div>
   </div>
+  <script type="module" src="./engine/Engine.js"></script>
+  <script src="app.js" defer></script>
 </body>
 </html>

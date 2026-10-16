@@ -1,7 +1,8 @@
 /**
  * UI CONTROLLER & ACCESSIBLE INTERACTION ARCHITECT
- * Coordinates HTML overlays, floating navigation, chapter waypoints,
+ * Coordinates HTML overlays, floating navigation, 10-chapter waypoints,
  * the Generac Sourcing Evidence Drawer with reconciled calculations,
+ * Workbench region filters, Inventory policy comparisons, Contact particle morphing,
  * Work Index modal, keyboard accessibility, and dependable fallback interaction.
  */
 
@@ -11,6 +12,7 @@ export class UIController {
   constructor(chapterController) {
     this.chapterController = chapterController;
     this.activeEvidenceTab = 'mosfet';
+    this.lastFocusedElement = null;
 
     this.cacheDomElements();
     this.setupEventListeners();
@@ -34,6 +36,10 @@ export class UIController {
     this.uscDcControls = document.getElementById('uscdc-scene-controls');
     this.btnPareto = document.getElementById('btn-route-pareto');
     this.btnBaseline = document.getElementById('btn-route-baseline');
+
+    this.workbenchControls = document.getElementById('workbench-scene-controls');
+    this.inventoryControls = document.getElementById('inventory-scene-controls');
+    this.contactControls = document.getElementById('contact-scene-controls');
 
     this.workIndexModal = document.getElementById('work-index-modal');
     this.btnOpenWorkIndex = document.getElementById('btn-open-work-index');
@@ -102,6 +108,63 @@ export class UIController {
       });
     }
 
+    // Chapter 06: Workbench Region Filter Buttons
+    document.querySelectorAll('[data-workbench-region]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const region = btn.getAttribute('data-workbench-region');
+        document.querySelectorAll('[data-workbench-region]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        this.chapterController.scenes.workbench?.filterRegion(region);
+      });
+    });
+
+    // Chapter 07: Inventory Policy Simulation Buttons
+    document.querySelectorAll('[data-inventory-policy]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const policy = btn.getAttribute('data-inventory-policy');
+        document.querySelectorAll('[data-inventory-policy]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        this.chapterController.scenes.inventory?.setPolicy(policy);
+      });
+    });
+
+    // Evidence Drawer Tabs (All 5 Panes: mosfet, choke, capacitor, mcu, portfolio)
+    document.querySelectorAll('.evidence-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.getAttribute('data-tab');
+        if (tab) {
+          this.onComponentSelected(tab);
+        }
+      });
+    });
+
+    // Chapter 09: Contact Sculpture Actions
+    document.querySelectorAll('[data-contact-action]').forEach(btn => {
+      const action = btn.getAttribute('data-contact-action');
+      const trigger = () => {
+        document.querySelectorAll('[data-contact-action]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        this.chapterController.scenes.contact?.setMorphTarget(action);
+      };
+      btn.addEventListener('click', trigger);
+      btn.addEventListener('mouseenter', trigger);
+      btn.addEventListener('focus', trigger);
+    });
+
+    // Global Contact Link Hover Binding (Email, LinkedIn, Resume)
+    document.querySelectorAll('a[href^="mailto:"]').forEach(a => {
+      a.addEventListener('mouseenter', () => this.chapterController.scenes.contact?.setMorphTarget('ENVELOPE'));
+      a.addEventListener('focus', () => this.chapterController.scenes.contact?.setMorphTarget('ENVELOPE'));
+    });
+    document.querySelectorAll('a[href*="linkedin.com"]').forEach(a => {
+      a.addEventListener('mouseenter', () => this.chapterController.scenes.contact?.setMorphTarget('LINKEDIN'));
+      a.addEventListener('focus', () => this.chapterController.scenes.contact?.setMorphTarget('LINKEDIN'));
+    });
+    document.querySelectorAll('a[href*="Resume"], a[href*="resume"]').forEach(a => {
+      a.addEventListener('mouseenter', () => this.chapterController.scenes.contact?.setMorphTarget('RESUME'));
+      a.addEventListener('focus', () => this.chapterController.scenes.contact?.setMorphTarget('RESUME'));
+    });
+
     // Work Index Modal
     if (this.btnOpenWorkIndex && this.workIndexModal) {
       this.btnOpenWorkIndex.addEventListener('click', () => this.openWorkIndex());
@@ -157,7 +220,7 @@ export class UIController {
       } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
         const prev = Math.max(0, this.chapterController.currentChapterIndex - 1);
         this.chapterController.goToChapter(prev);
-      } else if (e.key >= '0' && e.key <= '8') {
+      } else if (e.key >= '0' && e.key <= '9') {
         this.chapterController.goToChapter(parseInt(e.key, 10));
       }
     });
@@ -182,71 +245,87 @@ export class UIController {
     if (this.uscDcControls) {
       this.uscDcControls.classList.toggle('hidden', index !== 2);
     }
+    if (this.workbenchControls) {
+      this.workbenchControls.classList.toggle('hidden', index !== 6);
+    }
+    if (this.inventoryControls) {
+      this.inventoryControls.classList.toggle('hidden', index !== 7);
+    }
+    if (this.contactControls) {
+      this.contactControls.classList.toggle('hidden', index !== 9);
+    }
 
     // Update HUD Cards with verified problem & result statements
     const dataMap = {
       0: {
         kicker: 'CHAPTER 00 // THRESHOLD',
         title: 'The Berserker Entrance',
-        problem: 'Complex industrial systems operate behind heavy organizational and physical friction.',
-        impact: 'Guts Berserker Armor avatar strikes the obsidian threshold with the 2.2m Dragon Slayer, opening the continuum.',
+        problem: 'Complex industrial and global supply chain systems operate behind heavy friction.',
+        impact: 'Guts Berserker Armor avatar strikes the monolithic threshold with the 2.2m Dragon Slayer, opening the continuum.',
         showEvidence: false
       },
       1: {
         kicker: 'CHAPTER 01 // STRATEGIC SOURCING',
         title: 'Generac Power Systems',
-        problem: 'Single-source microinverter BOM dependencies, supply constraints, and uncompetitive component tier pricing.',
-        impact: 'Analyzed 20+ electrical BOM components; identified $1.2M annualized sourcing leverage and dual-source ramp.',
+        problem: 'PWRmicro NPI single-source risks, drawing/quote mismatches, and uncompetitive component tiering.',
+        impact: 'Reconciled engineering BOMs/CBOMs across 20+ priority components; identified $1.2M annualized sourcing opportunity in Arena PLM.',
         showEvidence: true,
         evidenceLabel: 'View $1.2M Sourcing Breakdown'
       },
       2: {
         kicker: 'CHAPTER 02 // WAREHOUSE OPERATIONS',
         title: 'USC Bookstore & Distribution Center',
-        problem: 'Sub-optimal SKU slotting creating excessive picker transit miles and cycle-count variances across 1,000+ SKUs.',
-        impact: 'Redesigned stock-flow layouts and Pareto ABC slotting; improved inventory accuracy above 98% and cut cycle time by 15%.',
+        problem: 'End-to-end inventory variances and fulfillment bottlenecks across 1,000+ SKUs.',
+        impact: 'Introduced ERP-driven cycle counting and Pareto ABC slotting; improved accuracy above 98%, cut cycle time by 15%, reduced errors by 10%.',
         showEvidence: false
       },
       3: {
-        kicker: 'CHAPTER 03 // STATUTORY COMPLIANCE',
+        kicker: 'CHAPTER 03 // STATUTORY TESTING OPERATIONS',
         title: 'Vindeep Expo Engineers',
-        problem: 'Multi-site fabrication scheduling bottlenecks and strict ASME Section VIII compliance verification.',
-        impact: 'Centralized project dashboards, resolved welder & material bottlenecks, and sustained 100% regulatory adherence.',
+        problem: 'Multi-site testing coordination for pressure vessels and lifting equipment under strict regulatory compliance.',
+        impact: 'Engineered centralized reporting dashboard (MS Project + Excel), cutting audit prep by 15% and sustaining 100% regulatory adherence.',
         showEvidence: false
       },
       4: {
         kicker: 'CHAPTER 04 // AUTOMATION ENGINEERING',
         title: 'Larsen & Toubro',
-        problem: 'Manual weld inspection latency and post-process defect detection delays in heavy fabrication.',
-        impact: 'Coordinated robotic welding monitoring system with optical laser profilometry, lifting defect detection speed by 20%.',
+        problem: 'Welding defect latency and post-process rework exposure in heavy industrial fabrication.',
+        impact: 'Engineered portable robotic welding seam-monitoring system integrating SolidWorks prototypes and Python automation; defect detection +20%.',
         showEvidence: false
       },
       5: {
         kicker: 'CHAPTER 05 // QUALITY ASSURANCE',
         title: 'Banco Products (India) Ltd.',
-        problem: 'Welding-related defect rates and workstation cycle inefficiencies in heat exchanger manufacturing.',
-        impact: 'Executed RCA, FMEA, and Kaizen 5S audits, identifying 10+ bottlenecks and reducing welding-related costs by 12%.',
+        problem: 'Welding-related defect rates and process bottlenecks in automotive heat exchanger manufacturing.',
+        impact: 'Executed RCA, FMEA, SPC, and Lean audits; identified 10+ bottlenecks and led Kaizen/5S initiative reducing welding costs by 12%.',
         showEvidence: false
       },
       6: {
-        kicker: 'CHAPTER 06 // DECISION SYSTEMS',
-        title: 'Supply Network Decision Workbench',
-        problem: 'Heuristic-based multi-echelon inventory planning unable to absorb stochastic regional demand shocks.',
-        impact: 'Constructed Python & MCP decision workbench over 12 simulated manufacturing plants with traceable policy recommendations.',
+        kicker: 'CHAPTER 06 // AGENTIC OPERATIONS WORKBENCH',
+        title: 'AI Supply Chain Decision Workbench',
+        problem: 'Operating unit visibility gaps across multi-facility manufacturing networks.',
+        impact: 'Built Python Model Context Protocol (MCP) server with four governed tools for KPI segmentation, evidence retrieval, opportunity sizing, and brief generation over 12 plants.',
         showEvidence: false
       },
       7: {
-        kicker: 'CHAPTER 07 // ACADEMIC FOUNDATION',
-        title: 'USC Viterbi & PDEU',
-        problem: 'Bridging theoretical operations research with physical manufacturing and supply chain execution.',
-        impact: 'M.S. in Engineering Management at USC Viterbi (GPA 3.73 / 4.00) & B.Tech in Mechanical Engineering at PDEU (CGPA 9.06 / 10.00).',
+        kicker: 'CHAPTER 07 // INVENTORY OPTIMIZATION',
+        title: 'Inventory Policy Optimization (FOQ vs LFL vs POQ)',
+        problem: 'Demand volatility and cost-to-serve trade-offs across holding, ordering, and stockout penalty parameters.',
+        impact: 'Modeled total operational cost across FOQ, LFL, and POQ replenishment rules; identified POQ strategy delivering 8–15% overall cost reduction.',
         showEvidence: false
       },
       8: {
-        kicker: 'CHAPTER 08 // DESTINATION',
+        kicker: 'CHAPTER 08 // ACADEMIC FOUNDATION',
+        title: 'Academic Background & Coursework',
+        problem: 'Bridging engineering mechanics, spreadsheet modeling, and operations management.',
+        impact: 'USC M.S. in Engineering Management (Expected Dec 2026) & Pandit Deendayal Petroleum University B.Tech in Mechanical Engineering (May 2023).',
+        showEvidence: false
+      },
+      9: {
+        kicker: 'CHAPTER 09 // CONTACT DESTINATION',
         title: 'Contact & Executive Reach-Out',
-        problem: 'Connecting with Harsh Mistry for Full-Time Supply Chain, Sourcing & Operations Roles (Starting Jan 2027).',
-        impact: 'Dynamic particle sculpture morphing between Envelope, LinkedIn, and Résumé. Immediate zero-friction direct links.',
+        problem: 'Connecting with Harsh Mistry for Full-Time Supply Chain, Sourcing & Operations Roles (Available Jan 2027).',
+        impact: 'Interactive particle sculpture morphing between Envelope, LinkedIn, and Résumé with zero dead clicks.',
         showEvidence: false
       }
     };
@@ -273,14 +352,19 @@ export class UIController {
     });
 
     document.querySelectorAll('.evidence-tab-pane').forEach(pane => {
-      pane.classList.toggle('active', pane.id === `tab-${name}`);
+      const matches = pane.id === `tab-${name}`;
+      pane.classList.toggle('active', matches);
+      pane.style.display = matches ? 'block' : 'none';
     });
   }
 
   openWorkIndex() {
     if (this.workIndexModal) {
+      this.lastFocusedElement = document.activeElement;
       this.workIndexModal.classList.remove('hidden');
       this.workIndexModal.setAttribute('aria-hidden', 'false');
+      const firstBtn = this.workIndexModal.querySelector('button, a');
+      if (firstBtn) firstBtn.focus();
     }
   }
 
@@ -288,13 +372,16 @@ export class UIController {
     if (this.workIndexModal) {
       this.workIndexModal.classList.add('hidden');
       this.workIndexModal.setAttribute('aria-hidden', 'true');
+      if (this.lastFocusedElement) this.lastFocusedElement.focus();
     }
   }
 
   openEvidenceDrawer() {
     if (this.evidenceDrawer) {
+      this.lastFocusedElement = document.activeElement;
       this.evidenceDrawer.classList.remove('hidden');
       this.evidenceDrawer.setAttribute('aria-hidden', 'false');
+      if (this.btnCloseEvidence) this.btnCloseEvidence.focus();
     }
   }
 
@@ -302,6 +389,7 @@ export class UIController {
     if (this.evidenceDrawer) {
       this.evidenceDrawer.classList.add('hidden');
       this.evidenceDrawer.setAttribute('aria-hidden', 'true');
+      if (this.lastFocusedElement) this.lastFocusedElement.focus();
     }
   }
 }

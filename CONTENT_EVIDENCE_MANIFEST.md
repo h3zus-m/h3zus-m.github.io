@@ -90,10 +90,10 @@ The audit rightly highlighted that a single component cannot explain a $1.2M hea
 
 ## 2. Academic Credentials Verification
 
-| Institution | Degree & Program | Dates | Verified Metrics | Verified Source Coursework |
+| Institution | Degree & Program | Dates | Verified Metrics / Status | Verified Source Coursework |
 | :--- | :--- | :--- | :--- | :--- |
-| **University of Southern California (USC Viterbi)** | M.S. in Engineering Management | Jan 2025 – Dec 2026 (Expected) | **GPA: 3.73 / 4.00**; Full-time availability Jan 2027 | Supply Chain Management, Spreadsheet Modeling, Global Operations Management |
-| **Pandit Deendayal Petroleum University (PDEU)** | B.Tech in Mechanical Engineering | Aug 2019 – May 2023 | **CGPA: 9.06 / 10.00**; First Class with Distinction | Manufacturing Processes, Mechanics of Materials, Optimization Techniques |
+| **University of Southern California (USC)** | M.S. in Engineering Management | Jan 2025 – Dec 2026 (Expected) | Full-time availability Jan 2027 (Current resume omits GPA; retained on user preference) | Supply Chain MNGT, Spreadsheet Modeling, Global Operations MNGT |
+| **Pandit Deendayal Petroleum University** | B.Tech in Mechanical Engineering | Aug 2019 – May 2023 | Degree Conferred (Current resume omits CGPA) | Manufacturing Processes, Mechanics of Materials, Optimization Techniques |
 
 ---
 

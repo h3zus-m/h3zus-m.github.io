@@ -45,19 +45,25 @@ async function run() {
               params: {
                 awaitPromise: true,
                 expression: `(async () => {
-                  try {
-                    const mod = await import('./engine/Engine.js');
-                    const inst = new mod.PortfolioSpatialEngine();
-                    return JSON.stringify({
-                      success: true,
-                      instCreated: !!inst,
-                      isWebGL: inst.rendererInstance ? inst.rendererInstance.isWebGLAvailable : false,
-                      fps: inst.fps,
-                      frameCount: inst.frameCount
-                    });
-                  } catch (err) {
-                    return JSON.stringify({ error: err.toString(), stack: err.stack });
+                  const eng = window.portfolioEngine;
+                  if (!eng) {
+                    return JSON.stringify({ error: "portfolioEngine is null", errVar: window.portfolioEngineError });
                   }
+                  const scenes = Object.keys(eng.chapterController.scenes);
+                  const gl = eng.rendererInstance.renderer.getContext();
+                  const pixel = new Uint8Array(4);
+                  gl.readPixels(Math.floor(gl.drawingBufferWidth / 2), Math.floor(gl.drawingBufferHeight / 2), 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, pixel);
+                  
+                  return JSON.stringify({
+                    isWebGL: eng.rendererInstance.isWebGLAvailable,
+                    scenesCount: scenes.length,
+                    scenes: scenes,
+                    totalFrames: eng.totalFramesRendered,
+                    fps: eng.fps,
+                    avgFrameTimeMs: eng.avgFrameTimeMs,
+                    centerPixel: Array.from(pixel),
+                    currentChapter: eng.chapterController.currentChapterIndex
+                  }, null, 2);
                 })()`
               }
             }));

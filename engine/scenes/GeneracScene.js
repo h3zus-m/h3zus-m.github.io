@@ -230,6 +230,34 @@ export class GeneracScene {
 
   selectComponent(name) {
     this.selectedComponent = name;
+    // Auto-explode assembly if collapsed so internal components are visible
+    if (this.targetExplodeProgress < 0.6) {
+      this.targetExplodeProgress = 1.0;
+    }
+
+    // Highlight selected component in 3D
+    const compMap = {
+      mosfet: this.mosfetGroup,
+      choke: this.chokeGroup,
+      capacitor: this.capGroup,
+      mcu: this.mcuGroup
+    };
+
+    Object.entries(compMap).forEach(([k, group]) => {
+      if (!group) return;
+      const isSelected = k === name;
+      group.traverse(child => {
+        if (child.isMesh && child.material) {
+          if (isSelected) {
+            child.userData.originalEmissive = child.userData.originalEmissive || child.material.emissive?.clone() || new THREE.Color(0, 0, 0);
+            if (child.material.emissive) child.material.emissive.setHex(0x0ea5e9);
+          } else if (child.userData.originalEmissive && child.material.emissive) {
+            child.material.emissive.copy(child.userData.originalEmissive);
+          }
+        }
+      });
+    });
+
     // Dispatch event to UI controller with full reconciled sourcing dataset
     document.dispatchEvent(new CustomEvent('engine:componentselected', {
       detail: { component: name }

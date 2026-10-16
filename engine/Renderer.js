@@ -26,6 +26,7 @@ export class EngineRenderer {
       antialias: true,
       alpha: true,
       powerPreference: 'high-performance',
+      preserveDrawingBuffer: true,
       stencil: false,
       depth: true
     });
@@ -36,8 +37,9 @@ export class EngineRenderer {
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-    this.width = window.innerWidth;
-    this.height = window.innerHeight;
+    const rect = this.canvas.getBoundingClientRect();
+    this.width = rect.width > 0 ? rect.width : window.innerWidth;
+    this.height = rect.height > 0 ? rect.height : window.innerHeight;
     this.pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
 
     this.renderer.setSize(this.width, this.height, false);
@@ -211,9 +213,12 @@ export class EngineRenderer {
     }
   }
 
-  render(camera) {
-    if (this.renderer && !this.isContextLost) {
-      this.renderer.render(this.scene, camera);
+  render(arg1, arg2) {
+    if (!this.renderer || this.isContextLost) return;
+    if (arg2 && arg2.isCamera) {
+      this.renderer.render(arg1, arg2);
+    } else if (arg1 && arg1.isCamera) {
+      this.renderer.render(this.scene, arg1);
     }
   }
 }

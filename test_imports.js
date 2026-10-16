@@ -21,8 +21,26 @@ async function testImports() {
 
       ws.onopen = () => {
         ws.send(JSON.stringify({ id: 1, method: "Runtime.enable" }));
+        ws.send(JSON.stringify({ id: 2, method: "Log.enable" }));
+        ws.send(JSON.stringify({ id: 3, method: "Console.enable" }));
 
         const files = [
+          './assets/three.module.min.js',
+          './engine/Renderer.js',
+          './engine/CameraRig.js',
+          './engine/UIController.js',
+          './engine/FallbackController.js',
+          './engine/scenes/EntranceScene.js',
+          './engine/scenes/GeneracScene.js',
+          './engine/scenes/UscDcScene.js',
+          './engine/scenes/VindeepScene.js',
+          './engine/scenes/LtScene.js',
+          './engine/scenes/BancoScene.js',
+          './engine/scenes/WorkbenchScene.js',
+          './engine/scenes/InventoryScene.js',
+          './engine/scenes/EducationScene.js',
+          './engine/scenes/ContactScene.js',
+          './engine/ChapterController.js',
           './engine/Engine.js'
         ];
 
@@ -75,6 +93,11 @@ async function testImports() {
 
         ws.onmessage = (msg) => {
           const res = JSON.parse(msg.data);
+          if (res.method === 'Runtime.exceptionThrown') {
+            console.error('[Browser Exception]:', JSON.stringify(res.params.exceptionDetails));
+          } else if (res.method === 'Runtime.consoleAPICalled') {
+            console.log('[Browser Console]:', res.params.type, res.params.args.map(a => a.value || a.description).join(' '));
+          }
           if (res.id >= 101 && res.id <= 100 + files.length) {
             console.log(JSON.stringify(res.result.result.value));
             testNext();

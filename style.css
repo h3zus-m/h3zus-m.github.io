@@ -52,6 +52,13 @@
    -------------------------------------------------------------------------- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+.hidden {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
 html {
   scroll-behavior: smooth;
   background: var(--bg-dark);
@@ -5165,6 +5172,320 @@ html, body {
   color: #38bdf8;
 }
 
+.evidence-tab-pane {
+  display: none;
+}
+
+.evidence-tab-pane.active {
+  display: block !important;
+}
+
+/* Entrance Overlay & Action Button */
+.entrance-controls-overlay {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 25;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.entrance-controls-overlay.hidden {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.btn-enter-world {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  border-radius: 9999px;
+  padding: 12px 24px;
+  font-family: var(--font-mono, monospace);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 0 25px rgba(2, 132, 199, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-enter-world:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 35px rgba(56, 189, 248, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.entrance-sub-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-skip-intro {
+  background: transparent;
+  border: none;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.btn-skip-intro:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.reduced-motion-tag {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  color: #64748b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+/* Quick Scene Actions Bar */
+.scene-quick-controls {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  z-index: 20;
+  max-width: 85%;
+}
+
+.btn-scene-action {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  color: #e2e8f0;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+}
+
+.btn-scene-action:hover {
+  background: rgba(30, 41, 59, 0.95);
+  border-color: #38bdf8;
+  color: #38bdf8;
+}
+
+.btn-scene-action.active {
+  background: rgba(14, 165, 233, 0.25);
+  border-color: #38bdf8;
+  color: #38bdf8;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+}
+
+/* Sourcing Evidence Drawer Glassmorphic Overlay */
+.generac-evidence-drawer {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  bottom: 50px;
+  width: min(520px, 94%);
+  background: rgba(6, 12, 24, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.15);
+  display: flex;
+  flex-direction: column;
+  z-index: 50;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.generac-evidence-drawer.hidden {
+  display: none !important;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: rgba(15, 23, 42, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.drawer-badge-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.drawer-kicker {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.drawer-status-badge {
+  font-family: var(--font-mono, monospace);
+  font-size: 9px;
+  color: #94a3b8;
+}
+
+.btn-close-drawer {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.btn-close-drawer:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.drawer-body {
+  padding: 16px;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.drawer-comp-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0;
+}
+
+.drawer-comp-category {
+  font-size: 11px;
+  color: #94a3b8;
+  margin-bottom: 8px;
+}
+
+.drawer-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.drawer-stat-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dstat-label {
+  font-size: 9px;
+  font-family: var(--font-mono, monospace);
+  color: #64748b;
+  letter-spacing: 0.05em;
+}
+
+.dstat-val {
+  font-size: 12px;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.drawer-section {
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.dsec-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #38bdf8;
+  margin: 0 0 6px 0;
+  font-family: var(--font-mono, monospace);
+}
+
+.dsec-desc {
+  font-size: 11px;
+  line-height: 1.5;
+  color: #cbd5e1;
+  margin: 0;
+}
+
+.drawer-table-wrapper {
+  overflow-x: auto;
+  margin-top: 6px;
+}
+
+.drawer-quotes-table,
+.sourcing-reconciled-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+
+.drawer-quotes-table th,
+.sourcing-reconciled-table th {
+  text-align: left;
+  padding: 6px 8px;
+  background: rgba(15, 23, 42, 0.8);
+  color: #94a3b8;
+  font-size: 10px;
+  font-family: var(--font-mono, monospace);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.drawer-quotes-table td,
+.sourcing-reconciled-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: #e2e8f0;
+}
+
+.drawer-disclosure-box {
+  background: rgba(30, 41, 59, 0.5);
+  border-left: 3px solid #38bdf8;
+  padding: 8px 12px;
+  border-radius: 0 6px 6px 0;
+  font-size: 10px;
+  line-height: 1.4;
+  color: #94a3b8;
+  margin-top: 8px;
+}
+
+.disc-label {
+  font-weight: 700;
+  color: #38bdf8;
+  display: block;
+  margin-bottom: 2px;
+}
+
 @media (max-width: 768px) {
   .chapter-waypoints-bar {
     width: 96%;
@@ -5980,7 +6301,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .hero-spatial-viewport {
   position: relative;
   width: 100%;
-  height: 420px;
+  height: clamp(560px, 72vh, 850px);
   background: radial-gradient(circle at 50% 50%, #0c1424 0%, #060912 100%);
   cursor: grab;
   user-select: none;
@@ -6014,10 +6335,12 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   pointer-events: auto;
 }
 
-.hero-spatial-fallback.rendered-hidden {
+.hero-spatial-fallback.rendered-hidden,
+.hero-spatial-fallback.hidden {
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
+  display: none !important;
 }
 
 .fallback-schematic {
@@ -6212,7 +6535,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 @media (max-width: 992px) {
   .hero-spatial-viewport {
-    height: 380px;
+    height: 480px;
   }
   .hud-phase-buttons {
     grid-template-columns: repeat(2, 1fr);
@@ -6221,7 +6544,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 @media (max-width: 600px) {
   .hero-spatial-viewport {
-    height: 320px;
+    height: 420px;
   }
   .fallback-svg {
     width: 170px;

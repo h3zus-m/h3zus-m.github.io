@@ -5,6 +5,8 @@
  */
 
 import * as THREE from '../../assets/three.module.min.js';
+import { GLTFLoader } from '../../assets/addons/GLTFLoader.js';
+import { DRACOLoader } from '../../assets/addons/DRACOLoader.js';
 
 export class EntranceScene {
   constructor(rendererInstance, cameraRig) {
@@ -16,13 +18,17 @@ export class EntranceScene {
     this.isStriking = false;
     this.strikeProgress = 0; // 0 to 1
     this.isFinished = false;
-    this.strikeDuration = 4.2; // seconds
+    this.strikeDuration = 3.8; // seconds
 
     this.sparks = [];
+    this.mixer = null;
+    this.actions = {};
+    this.hasExternalModel = false;
 
     this.initMonolith();
     this.initBerserkerAvatar();
     this.initSparksSystem();
+    this.loadExternalCharacterAsset();
   }
 
   initMonolith() {
@@ -306,10 +312,89 @@ export class EntranceScene {
     }
   }
 
+  loadExternalCharacterAsset(url = 'assets/guts_berserker.glb') {
+    const loader = new GLTFLoader();
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath('assets/draco/');
+    loader.setDRACOLoader(dracoLoader);
+
+    loader.load(
+      url,
+      (gltf) => {
+        const validation = this.validateRigAndClips(gltf);
+        console.info('[EntranceScene] Rig/clip validation result:', validation);
+
+        if (validation.isValid) {
+          this.avatar.visible = false; // Hide procedural lookdev previs
+          this.externalModel = gltf.scene;
+          this.externalModel.position.set(0, -0.85, 1.35);
+          this.externalModel.scale.set(1.0, 1.0, 1.0);
+          this.group.add(this.externalModel);
+
+          this.mixer = new THREE.AnimationMixer(this.externalModel);
+          gltf.animations.forEach(clip => {
+            this.actions[clip.name] = this.mixer.clipAction(clip);
+          });
+
+          if (this.actions['idle'] || this.actions['introAnimation']) {
+            const action = this.actions['idle'] || this.actions['introAnimation'];
+            action.play();
+          }
+
+          this.hasExternalModel = true;
+          console.info(`[EntranceScene] Successfully bound Guts Berserker model with ${gltf.animations.length} clips.`);
+        } else {
+          console.warn('[EntranceScene] External GLTF failed rig validation; retaining elevated procedural lookdev.');
+        }
+      },
+      undefined,
+      (err) => {
+        // Expected if asset is pending client download
+        console.info('[EntranceScene] Awaiting external rigged Guts Berserker asset (assets/guts_berserker.glb). Elevated procedural lookdev active.');
+      }
+    );
+  }
+
+  validateRigAndClips(gltf) {
+    const result = {
+      hasBones: false,
+      boneCount: 0,
+      hasAnimations: false,
+      animationNames: [],
+      isValid: false
+    };
+
+    if (!gltf || !gltf.scene) return result;
+
+    let boneCount = 0;
+    gltf.scene.traverse((obj) => {
+      if (obj.isBone) boneCount++;
+    });
+
+    result.boneCount = boneCount;
+    result.hasBones = boneCount >= 8;
+    result.hasAnimations = gltf.animations && gltf.animations.length > 0;
+    if (result.hasAnimations) {
+      result.animationNames = gltf.animations.map(a => a.name);
+    }
+
+    result.isValid = result.hasBones || result.hasAnimations;
+    return result;
+  }
+
   startStrike() {
     if (this.isStriking) return;
     this.isStriking = true;
     this.strikeProgress = 0;
+    this.hasTriggeredImpact = false;
+
+    // Trigger external strike animation if present
+    if (this.hasExternalModel && this.mixer) {
+      if (this.actions['strike'] || this.actions['cleave']) {
+        const action = this.actions['strike'] || this.actions['cleave'];
+        action.reset().play();
+      }
+    }
   }
 
   skipStrike() {
@@ -325,8 +410,12 @@ export class EntranceScene {
   }
 
   update(delta, time) {
+    if (this.mixer) {
+      this.mixer.update(delta);
+    }
+
     // Idle breathing & cape ripple when not striking
-    if (!this.isStriking && !this.isFinished) {
+    if (!this.isStriking && !this.isFinished && !this.hasExternalModel) {
       const breathe = Math.sin(time * 2.2) * 0.015;
       this.torso.position.y = 1.25 + breathe;
       this.cloak.rotation.x = Math.sin(time * 3.0) * 0.04;

@@ -1,8 +1,8 @@
 /**
- * DEPENDABLE WEBGL FALLBACK CONTROLLER
+ * DEPENDABLE WEBGL FALLBACK & INDEPENDENT ACCESSIBILITY CONTROLLER
  * Activates whenever WebGL is unsupported or context is lost.
- * Ensures all recruiter actions (Enter, Skip, Explore, Evidence, Resume, Email, LinkedIn)
- * execute meaningful, visible DOM state changes with zero dead clicks.
+ * Ensures all recruiter actions (Enter, Skip, Explore, Evidence, Work Index, Resume, Email, LinkedIn)
+ * execute meaningful, visible DOM state changes with zero dead clicks regardless of renderer status.
  */
 
 export class FallbackController {
@@ -10,7 +10,40 @@ export class FallbackController {
     this.fallbackContainer = document.getElementById('hero-spatial-fallback');
     this.isFallbackActive = false;
 
+    this.initAccessibleWiring();
     this.checkAndInit();
+  }
+
+  initAccessibleWiring() {
+    // Ensure Work Index Modal and Evidence Drawer are wired independently of WebGL
+    const workIndexModal = document.getElementById('work-index-modal');
+    const openWorkIndexBtns = document.querySelectorAll('#btn-open-work-index, [data-open-work-index]');
+    const closeWorkIndexBtn = document.getElementById('btn-close-work-index');
+
+    openWorkIndexBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (workIndexModal) {
+          workIndexModal.classList.remove('hidden');
+          workIndexModal.setAttribute('aria-hidden', 'false');
+        }
+      });
+    });
+
+    if (closeWorkIndexBtn && workIndexModal) {
+      closeWorkIndexBtn.addEventListener('click', () => {
+        workIndexModal.classList.add('hidden');
+        workIndexModal.setAttribute('aria-hidden', 'true');
+      });
+    }
+
+    const evidenceDrawer = document.getElementById('generac-evidence-drawer');
+    const closeEvidenceBtn = document.getElementById('btn-close-evidence');
+    if (closeEvidenceBtn && evidenceDrawer) {
+      closeEvidenceBtn.addEventListener('click', () => {
+        evidenceDrawer.classList.add('hidden');
+        evidenceDrawer.setAttribute('aria-hidden', 'true');
+      });
+    }
   }
 
   checkAndInit() {
@@ -35,7 +68,7 @@ export class FallbackController {
   detectWebGL() {
     try {
       const c = document.createElement('canvas');
-      return !!(window.WebGLRenderingContext && (c.getContext('webgl') || c.getContext('experimental-webgl')));
+      return !!(window.WebGLRenderingContext && (c.getContext('webgl2') || c.getContext('webgl') || c.getContext('experimental-webgl')));
     } catch (e) {
       return false;
     }
@@ -44,7 +77,9 @@ export class FallbackController {
   activateFallback() {
     this.isFallbackActive = true;
     if (this.fallbackContainer) {
-      this.fallbackContainer.classList.remove('hidden');
+      this.fallbackContainer.classList.remove('rendered-hidden', 'hidden');
+      this.fallbackContainer.style.display = 'flex';
+      this.fallbackContainer.style.pointerEvents = 'auto';
       this.fallbackContainer.setAttribute('aria-hidden', 'false');
     }
 
@@ -53,11 +88,11 @@ export class FallbackController {
     const skipBtn = document.getElementById('btn-skip-intro');
 
     if (enterBtn) {
-      enterBtn.onclick = () => this.scrollToSection('chapter-generac-section');
+      enterBtn.onclick = () => this.scrollToSection('experience');
     }
 
     if (skipBtn) {
-      skipBtn.onclick = () => this.scrollToSection('chapter-generac-section');
+      skipBtn.onclick = () => this.scrollToSection('experience');
     }
 
     // Wire evidence drawer button
@@ -78,7 +113,9 @@ export class FallbackController {
   deactivateFallback() {
     this.isFallbackActive = false;
     if (this.fallbackContainer) {
-      this.fallbackContainer.classList.add('hidden');
+      this.fallbackContainer.classList.add('rendered-hidden', 'hidden');
+      this.fallbackContainer.style.display = 'none';
+      this.fallbackContainer.style.pointerEvents = 'none';
       this.fallbackContainer.setAttribute('aria-hidden', 'true');
     }
   }
