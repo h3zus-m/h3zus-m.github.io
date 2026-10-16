@@ -2,7 +2,8 @@
 
 **Testing Repository:** [https://github.com/h3zus-m/testing](https://github.com/h3zus-m/testing)  
 **Branch:** `main` (testing/main)  
-**Production Status:** Primary production portfolio ([`h3zus-m.github.io`](https://github.com/h3zus-m/h3zus-m.github.io)) kept **100% UNCHANGED**.  
+**Audited Revision Head:** `a21789d` (includes `6c2125d`, `840e37f`, and `11ed0e8`)  
+**Production Status:** Primary production portfolio ([`h3zus-m.github.io`](https://github.com/h3zus-m/h3zus-m.github.io)) kept **100% UNCHANGED** at `f2efea7`.  
 **Audit Target Standard:** 9.5 / 10  
 **Professional Authority:** [`hnmistry_resume.pdf`](file:///c:/Users/Harsh/Downloads/hnmistry_resume.pdf)  
 
