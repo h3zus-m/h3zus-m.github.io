@@ -1,92 +1,30 @@
-# Harsh Mistry - Industrial Systems and Operations Architect Portfolio
+# Harsh Mistry: Inside the Systems
 
-Portfolio and interactive digital twin console for Harsh Nileshkumar Mistry.
-Specialization: Industrial Systems Architecture, Global Supply Chain Engineering, Real-Time Telemetry, Autonomous Decision Agents, and Precision Manufacturing.
+Current portfolio: https://h3zus-m.github.io/
 
-## Academic Grounding
-- University of Southern California (USC), Viterbi School of Engineering (Jan 2025 - Dec 2026)
-  M.S. in Engineering Management & Graduate Certificate in Optimization and Supply Chain Management | Los Angeles, CA | Cumulative GPA: 3.73 / 4.00
-- Pandit Deendayal Energy University (PDEU) (Aug 2019 - May 2023)
-  B.Tech in Mechanical Engineering | Gandhinagar, Gujarat | Final Cumulative CPI: 9.06 / 10.00 (First Class with Distinction)
+Published from the same runtime files as https://harsh-mistry-inside-systems.hearty-lamp-6320.chatgpt.site/ (Sites version 1, source commit 139de313546fce32577483c6aef9b79abfc5651d). The static files are at the repository root for GitHub Pages. All runtime assets are local.
 
-## Industry Experience
-- Generac Power Systems (USC Center for Global Supply Chain Management): SCM and ATS Optimization
-- Larsen and Toubro (L&T) Defense: Submarine Hull Robotic Laser Profilometry and Welding Automation
-- Banco Products India Ltd: Industrial Heat Exchangers and Radiators, ASME Sec VIII / IX
-- Vindeep Preschem: Chemical Pressure Equipment and Piping Optimization
+## Development
 
----
+Edit `content.js`, `index.html`, `style.css`, `app.js`, `world.js`, and `models.js` as appropriate. No build or dependency installation is required.
 
-## Architecture and Core Systems
-1. Hero Digital Twin: Multi-mode interactive console (Live Real Photo, 3D Global SCM Globe, Autonomous Warehouse Hub, Robotic Welding Cell).
-2. Cyber Defense Integrity Shield: Anti-tamper inspection blocker intercepting unauthorized DOM inspection, DevTools shortcuts, and right-click access.
-3. Interactive SCM Agent Terminal: Live simulation of Claude 3.5 Sonnet MCP sourcing, RFQ audits, and layout compaction.
-4. Chapter 04 Live Visualizations:
-   - ATS 0.38pt layout convergence canvas
-   - 2D warehouse slotting velocity heatmap
-   - Submarine weld seam optical profilometry telemetry
-5. Design Aesthetic: Modern glassmorphism, Huly-inspired dynamic lava canvas, high-contrast typography, zero emojis, zero em-dashes.
+```sh
+npm test
+npm run check
+python -m http.server 8080
+```
 
----
+The existing GitHub Pages workflow publishes pushes to `main`. The previous portfolio is retained in Git history and the `backup/before-inside-systems-2026-10-16` branch.
 
-## Hosting and Deployment Instructions
+## Rendering and verification
 
-### Option 1: GitHub Pages (Recommended - 100% Free)
-1. Initialize git and commit:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit: Harsh Mistry Portfolio"
-   git branch -M main
-   ```
-2. Create a new repository on GitHub named `portfolio` (or `harshmistry.github.io`).
-3. Link and push your repository:
-   ```bash
-   git remote add origin https://github.com/<your-username>/portfolio.git
-   git push -u origin main
-   ```
-4. Enable GitHub Pages:
-   - Go to your repository on GitHub -> Settings -> Pages.
-   - Under "Build and deployment" -> Source: Select "GitHub Actions" (or "Deploy from a branch", Branch: `main`, Folder: `/root`).
-   - Your site will be live at: `https://<your-username>.github.io/portfolio/` (or `https://<your-username>.github.io`).
+The ten WebP scene images are offline renders of the geometry, not browser screenshots. WebGL enhances the page; written content and contact links remain accessible without it. Rendering errors are retained in the browser console and `globalThis.__portfolioRenderError`.
 
----
+Source tests and syntax checks passed before transfer. A 9.5/10 visual audit has not been established.
 
-### Option 2: Vercel (Instant Zero-Config Edge Deployment)
-1. Install Vercel CLI (or connect via vercel.com dashboard):
-   ```bash
-   npm i -g vercel
-   vercel
-   ```
-2. Follow the 2-step prompt. Vercel automatically detects the included `vercel.json` and deploys to a global edge CDN with free automatic SSL.
-3. Your site will be live at: `https://harsh-mistry-portfolio.vercel.app` (or custom domain).
+## Asset attribution
 
----
-
-### Option 3: Netlify
-1. Install Netlify CLI:
-   ```bash
-   npm i -g netlify-cli
-   netlify deploy --prod
-   ```
-2. The included `netlify.toml` automatically applies security headers, caching, and clean asset routing.
-
----
-
-## Adding Your Portfolio to LinkedIn and Resume
-
-### 1. LinkedIn Profile
-- Header Link:
-  1. Go to your LinkedIn profile -> Click the edit pencil on your introduction section.
-  2. Scroll down to "Custom link" / "Website".
-  3. Enter your live portfolio URL (e.g. `https://<your-domain>/`) and link text: `Portfolio: Industrial Systems Architect`.
-- Featured Section:
-  1. Click "Add profile section" -> "Recommended" -> "Add Featured".
-  2. Click `+` -> "Add a link".
-  3. Paste your live portfolio URL.
-  4. Title: `Harsh Mistry // Systems Architect & Digital Twin Console`.
-  5. Description: `Interactive portfolio demonstrating SCM digital twin, L&T defense robotics, and Claude 3.5 Sonnet MCP sourcing pipelines.`
-
-### 2. Resume Header
-Place under your contact info:
-`Harsh Mistry | Los Angeles, CA | harshnil@usc.edu | hnmistry28@gmail.com | Portfolio: <your-live-url> | LinkedIn: linkedin.com/in/harshmistry8111`
+- Three.js and its loader/utilities: https://github.com/mrdoob/three.js, MIT license.
+- Manrope: see `assets/Manrope-OFL.txt`.
+- Industrial Workshop Foundry HDRI: Poly Haven, CC0, https://polyhaven.com/a/industrial_workshop_foundry.
+- Scene geometry and scene posters: project-authored conceptual illustrations. Internal assemblies and sample datasets are explanatory, as labeled in the portfolio.
